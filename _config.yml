@@ -10,3 +10,4 @@ github_username:  zcourts
 
 # Build settings
 markdown: kramdown
+permalink: /:year/:month/:day/:title
