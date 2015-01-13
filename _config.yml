@@ -3,11 +3,23 @@ title: zcourts AKA Courtney Robinson
 email: site@crlog.info
 description: > # this means to ignore newlines until "baseurl:"
   Making the web a messier, better place.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://zcourts.comm" # the base hostname & protocol for your site
+baseurl: "/"
 twitter_username: zcourts
 github_username:  zcourts
 
 # Build settings
 markdown: kramdown
 permalink: /:year/:month/:day/:title
+
+# Sass settings
+#sass:
+#    sass_dir: _scss
+#    style: :compressed
+
+kramdown:
+  input: GFM #Github flavoured markdown
+
+paginate: 10
+paginate_path: "posts/:num/"
+
+highlighter: pygments
