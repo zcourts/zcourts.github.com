@@ -16,7 +16,7 @@ Following on from my previous post on [how to remove the default widgets/module
 The code below creates to widgets on our dashboard with the title of posts from two different categories,
 specified by the cat=x parameter.
 
-[code lang="php"]
+```php
  // add 10 most recent post to dashboard from category with id 10
  function blogPost_widget() {
  $recentPosts = new WP_Query();
@@ -56,7 +56,7 @@ specified by the cat=x parameter.
  // Hook into the 'wp_dashboard_setup' action to register our other functions
 
  add_action('wp_dashboard_setup', 'add_dashboard_widgets');
- [/code]
+ ```
 
 The above code goes into your functions.php file for a template or anywhere in your plugin file. Taken directly from the wordpress documentation, the wp_add_dashboard_widget is the magic function here,
 it gives our widget an ID and a name and tells wordpress which function to invoke when creating the widget.

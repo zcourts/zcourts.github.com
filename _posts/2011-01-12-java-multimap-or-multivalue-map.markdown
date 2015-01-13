@@ -18,7 +18,7 @@ This could be easily accomplished in Java using a HashMap and a list or set. Doi
 I had to build a plugin framework in Java which allowed plugins to "register" for events. Multiple plugins could register for the same event and once that event had been queued for processing, all the handlers registered to listen for that event had to be notified.
 
 A plugin could register and unregister which means the list of items to map an event to had to be dynamic, i.e must be able to add and remove items that a key points to. I came up with a solution as shown below, which worked out very nicely.
-[code lang="java"]
+```java
 package utils;
 
 import java.io.Serializable;
@@ -107,12 +107,12 @@ return keys.keySet();
 }
 }
 
-[/code]
+```
 
 
 
 Using MultiValue is pretty simple,
-[code lang="java"]
+```java
 //using the magic of generics can be any combination of valid types
 MultiValue registeredEvents = new MultiValue();
 //this can be called multiple times, if the same key is used then all the items with the same key can
@@ -121,4 +121,4 @@ registeredEvents.put(key, value);
 //if multiple values are stored then you simply iterate as normal
 ArrayList handlers = registeredEvents.get(cmd);
 
-[/code]
+```

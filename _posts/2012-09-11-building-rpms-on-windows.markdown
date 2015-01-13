@@ -60,7 +60,7 @@ In that folder create a file called **rpmbuild.bat **and add the following con
 
 
 
-[code lang="bash"]
+```bash
 SETLOCAL
 PUSHD .
 
@@ -88,7 +88,7 @@ bash -c "rpmbuild %1 %2 %NEW_BUILDROOT% %4 ""_topdir %NEW_TOPDIR%"" %6 "%7" --de
 
 POPD
 ENDLOCAL
-[/code]
+```
 
 NOTE: I didn't write it, I found it when I ran into issues trying to get my RPM setup to work see [https://jira.codehaus.org/browse/MRPM-4](https://jira.codehaus.org/browse/MRPM-4) for the original source.
 The above script replaces backslashes in the spec file generated with Windows paths.

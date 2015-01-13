@@ -25,7 +25,7 @@ Mind you this is being done with part-finished code so it may not even be a good
 
 [![](http://crlog.files.wordpress.com/2011/08/archimedean-spiral-right.png)](http://crlog.files.wordpress.com/2011/08/archimedean-spiral-right.png)
 The little Javascript/HTML snippet that does this is:
-[code lang="js"]
+```js
         <canvas id="tags" width="1200" height="600"></canvas>     
         <script type="text/javascript">
 
@@ -65,7 +65,7 @@ The little Javascript/HTML snippet that does this is:
 
             }
         </script>
-[/code]
+```
 
 Well, that's it, play around with the two lines
                    var x = i*0.1 * Math.cos(i);

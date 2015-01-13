@@ -22,7 +22,7 @@ In getting started with PHPUnit, I didn't have any code I felt like writing unit
 
 <!-- more -->The class then is:
 
-[code lang="PHP"]
+```PHP
 <?php
 
 class String {
@@ -127,6 +127,6 @@ class String {
     }
 
 }
-[/code]
+```
 
 As you can see it only has a few methods. I might add some more but there wasn't much point to writing this other than to get some unit tests written.

@@ -17,7 +17,7 @@ One of the project's I've had going on requires building a website for a local c
 
 I found myself having to develop a large portion of things for the admin section so I've had to make do. One of the things I was asked for was to show custom widgets on the dashboard with various things and to remove the default ones.... whaaaaa? Usually wordpress users just manually remove and/or configure these widgets, however the potential users of this are going to be people who have little or no technical expertise... Below is a quick and simple way to remove all the default widgets/modules that are loaded on the dashboard.
 
-[code lang="php"]
+```php
 function remove_dashboard_widgets() {
     // Globalize the metaboxes array, this holds all the widgets for wp-admin
 
@@ -36,7 +36,7 @@ function remove_dashboard_widgets() {
 // Hoook into the 'wp_dashboard_setup' action to register our function
 
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
-[/code]
+```
 Put that block of code in your functions.php file, if it is a template you're working on or include it somewhere if it is a plugin.
 That's all there is to it... In my next post I'll show you how to add your own modules.
 Further reading:

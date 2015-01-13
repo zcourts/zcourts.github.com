@@ -23,7 +23,7 @@ I already include JQuery in the page so why not use it. If you need a non-JQuery
 [Native AngularJS broadcast](http://docs.angularjs.org/api/ng.$rootScope.Scope#$broadcast)
 
 
-[code lang="javascript"]
+```javascript
 angular.module('fillta.service.Events', ['ngResource'])
     .factory('Events', function () {
         var el = document.createElement('div')
@@ -42,7 +42,7 @@ angular.module('fillta.service.Events', ['ngResource'])
         }
         return EventsListener;
     })
-[/code]
+```
 
 
 

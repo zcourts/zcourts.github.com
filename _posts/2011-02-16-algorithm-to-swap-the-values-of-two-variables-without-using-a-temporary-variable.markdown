@@ -22,7 +22,7 @@ What I came up with worked...sort of (that was on the fly without much time/thou
 
 The Java program (works in any language,easily translated)
 
-[code lang="Java"]
+```Java
 
 /**
  *
@@ -57,18 +57,18 @@ public class Test {
     }
 }
 
-[/code]
+```
 
 The output from the program should be:
 
-[code lang="Java"]
+```Java
 Original X and Y Value
 Y : 3
 X : 5
 Swaped X and Y Value
 Y : 5
 X : 3
-[/code]
+```
 
 
 Never thought about doing this before so I was caught completely off guard when asked...didn't even know it was

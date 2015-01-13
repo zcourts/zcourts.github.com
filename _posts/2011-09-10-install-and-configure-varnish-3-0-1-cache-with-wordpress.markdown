@@ -91,7 +91,7 @@ backend default {
                        	unset beresp.http.set-cookie;
                	}
        	}
-[/code]
+```
 
 
 ## Method 2
@@ -248,7 +248,7 @@ acl purgehosts {
     "www.domain.com";
     "123.456.789.123";#server IP
 }
-[/code]
+```
 
 
 This config again is based on the post I mentioned above. Change domain.com to your domain and the IP 123.456.etc to your server's IP.

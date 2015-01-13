@@ -32,7 +32,7 @@ all the supported methods/actions/commands. For example, at the moment, the API 
 
 
 
-[code lang="php"]
+```php
  <?php
 
  $fp = connect();
@@ -73,7 +73,7 @@ all the supported methods/actions/commands. For example, at the moment, the API 
  return fsockopen("127.0.0.1", 9989, $errno, $errstr, 30);
  }
  ?>
- [/code]
+ ```
 
 The JSON generated looks like this:
 

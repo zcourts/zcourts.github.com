@@ -18,7 +18,7 @@ Never used the J2ME API but I thought, hey, can't be that bad right. I must say,
 
 J2ME has a RecordComparator interface defined as:
 
-[code lang="Java"]
+```Java
 public interface RecordComparator {
 
     public static final int PRECEDES = -1;
@@ -27,11 +27,11 @@ public interface RecordComparator {
 
     public int compare(byte[] rec1, byte[] rec2);
 }
-[/code]
+```
 
 Implement that interface in a class called RecordSorter
 
-[code lang="Java"]
+```Java
     static class RecordSorter implements RecordComparator {
 
         public int compare(byte[] rec1, byte[] rec2) {
@@ -41,11 +41,11 @@ Implement that interface in a class called RecordSorter
                     : (strRec1.compareTo(strRec2) > 0 ? FOLLOWS : PRECEDES);
         }
     }
-[/code]
+```
 
 Then you can use your class like this:
 
-[code lang="Java"]
+```Java
 String data={"Melon","Grapes","Orange","Bananna"};
 private void sortResults() {
 RecordSorter sorter = new RecordSorter();
@@ -65,13 +65,13 @@ data[j + 1] = a;
 }
 }
 }
-[/code]
+```
 
 In theory this will work in a normal Java app too...not tested though
 
 **UPDATE**: As expected, it works in a normal Java app.
 
-[code lang="Java"]
+```Java
 
 package sorting;
 
@@ -137,4 +137,4 @@ public class Sorting {
         }
     }
 }
-[/code]
+```

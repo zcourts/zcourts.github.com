@@ -18,7 +18,7 @@ Admittedly it's not perfect and could do with improvements but it works well for
 
 The first bit to this is to use .htaccess file and route all requests to index.php - Only requests that are not for a real file or directory is mapped to idnex.php, so for example if the file view.php exists then the request will go to that file. This .htaccess code is actually the original from [Wordpress](http://www.wordpress.org).
 
-[code lang="php"]
+```php
 # BEGIN ROUTING
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -29,11 +29,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
 # END ROUTING
-[/code]
+```
 
 The code for the PHP class, URI is as follows:
 
-[code lang="php"]
+```php
 <?php
 
 class URI {
@@ -210,11 +210,11 @@ class URI {
 
 ?>
 
-[/code]
+```
 
 Example usage:
 
-[code lang="php"]
+```php
  $url=new URI();
 //assuming the query string has view=somevalue
         print $url->getVar("view");
@@ -225,7 +225,7 @@ Example usage:
 //build the url with any changes
     print $url->buildURL();
 
-[/code]
+```
 
 
 The URL generated will be in the form

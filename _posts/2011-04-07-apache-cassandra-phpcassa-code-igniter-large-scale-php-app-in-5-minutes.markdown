@@ -38,7 +38,7 @@ Get started then:
 Create a file, in your application/config folder, name it cassandra.php i.e. application/config/cassandra.php
 In that file add the following:
 
-[code lang="php"]
+```php
 <?php
 $servers[0] = array('host' => '192.168.2.6', 'port' => 9160);
 $servers[1] = array('host' => '192.168.2.7', 'port' => 9160);
@@ -46,35 +46,35 @@ $servers[3] = array('host' => '192.168.2.8', 'port' => 9160);
 $config['cassandra_servers'] = $servers;
 $config['keyspace'] = "Keyspace1";
 $config['default_cf'] = "Standard1";
-[/code]
+```
 
 The servers array should be obvious, its a list of servers you want to have available for your connection
 pooling stuff. It'll later be accessible using:
 
-[code lang="php"]
+```php
 $this->CI->config->item('cassandra_servers')
-[/code]
+```
 
 The next config option is the Keyspace your application will use, this allows you to specify only a single Keyspace
 since, ideally an application would only use one of these. This is later accessible through:
 
-[code lang="php"]
+```php
 $this->CI->config->item('keyspace')
-[/code]
+```
 
 The final option is a default column family. This column family is the one that will be available when CI initialises
 the database object, db.Later available using:
 
-[code lang="php"]
+```php
 $this->CI->config->item('default_cf')
-[/code]
+```
 
 That's it for the configuration file... Next up, our Cassandra library or libraries should I say...
 At this point its important to say that if you have database being auto loaded then the following may
 not be what you want to do.
 In application/libraries create a file called db.php i.e. application/libraries/db.php
 
-[code lang="php"]
+```php
 <?php
 
 require_once('phpcassa/connection.php');
@@ -130,7 +130,7 @@ class Db {
     }
 
 }
-[/code]
+```
 
 This approach is the most simplistic I could think of for this blog post, ideally you'd want to cache
 the Column family objects you create so that a new instance isn't created every time you use a different CF.
@@ -147,9 +147,9 @@ everything in the Thrift folder, docs and test folder aren't used so they can be
 Next you need to change your autoload.php file
 the settings need to look like:
 
-[code lang="php"]
+```php
 $autoload['libraries'] = array('db','otherlib');
-[/code]
+```
 
 Unless I've forgotten something, that should be it...
 Now in any of your controllers or files where autoloaded libraries are available, you can use

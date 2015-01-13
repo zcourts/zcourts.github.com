@@ -24,7 +24,7 @@ I used the server library, [Netty](http://www.jboss.org/netty/)... Below is the 
 It allows multiple connections on the same socket but the requests are still processed sequentially which means, if a single request
 hangs then all subsequent requests will hang until the connections start to timeout or the server is overloaded and turns over.
 
-[code lang="java"]
+```java
 package info.crlog.server;
 
 import info.crlog.interfaces.Constants;
@@ -138,7 +138,7 @@ public class Server implements Constants {
         return false;
     }
 }
-[/code]
+```
 
 There are comments included to help you follow, the page cited below has an excellent tutorial and indept description of how
 to get this all done so if you're having problems making it work, ask in the comments or have a read through the tutorial linked

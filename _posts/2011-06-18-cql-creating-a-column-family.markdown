@@ -21,7 +21,7 @@ Following on from my last post about how to [create a keyspace with CQL](http://
 
 Here goes:
 
-[code lang="Java"]
+```Java
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import org.apache.cassandra.thrift.Cassandra;
@@ -59,7 +59,7 @@ public class CqlTests {
         client.execute_cql_query(ByteBuffer.wrap(cql.getBytes()), Compression.NONE);
     }
 }
-[/code]
+```
 
 In the above code demonstrates the minimum you need, the Column family name and the key type. The available column types are available at [http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/#CREATE+COLUMNFAMILY
 I](http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/#CREATE+COLUMNFAMILY)f you now use the Cassandra-cli you can see the details of the keyspace/column family using the "show keyspaces;" command:

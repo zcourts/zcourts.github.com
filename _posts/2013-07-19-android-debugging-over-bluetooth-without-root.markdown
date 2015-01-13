@@ -23,11 +23,11 @@ So I'm on a train to Reading and wanted to continue working on an app I've been 
 
 Connect the phone via USB and from the terminal enter (to run adb in tcp ip mode)
 
-[code lang="bash"]
+```bash
 
 adb tcpip 4455
 
-[/code]
+```
 
 Now on the phone enable debugging from Settings -> Developer options -> enable debugging.
 
@@ -46,11 +46,11 @@ From the window that opens, note the Primary DNS IP. Copy it, write it down, wha
 
 Now from the command line again enter:
 
-[code lang="bash"]
+```bash
 
 adb connect 192.168.44.1:4455
 
-[/code]
+```
 
 That should produce
 

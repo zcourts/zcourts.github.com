@@ -26,7 +26,7 @@ The remarks went on to say:<!-- more -->
 While its not very common, it can offer very tricky questions in interviews as a friend of mine recently found out.
 Some example code of using it, (taken from the help page again):
 
-[code lang="csharp"]
+```csharp
 // nullable_type_operator.cs
 using System;
 class MainClass
@@ -61,7 +61,7 @@ class MainClass
         Console.WriteLine(s ?? "Unspecified");
     }
 }
-[/code]
+```
 
 Further reading (References)
 

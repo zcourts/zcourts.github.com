@@ -90,7 +90,7 @@ and I just stopped, drew out some ideas and it turned out into all the classes c
 
 [https://github.com/zcourts/cassandra-hector-wrapper/blob/master/src/main/java/com/scriptandscroll/adt/UsageExamples.java](https://github.com/zcourts/cassandra-hector-wrapper/blob/master/src/main/java/com/scriptandscroll/adt/UsageExamples.java)
 
-[code lang="Java"]
+```Java
 package com.scriptandscroll.adt;
 
 import java.util.ArrayList;
@@ -196,7 +196,7 @@ public class UsageExamples {
 		//still simple?
 	}
 }
-[/code]
+```
 
 On its own this would all mean nothing so again, a big thank you to the [Hector guys](http://hector-client.org).
 

@@ -25,7 +25,7 @@ While on my path to learning Scala, or rather improving my very lacking Scala kn
 I'm pretty sure it is far more verbose than it needs to be, but until I know how to code less and do more, this is it:
 <!-- more -->
 
-[code lang="scala"]
+```scala
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -65,4 +65,4 @@ object Main {
   }
 
 }
-[/code]
+```

@@ -25,7 +25,7 @@ In this example we'll create a keyspace and look at the proerties available when
 
 There is a Java driver that can be downloaded from [http://www.apache.org/dist/cassandra/drivers/java](http://www.apache.org/dist/cassandra/drivers/java) but it is not required for this tutorial. In a later tutorial I'll provide examples of using the new "Cassandra Drivers", but for now I'm just going to use the new execute_cql_query method provided with thrift. This way, if you're using a language that does not yet have a driver you can still get started with CQL.
 
-[code lang="java"]
+```java
 package cql.tests;
 
 import java.io.UnsupportedEncodingException;
@@ -58,7 +58,7 @@ public class CqlTests {
              client.execute_cql_query(ByteBuffer.wrap(cql.getBytes()), Compression.NONE);
         tr.close();
     }
-}[/code]
+}```
 
 CQL: CREATE keyspace test1 WITH strategy_options:DC1 = '1' AND replication_factor = '1' AND strategy_class = 'NetworkTopologyStrategy'
 
@@ -96,9 +96,9 @@ description
 The above is the doc from the [CQL v1.0 specification](http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/), specifically [http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/#CREATE+KEYSPACE](http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/#CREATE+KEYSPACE).
 The specs says strategy_options is not required, however in the 0.8.0 version being shipped at the time of writing a keyspace cannot be created without specifying the properties that were required in the old specification, namely strategy_class and the replication_factor properties [http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/#CREATEKEYSPACE](http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/#CREATEKEYSPACE). This issue is addressed in Cassandra versions greater than 0.8.0 - Currently not available for download on the main download page but can be checked out from trunk and built. The easiest option is to simply specify the required properties, otherwise you'll get an exception which looks similar to:
 
-[code lang="java"]
+```java
 Exception in thread "main" InvalidRequestException(why:missing required argument "strategy_class")
 	at org.apache.cassandra.thrift.Cassandra$execute_cql_query_result.read(Cassandra.java:30983)
 	at org.apache.cassandra.thrift.Cassandra$Client.recv_execute_cql_query(Cassandra.java:1708)
 	at org.apache.cassandra.thrift.Cassandra$Client.execute_cql_query(Cassandra.java:1682)
-[/code]
+```

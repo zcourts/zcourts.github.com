@@ -22,7 +22,7 @@ just in case you mess it up and forget what the original content was...
 Open the file, (the original, not the copy ) and find where it has the_content();
 Replace it with:
 
-[code lang="php"]
+```php
 <?php
 $content = get_the_content();//apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
@@ -35,7 +35,7 @@ $i++;<
 ?>
 <a href="<?php the_permalink(); ?>" rel="bookmark" title="
 <?php the_title_attribute(); ?>">... <br />Continue reading, <?php the_title(); ?>.</a>
-[/code]
+```
 
 Change 50 in the loop to the amount of words you want to allow. When done just save and re-upload the file.
 

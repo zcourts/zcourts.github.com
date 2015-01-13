@@ -28,28 +28,28 @@ Since I refuse to go back to windows as a main OS after it annoyed the crap outt
 
 So to the point, the problem is that when VirtualBox is installed your user account probably wasn't added to the group it created. You can check and make sure you're facing the same issue by running the command:
 <!-- more -->
-[code lang="bash"]
+```bash
 ls -lR /dev/vboxusb
-[/code]
+```
 If it outputs "Permission denied" then it's probably the same issue. Now trying running it with sudo
-[code lang="bash"]
+```bash
 sudo ls -lR /dev/vboxusb
-[/code]
+```
 If it lists all your USB devices then that means its very likely the same problem. You can confirm this by running
-[code lang="bash"]
+```bash
 
 VBoxManage list usbhost
 
-[/code]
+```
 If  it says "None" and then running it with sudo lists the devices there's a good chance this solution will work for you...if not you can try it anyway. As I said earlier the problem is probably that your user account isn't in the right group. There are two ways to fix this, from the command line or through a GUI tool. The command line is quicker simply type
-[code lang="bash"]
+```bash
 usermod -a -G vboxusers courtney #change courtney to your username
-[/code]
+```
 to use a GUI tool install system tools and use it to add your user account to the "vboxusers" users group. There's a [short guide here](http://askubuntu.com/a/66727/10273) but in short run
 
-[code lang="bash"]
+```bash
 sudo apt-get install gnome-system-tools
-[/code]
+```
 
 Then add yourself, see images below:
 
@@ -80,7 +80,7 @@ Now one last thing! If you get Ubuntu automounting your device and showing that 
 
 Follow the instructions over at [Ubuntu's docs](https://help.ubuntu.com/community/Mount/USB). In short, open "**dconf-editor**" if it's not installed then install it with
 
-[code lang="bash"]sudo apt-get install dconf-editor[/code]
+```bashsudo apt-get install dconf-editor```
 
 Open it and "Browse to **org.gnome.desktop.media-handling**".
 

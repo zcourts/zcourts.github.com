@@ -30,25 +30,25 @@ Next extract the HaProxy archive you downloaded, I was in my home directory (/ho
 
 Go into the extracted folder
 
-[code lang="javascript"]cd haproxy.x.y.z[/code]
+```javascriptcd haproxy.x.y.z```
 
 Where  .x.y.z was the version number. Now compile:
 
-[code lang="javascript"]
+```javascript
 make TARGET=linux28
-[/code]
+```
 
 If no error occurred  then install
 
-[code lang="javascript"]
+```javascript
 make install
-[/code]
+```
 
 Once installed you need a HaProxy Config file. I'm using 1.4 so docs are here: [http://cbonte.github.com/haproxy-dconv/configuration-1.4.html](http://cbonte.github.com/haproxy-dconv/configuration-1.4.html) . You should have a look here [http://haproxy.1wt.eu/#docs](http://haproxy.1wt.eu/#docs) to find your specific version of the docs.
 
 Once you have a HaProxy config file fire up the process using:
 
-[code lang="javascript"]/usr/local/sbin/haproxy.exe -f haproxy.cfg[/code]
+```javascript/usr/local/sbin/haproxy.exe -f haproxy.cfg```
 
 If like me you're using Node or whatever else (WebSockety) with HaProxy then a good place to start is [http://stackoverflow.com/questions/4360221/haproxy-websocket-disconnection/4737648#4737648](http://stackoverflow.com/questions/4360221/haproxy-websocket-disconnection/4737648#4737648)
 

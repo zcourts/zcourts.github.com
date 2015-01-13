@@ -45,7 +45,7 @@ Its pretty straight forward,
 
 
 
-[code lang="js"]
+```js
 
 		/**
 		 *Load an externl JS file and append it to the head
@@ -65,6 +65,6 @@ Its pretty straight forward,
 			}
 			head.appendChild(script);
 		}
-[/code]
+```
 
 Probably a million and one ways to do this but it works decently in I.E 7+,Firefox,Chrome,Safari and Opera
