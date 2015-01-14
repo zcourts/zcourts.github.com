@@ -15,12 +15,12 @@ if git diff-index --quiet HEAD --; then
   mkdir ${TMP_DIR} && git clone git@github.com:zcourts/zcourts.github.com.git ${TMP_DIR}
 
   cd ${TMP_DIR}
-  echo "${green}Checking out gh-pages branch${NC}"
-  git checkout gh-pages
+  echo "${green}Checking out master branch${NC}"
+  git checkout master
   echo "${green}Generating site into ${TMP_DIR}${NC}"
   jekyll build  --source ${DIR} --destination ${TMP_DIR}
   git add :/ && git commit -m "${commit_message}"
-  git push origin gh-pages
+  git push origin master
   cd ${DIR} && rm -rf ${TMP_DIR}
 else
   echo "${red}You must commit before publishing${NC}"
