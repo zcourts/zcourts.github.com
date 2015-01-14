@@ -12,7 +12,7 @@ echo "${green}Attempting to publish${NC}"
 
 if git diff-index --quiet HEAD --; then
   echo "${green}Creating ${TMP_DIR}${NC}"
-  mkdir ${TMP_DIR} && git clone git@github.com:zcourts/greater.technology.git ${TMP_DIR}
+  mkdir ${TMP_DIR} && git clone git@github.com:zcourts/zcourts.github.com.git ${TMP_DIR}
 
   cd ${TMP_DIR}
   echo "${green}Checking out gh-pages branch${NC}"
