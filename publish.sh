@@ -11,17 +11,17 @@ commit_message=$(git log -1 HEAD --pretty=format:%s)
 echo "${green}Attempting to publish${NC}"
 
 if git diff-index --quiet HEAD --; then
-  echo "${green}Creating ${TMP_DIR}${NC}"
-  mkdir ${TMP_DIR} && git clone git@github.com:zcourts/zcourts.github.com.git ${TMP_DIR}
-
-  cd ${TMP_DIR}
-  echo "${green}Checking out master branch${NC}"
-  git checkout master
-  echo "${green}Generating site into ${TMP_DIR}${NC}"
-  jekyll build  --source ${DIR} --destination ${TMP_DIR}
-  git add :/ && git commit -m "${commit_message}"
-  git push origin master
-  cd ${DIR} && rm -rf ${TMP_DIR}
+  echo "${green}Building site${TMP_DIR}${NC}"
+  jekyll build
+  cd _site
+  echo "${green}Initializing site dir as git repo${TMP_DIR}${NC}"
+  git init
+  git remote add origin git@github.com:zcourts/zcourts.github.com.git
+  echo "${green}Commiting new site changes${TMP_DIR}${NC}"
+  git add --all && git add :/ && git commit -m "${commit_message}"
+  echo "${red}uploading/overwriting old site${TMP_DIR}${NC}"
+  git push -f origin master # -f, history doesn't matter for this branch
+  echo "${green}Done...${TMP_DIR}${NC}"
 else
   echo "${red}You must commit before publishing${NC}"
 fi
