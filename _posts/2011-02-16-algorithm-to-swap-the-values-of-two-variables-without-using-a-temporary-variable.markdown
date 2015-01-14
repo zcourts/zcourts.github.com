@@ -22,7 +22,7 @@ What I came up with worked...sort of (that was on the fly without much time/thou
 
 The Java program (works in any language,easily translated)
 
-```Java
+```java
 
 /**
  *
@@ -61,7 +61,7 @@ public class Test {
 
 The output from the program should be:
 
-```Java
+```java
 Original X and Y Value
 Y : 3
 X : 5

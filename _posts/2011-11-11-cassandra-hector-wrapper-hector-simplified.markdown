@@ -90,7 +90,7 @@ and I just stopped, drew out some ideas and it turned out into all the classes c
 
 [https://github.com/zcourts/cassandra-hector-wrapper/blob/master/src/main/java/com/scriptandscroll/adt/UsageExamples.java](https://github.com/zcourts/cassandra-hector-wrapper/blob/master/src/main/java/com/scriptandscroll/adt/UsageExamples.java)
 
-```Java
+```java
 package com.scriptandscroll.adt;
 
 import java.util.ArrayList;

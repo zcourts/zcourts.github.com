@@ -21,7 +21,7 @@ Following on from my last post about how to [create a keyspace with CQL](http://
 
 Here goes:
 
-```Java
+```java
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import org.apache.cassandra.thrift.Cassandra;

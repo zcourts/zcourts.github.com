@@ -23,7 +23,8 @@ This has bitten me twice in the last 3 days so I'm doing a quick post to remind 
 
 With AngularJS models, you typically have two way bindings between UI elements and your controller's properties. Directly from the [docs](http://docs.angularjs.org/api/ng.directive:input.text) ([Plunker](http://plnkr.co/edit/PCUFA3yARnIdpks84W4Z))
 
-```html</pre>
+```javascript
+
 <!doctype html>
 <html ng-app>
  <head>
@@ -49,34 +50,41 @@ With AngularJS models, you typically have two way bindings between UI elements a
  </form>
  </body>
 </html>
-<pre>```
+
+```
 
 <!-- more -->JavaScript
 
-```javascript</pre>
+```javascript
+
 function Ctrl($scope) {
  $scope.text = 'guest';
  $scope.word = /^\w*$/;
 }
-<pre>```
+
+```
 
 This all works great until you get a simple property that's a 'primitive' so numbers, boolean etc. and you need to use this property within an angular repeater or another directive which creates its own scope. The problem is that, because JavaScript is a pass by value language, primitive types are copied within nested scopes. This means that, if a property changes within a local scope, the original/parent version of the property isn't updated with those changes. Not only that, angular (for good reason) no longer allow duplicates within a repeater, which is what lead me to [StackOverflow](http://stackoverflow.com/a/15975118/400048) the first time I encountered this.
 
 The solution is simply replace the primitive with a JavaScript hash/object so instead of doing something like this:
 
-```javascript</pre>
+```javascript
+
 function Ctrl($scope) {
 $scope.myProperty =true;
 }
-<pre>```
+
+```
 
 You should do
 
-```javascript</pre>
+```javascript
+
 function Ctrl($scope) {
 $scope.myProperty ={someName:true};
 }
-<pre>```
+
+```
 
 I highly recommend watching this talk by [Miško Hevery](http://www.youtube.com/watch?v=ZhfUv0spHCY) on AngularJS best practices. I've watched it...not I just need to remember all of it :D
 
