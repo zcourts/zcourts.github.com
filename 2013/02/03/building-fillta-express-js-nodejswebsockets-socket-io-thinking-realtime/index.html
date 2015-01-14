@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Building Fillta - Express JS, NodeJS,WebSockets & Socket.IO - Thinking Realtime</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="One of the things we&#39;ve aimed for when Fillta was being designed is having everything as &quot;real time&quot; as possible. And before I go any further, ...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2013/02/03/building-fillta-express-js-nodejswebsockets-socket-io-thinking-realtime">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Building Fillta - Express JS, NodeJS,WebSockets & Socket.IO - Thinking Realtime</h1>
+    <p class="post-meta">Feb 3, 2013 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>One of the things we&#39;ve aimed for when Fillta was being designed is having everything as &quot;real time&quot; as possible. And before I go any further, let me define what is meant by &quot;real time&quot; in this context. I often see people use the term lightly for things that I&#39;d never consider to be real time.</p>
+
+<h2>Realtime</h2>
+
+<p>My definition and for the purposes of this post, &quot;real time&quot; refers to the ability of the system to discover, process and distribute an item &quot;as soon as possible&quot;. As soon as possible could be within a second or two seconds, it could be within 30 seconds, any more than that and I&#39;m inclined to think that it isn&#39;t real time. The definition is further constrained to something people often don&#39;t mention, relativity. When I say within 1 or 2 seconds I mean, if I publish this blog post now at 20:34:00, for my definition, a real time system is one that would detect and react to that  by 20:34:02 or 20:34:30 at worse...&lt;!-- more --&gt;</p>
+
+<p>The first major issue with real time is, the HTTP protocol is simply not designed for it. It is far more efficient to have a custom binary protocol where, once the initial handshake is done, no more headers etc needs to be sent. This narrowed the choice of technology down to WebSockets, Flash, Long polling or something along those lines.</p>
+
+<h2>Express JS, NodeJS &amp; Socket.IO</h2>
+
+<p>The first thing that popped to mind was <a href="http://socket.io/">socket.io</a>, it uses WebSockets and provides legacy browser fallback all the way to IE 5 (People still use that?). NodeJS is then a dependency of that and comes into the picture. Socket.IO worked great. It was in place and provided real time communication from browsers to our backend services. Eventually it got to be too much for NodeJS, what I found was that the work a single Java/Scala service was handling and emitting was causing the NodeJS service to fall over. Couple that with the NodeJS process just terminating with exit code 0 as if all is well and it means no sleep.... Attempts to optimize the Node code only went so far. I don&#39;t want to point a finger at NodeJS (it is a decent piece of tech) but at the same time I&#39;d like to think my JavaScript isn&#39;t so bad I can&#39;t make a NodeJS program perform as well as a Java/Scala program. The long and short of it is that it was taking two NodeJS processes to do the work of what I feel should be a single Node.</p>
+
+<p>In the time we&#39;d developed the NodeJS service, we&#39;d also started making use of Express JS, had no problems with Express JS itself but a few sleepless nights with NodeJS and the decision was made to avoid NodeJS all togehter and stick to the JVM.</p>
+
+<h2>Asynchronous</h2>
+
+<p>Efficient real time processing meant an async. system. This means we have no idea what will happen when or in what order. It took a while to sink in but realizing we had to complete change the way we think about development made programming asynchronous code easier. One of the things that became important was context. Within an asynchronous context we want to be sending as many things as possible but we want them to be as small as possible because there is potential for more small events than there would be were it synchronous.</p>
+
+<p>This also has an added thing to consider. Wanting to keep event/messages small one might be tempted to maintain state on the server. That also proved to not be very scalable. There&#39;s the age old problem you get when for example people use server side sessions. The session is local to the node within your cluster. You may then be tempted to solve that the same way the session issue was &quot;resolved&quot;, stick a proxy in front of the client to ensure all requests from one client goes to the same Node. There are a few reasons this doesn&#39;t work in our case. A client is not just a user,  a client could be a mobile, browser or other services. All these &quot;clients&quot; being routed to the same node because one user is overly active (<a href="http://twitter.com">Twitting</a>, <a href="http://wordpress.com">Blogging</a>, <a href="http://pinterest.com/">Pinning </a>or on <a href="http://facebook.com">Facebook</a>) will lead to hotspots and wasted resources.</p>
+
+<p>We, when required found optimal data structures for compressing/summarizing data for e.g. our services communicate using <a href="http://en.wikipedia.org/wiki/Hash_tree">Merkle Trees</a> to summarize data we need to send over the network. This provided a way of ensuring context is available when processing arbitrary events from only god knows where it originated.</p>
+
+<p>The async nature of everything has meant even the client/UI is all built and optimized to handle random events as and when they occur. It is a tight blend of both reactive and proactive design. I posted a simplified version of <a href="http://crlog.info/2013/01/09/angularjs-communicate-between-controllers-services-and-directives/">Async communication using AngularJS</a>, imagine that with features such as &quot;republish&quot; where, when a new subscriber is added a publish republishes an event the subscriber missed...if they want. This design actually worked out great because every component in the UI can be tested separately, they are completely de-coupled, features/components can be added and removed without affecting anything else because everything is just working based on events the receive, or not...</p>
+
+<h2>Conclusion</h2>
+
+<p>I know this post wasn&#39;t as specific or technical as my usual posts but obviously <a href="http://fillta.com">Fillta</a> is still in development and we want to save some of the fanfare for Alpha (2 or so months away), Beta and launch.</p>
+
+<p>In conclusion though, we&#39;ve learnt a great deal in the last 7 months, tried so many different things, most worked, others didn&#39;t and its been great. We&#39;re hoping to get releases going so so people can see what we&#39;ve been building, test and give us some feedback! And as the time draws nearer we&#39;ll be open sourcing some stuff (Follow <a href="https://github.com/zcourts">zcourts Github</a>, for e.g. we&#39;re developing and have already open sourced <a href="https://github.com/zcourts/higgs">Higgs</a>) and doing more detailed blog posts on what technologies we&#39;re using, for what and our experience with them thus far.</p>
+
+<p>For now however, some of the things we&#39;re using include <a href="http://angularjs.org/">AngularJS</a>, <a href="http://www.oracle.com/us/technologies/java/overview/index.html">Java</a>, <a href="http://www.scala-lang.org/">Scala</a>, <a href="http://nltk.org/">NLTK</a>, <a href="http://cassandra.apache.org">Apache Cassandra</a> and more. Plus the features, some design aspects etc are based on research obtained via the <a href="http://ieeexplore.ieee.org">IEEE</a> and <a href="http://www.acm.org/">ACM</a>.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

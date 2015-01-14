@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Algorithm to swap the values of two variables without using a temporary variable</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="In a recent interview, I was asked whether or not it would be possible to swap the contents of two variables without using a temporary variable of any sort.">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/02/16/algorithm-to-swap-the-values-of-two-variables-without-using-a-temporary-variable">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithm to swap the values of two variables without using a temporary variable</h1>
+    <p class="post-meta">Feb 16, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>In a recent interview, I was asked whether or not it would be possible to swap the contents of two variables without using a temporary variable of any sort.</p>
+
+<p>The scenario, given two variables X,Y where X=5 and Y=3; Swap the contents of the variables such that,
+outputting X produces the value 3 and outputting Y produces the value 5. Your algorithm must only use the two variables
+X and Y and you&#39;re allowed to perform any Mathematical operation on them to achieve the desired results.</p>
+
+<p>What I came up with worked...sort of (that was on the fly without much time/thought). After thinking about the algorithm I came up with below achieves this using only the two variables by using addition and subtraction. (The below solution is an extension of what my original answer was).</p>
+
+<p>The Java program (works in any language,easily translated)</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java">
+<span class="cm">/**
+ *
+ * @author Courtney
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">Original</span> <span class="n">X</span> <span class="n">and</span> <span class="n">Y</span> <span class="n">Value</span><span class="o">&amp;</span><span class="n">quot</span><span class="o">;);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">Y</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">quot</span><span class="o">;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">X</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">quot</span><span class="o">;</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+        <span class="c1">//add X on to Y so that we can take it off again later</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
+        <span class="cm">/**
+         * We want to get the original X value into Y
+         *we now know that sum(x)=x+y
+         *therefore remove y =&amp;gt; (x-y)
+         */</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">;</span>
+        <span class="cm">/**
+         * At this point we know that the original X value is stored in Y,
+         * we also know that X's value is x+y i.e. sum(x)=x+y
+         * and we want X to get Y's original value so remove X's original
+         * value and we're left with Y's original value
+         */</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">Swaped</span> <span class="n">X</span> <span class="n">and</span> <span class="n">Y</span> <span class="n">Value</span><span class="o">&amp;</span><span class="n">quot</span><span class="o">;);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">Y</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">quot</span><span class="o">;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(&amp;</span><span class="n">quot</span><span class="o">;</span><span class="n">X</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">quot</span><span class="o">;</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div>
+<p>The output from the program should be:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Original</span> <span class="n">X</span> <span class="n">and</span> <span class="n">Y</span> <span class="n">Value</span>
+<span class="n">Y</span> <span class="o">:</span> <span class="mi">3</span>
+<span class="n">X</span> <span class="o">:</span> <span class="mi">5</span>
+<span class="n">Swaped</span> <span class="n">X</span> <span class="n">and</span> <span class="n">Y</span> <span class="n">Value</span>
+<span class="n">Y</span> <span class="o">:</span> <span class="mi">5</span>
+<span class="n">X</span> <span class="o">:</span> <span class="mi">3</span>
+</code></pre></div>
+<p>Never thought about doing this before so I was caught completely off guard when asked...didn&#39;t even know it was
+possible until I was asked... Hope it helps</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

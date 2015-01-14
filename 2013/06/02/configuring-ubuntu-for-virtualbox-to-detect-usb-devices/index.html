@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Configuring Ubuntu for VirtualBox to detect USB devices</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="I&#39;ve been developing Android Apps are more often recently but I&#39;ve found the Linux support for some android tools less than appealing.In particular, ...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2013/06/02/configuring-ubuntu-for-virtualbox-to-detect-usb-devices">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Configuring Ubuntu for VirtualBox to detect USB devices</h1>
+    <p class="post-meta">Jun 2, 2013 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>I&#39;ve been developing Android Apps are more often recently but I&#39;ve found the Linux support for some android tools less than appealing.
+In particular, I&#39;ve been using <a href="http://www.mosync.com/">MOSYNC</a> and they don&#39;t provide a Linux installer, you have to <a href="http://www.mosync.com/docs/sdk/tools/guides/extensions/building-mosync-source-linux/index.html">compile it from source</a>. That&#39;s all well and good until something goes wrong then you spend forever trying to re-compile and fix build issues, time I&#39;d rather spend doing something else.</p>
+
+<p>Since I refuse to go back to windows as a main OS after it annoyed the crap outta me recently, I settled for the next best thing, virtualisation! I&#39;m using <a href="https://www.virtualbox.org/">VirtualBox</a> which is honestly one of the most awesome opensource software I know of! With Windows installed in VirtualBox, I was set...or so I thought. USB devices weren&#39;t being picked up by VirtualBox. A quick Google revealed that this is a common issue and well documented on <a href="https://forums.virtualbox.org/viewtopic.php?f=8&amp;t=45349">page 52 of the VirtualBox user manual (People read those?)</a>. If you&#39;d like to read it, it&#39;s all well documented in the <a href="https://www.virtualbox.org/manual/ch03.html#idp19029008">user manual under VirtualBox USB support</a>.</p>
+
+<p>So to the point, the problem is that when VirtualBox is installed your user account probably wasn&#39;t added to the group it created. You can check and make sure you&#39;re facing the same issue by running the command:
+&lt;!-- more --&gt;
+<code>bash
+ls -lR /dev/vboxusb
+</code>
+If it outputs &quot;Permission denied&quot; then it&#39;s probably the same issue. Now trying running it with sudo
+<code>bash
+sudo ls -lR /dev/vboxusb
+</code>
+If it lists all your USB devices then that means its very likely the same problem. You can confirm this by running
+```bash</p>
+
+<p>VBoxManage list usbhost</p>
+<div class="highlight"><pre><code class="language-" data-lang="">If  it says "None" and then running it with sudo lists the devices there's a good chance this solution will work for you...if not you can try it anyway. As I said earlier the problem is probably that your user account isn't in the right group. There are two ways to fix this, from the command line or through a GUI tool. The command line is quicker simply type
+```bash
+usermod -a -G vboxusers courtney #change courtney to your username
+</code></pre></div>
+<p>to use a GUI tool install system tools and use it to add your user account to the &quot;vboxusers&quot; users group. There&#39;s a <a href="http://askubuntu.com/a/66727/10273">short guide here</a> but in short run</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install gnome-system-tools
+</code></pre></div>
+<p>Then add yourself, see images below:</p>
+
+<p>[caption id=&quot;attachment_590&quot; align=&quot;aligncenter&quot; width=&quot;670&quot;]<a href="http://crlog.files.wordpress.com/2013/06/users-2.png"><img src="http://crlog.files.wordpress.com/2013/06/users-2.png" alt="Find vboxusers and add your account to it"></a> Find vboxusers and add your account to it[/caption]</p>
+
+<p>[caption id=&quot;attachment_591&quot; align=&quot;aligncenter&quot; width=&quot;670&quot;]<a href="http://crlog.files.wordpress.com/2013/06/user-11.png"><img src="http://crlog.files.wordpress.com/2013/06/user-11.png" alt="Search for users"></a> Search for users[/caption]</p>
+
+<p>Once you&#39;re added, you&#39;ll need to logout, and log back in for group permissions to take effect.</p>
+
+<p>When you&#39;re logged back in, fire up virtual box, don&#39;t start windows, we&#39;re not quite finished yet. Open the settings dialog and select &quot;USB&quot; from the list of options on the left.
+Now click the + icon to add a filter</p>
+
+<p>[caption id=&quot;attachment_592&quot; align=&quot;aligncenter&quot; width=&quot;670&quot;]<a href="http://crlog.files.wordpress.com/2013/06/add-filter.png"><img src="http://crlog.files.wordpress.com/2013/06/add-filter.png" alt="Add virtualbox usb filter"></a> Add virtualbox usb filter[/caption]</p>
+
+<p>You should now have your USB devices listed, select the one you want from the list. For more info on filters, check the VirtualBox usb support page I linked to earlier.</p>
+
+<p>[caption id=&quot;attachment_593&quot; align=&quot;aligncenter&quot; width=&quot;666&quot;]<a href="http://crlog.files.wordpress.com/2013/06/samsung-filter.png"><img src="http://crlog.files.wordpress.com/2013/06/samsung-filter.png" alt="SamSung S3 added as a filter"></a> SamSung S3 added as a filter[/caption]</p>
+
+<p>Hit OK and start windows. Windows will now get access to your device and install whatever drivers it needs to so that you get the usual open device dialog like this:</p>
+
+<p>[caption id=&quot;attachment_594&quot; align=&quot;aligncenter&quot; width=&quot;670&quot;]<a href="http://crlog.files.wordpress.com/2013/06/windows-ht-9300.png"><img src="http://crlog.files.wordpress.com/2013/06/windows-ht-9300.png" alt="S3 detected in VirtualBox"></a> S3 detected in VirtualBox[/caption]</p>
+
+<p>Now one last thing! If you get Ubuntu automounting your device and showing that annoying popup hundreds of times, then unplug the device and prevent Ubuntu from automounting.</p>
+
+<p>[caption id=&quot;attachment_595&quot; align=&quot;aligncenter&quot; width=&quot;393&quot;]<a href="http://crlog.files.wordpress.com/2013/06/annoying-ubuntu-popup.png"><img src="http://crlog.files.wordpress.com/2013/06/annoying-ubuntu-popup.png" alt="Annoying ubuntu popup"></a> Annoying ubuntu popup[/caption]</p>
+
+<p>Follow the instructions over at <a href="https://help.ubuntu.com/community/Mount/USB">Ubuntu&#39;s docs</a>. In short, open &quot;<strong>dconf-editor</strong>&quot; if it&#39;s not installed then install it with</p>
+
+<p><code>bashsudo apt-get install dconf-editor</code></p>
+
+<p>Open it and &quot;Browse to <strong>org.gnome.desktop.media-handling</strong>&quot;.</p>
+
+<p>[caption id=&quot;attachment_596&quot; align=&quot;aligncenter&quot; width=&quot;670&quot;]<a href="http://crlog.files.wordpress.com/2013/06/disable-automount.png"><img src="http://crlog.files.wordpress.com/2013/06/disable-automount.png" alt="disable automount device on ubuntu"></a> disable automount device on ubuntu[/caption]</p>
+
+<p>Uncheck the box, close it and move on!</p>
+
+<p>That&#39;s that! Now you can get all the Windows better tools for Android on Windows and stay with Ubuntu!</p>
+
+<p>Links:
+<a href="https://www.virtualbox.org/ticket/8978">Cannot find USB bug report</a>
+<a href="https://www.virtualbox.org/ticket/10087">No USB available with non root user</a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

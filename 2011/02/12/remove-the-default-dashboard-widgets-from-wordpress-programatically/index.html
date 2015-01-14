@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Remove the default dashboard widgets from Wordpress programatically</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="It&#39;s been over a week since I made a decent post (been extremely busy) so I thought I&#39;d give it a go today.">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/02/12/remove-the-default-dashboard-widgets-from-wordpress-programatically">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Remove the default dashboard widgets from Wordpress programatically</h1>
+    <p class="post-meta">Feb 12, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>It&#39;s been over a week since I made a decent post (been extremely busy) so I thought I&#39;d give it a go today.</p>
+
+<p>One of the project&#39;s I&#39;ve had going on requires building a website for a local charity. I discussed it with the charity and agreed on using wordpress. It turns out however, the API for wordpress admin is very minimal and has very little documentation.</p>
+
+<p>I found myself having to develop a large portion of things for the admin section so I&#39;ve had to make do. One of the things I was asked for was to show custom widgets on the dashboard with various things and to remove the default ones.... whaaaaa? Usually wordpress users just manually remove and/or configure these widgets, however the potential users of this are going to be people who have little or no technical expertise... Below is a quick and simple way to remove all the default widgets/modules that are loaded on the dashboard.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php">function remove_dashboard_widgets() {
+    // Globalize the metaboxes array, this holds all the widgets for wp-admin
+
+    global $wp_meta_boxes;
+    //remove all default dashboard apps
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+}
+
+// Hoook into the 'wp_dashboard_setup' action to register our function
+
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+</code></pre></div>
+<p>Put that block of code in your functions.php file, if it is a template you&#39;re working on or include it somewhere if it is a plugin.
+That&#39;s all there is to it... In my next post I&#39;ll show you how to add your own modules.
+Further reading:</p>
+
+<p><a href="http://codex.wordpress.org/Dashboard_Widgets_API">http://codex.wordpress.org/Dashboard_Widgets_API</a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

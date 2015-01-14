@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Making the web a messier, better place.
+">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//posts/2/">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <article class="post-content">
+    <div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <div id="toctitle">
+                  <h2>Contents</h2>
+               </div>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">AngularJS: Building completely asynchronous and autonomous single page user interfaces (Part 1)</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-2">
+                     <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Securing a Linux (Centos) VPS in 10 minutes</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-3">
+                     <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">Fillta, from idea to Alpha 2 &amp; the long road ahead</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-4">
+                     <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">Information overload : Acknowledging and understanding we have a problem</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-5">
+                     <a href="#tocAnchor-1-5"><span class="tocnumber">5</span> <span class="toctext">Install/Configure NVideo (with optimus) on Ubuntu</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-6">
+                     <a href="#tocAnchor-1-6"><span class="tocnumber">6</span> <span class="toctext">Fillta Alpha 2 - June 4th</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-7">
+                     <a href="#tocAnchor-1-7"><span class="tocnumber">7</span> <span class="toctext">The tick box education system</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-8">
+                     <a href="#tocAnchor-1-8"><span class="tocnumber">8</span> <span class="toctext">No Content Found</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-9">
+                     <a href="#tocAnchor-1-9"><span class="tocnumber">9</span> <span class="toctext">No Content Found</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-10">
+                     <a href="#tocAnchor-1-10"><span class="tocnumber">10</span> <span class="toctext">The abc,123 of Software Engineering</span></a>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div><h1 id="tocAnchor-1-1">
+   <a href="/2013/05/28/angularjs-building-completely-asynchronous-and-autonomous-single-page-user-interfaces-part-1">AngularJS: Building completely asynchronous and autonomous single page user interfaces (Part 1)</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-28 22:56:46 +0100</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-2">
+   <a href="/2013/05/27/securing-a-linux-centos-vps-in-10-minutes">Securing a Linux (Centos) VPS in 10 minutes</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-27 14:08:18 +0100</span>
+</p>
+<div class="content">
+    <p>So, first thing's first. You've got your shiny new VPS like I have. The fact you're reading this means like me you won't allow root to ssh into it. This is good! I'm writing this because I seem to be repeating these steps quite a lot (well, once or twice every couple months) so to make sure I don't miss a step I'm writing it up to both help me and others who might need it.&lt;!-- more --&gt;</p>
+
+</div>
+
+<h1 id="tocAnchor-1-3">
+   <a href="/2013/05/27/fillta-from-idea-to-alpha-2-the-long-road-ahead">Fillta, from idea to Alpha 2 &amp; the long road ahead</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-27 03:42:00 +0100</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-4">
+   <a href="/2013/05/27/information-overload-acknowledging-and-understanding-we-have-a-problem">Information overload : Acknowledging and understanding we have a problem</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-27 02:28:18 +0100</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-5">
+   <a href="/2013/05/23/installconfigure-nvideo-with-optimus-on-ubuntu">Install/Configure NVideo (with optimus) on Ubuntu</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-23 13:21:04 +0100</span>
+</p>
+<div class="content">
+    <p>So you got your shiny new laptop with a decent card and wouldn't you know it...it's not working properly or it's performance is shoddy at best. After having to re-install Ubuntu 3 times I've decided to write a quick post with the commands I used to get my battery to go from 20 mins to 3hrs...yes, that's how much difference it makes!&lt;!-- more --&gt;</p>
+
+</div>
+
+<h1 id="tocAnchor-1-6">
+   <a href="/2013/05/16/fillta-alpha-2-june-4th">Fillta Alpha 2 - June 4th</a>
+</h1>
+<p class="author">
+    <span class="date">2013-05-16 23:26:01 +0100</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-7">
+   <a href="/2013/04/16/the-tick-box-education-system">The tick box education system</a>
+</h1>
+<p class="author">
+    <span class="date">2013-04-16 16:02:00 +0100</span>
+</p>
+<div class="content">
+    <p>I'm sat here, the last day, the dissertation for by undergraduate bachelors due at midnight...about 7.5hrs from now.</p>
+
+</div>
+
+<h1 id="tocAnchor-1-8">
+   <a href="/2013/03/31/560">No Content Found</a>
+</h1>
+<p class="author">
+    <span class="date">2013-03-31 15:46:14 +0100</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-9">
+   <a href="/2013/02/13/544">No Content Found</a>
+</h1>
+<p class="author">
+    <span class="date">2013-02-13 22:08:04 +0000</span>
+</p>
+<div class="content">
+    
+</div>
+
+<h1 id="tocAnchor-1-10">
+   <a href="/2013/02/08/the-abc123-of-software-engineering">The abc,123 of Software Engineering</a>
+</h1>
+<p class="author">
+    <span class="date">2013-02-08 09:57:38 +0000</span>
+</p>
+<div class="content">
+    <h2>Intro</h2>
+
+</div>
+
+
+
+<div class="pagination">
+    
+        <a href="/posts/index.html">« Prev</a>
+    
+
+    
+        
+            <a href="/index.html">1</a>
+        
+    
+        
+            <em>2</em>
+        
+    
+        
+            <a href="/posts/3/">3</a>
+        
+    
+        
+            <a href="/posts/4/">4</a>
+        
+    
+        
+            <a href="/posts/5/">5</a>
+        
+    
+        
+            <a href="/posts/6/">6</a>
+        
+    
+        
+            <a href="/posts/7/">7</a>
+        
+    
+        
+            <a href="/posts/8/">8</a>
+        
+    
+        
+            <a href="/posts/9/">9</a>
+        
+    
+
+    
+        <a href="/posts/3/">Next »</a>
+    
+</div>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>C (#) sharp - Nullable type (null-coalescing/ double question mark) operator</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="I came across a very interesting operator today in C#.At first I thought it was like a ternary operator but it turned out not to be. The operator &quot;??&qu...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/02/25/c-sharp-nullable-type-null-coalescing-double-question-mark-operator">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">C (#) sharp - Nullable type (null-coalescing/ double question mark) operator</h1>
+    <p class="post-meta">Feb 25, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>I came across a very interesting operator today in C#.
+At first I thought it was like a ternary operator but it turned out not to be. The operator &quot;??&quot;, yes two question marks.</p>
+
+<p>It is known as the &quot;nullable type&quot;, &quot;null-coalescing&quot; or just the double question mark operator.</p>
+
+<p>I&#39;ve only come accross it in C# and according to the Microsoft, help page:
+&quot;The <strong>??</strong> operator returns the left-hand operand if it is not null, or else it returns the right operand.&quot;</p>
+
+<p>The remarks went on to say:&lt;!-- more --&gt;</p>
+
+<p>&quot;A nullable type can contain a value, or it can be undefined. The <strong>??</strong> operator defines the default value to be returned when a nullable type is assigned to a non-nullable type. If you try to assign a nullable type to a non-nullable type without using the <strong>??</strong> operator, you will generate a compile-time error. If you use a cast, and the nullable type is currently undefined, an <strong>InvalidOperationException</strong> exception will be thrown.&quot;</p>
+
+<p>While its not very common, it can offer very tricky questions in interviews as a friend of mine recently found out.
+Some example code of using it, (taken from the help page again):</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// nullable_type_operator.cs
+</span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">MainClass</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="kt">int</span><span class="p">?</span> <span class="nf">GetNullableInt</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="kt">string</span> <span class="nf">GetStringValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ?? operator example.
+</span>        <span class="kt">int</span><span class="p">?</span> <span class="n">x</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="c1">// y = x, unless x is null, in which case y = -1.
+</span>        <span class="kt">int</span> <span class="n">y</span> <span class="p">=</span> <span class="n">x</span> <span class="p">??</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+
+        <span class="c1">// Assign i to return value of method, unless
+</span>        <span class="c1">// return value is null, in which case assign
+</span>        <span class="c1">// default value of int to i.
+</span>        <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="nf">GetNullableInt</span><span class="p">()</span> <span class="p">??</span> <span class="k">default</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+
+        <span class="kt">string</span> <span class="n">s</span> <span class="p">=</span> <span class="nf">GetStringValue</span><span class="p">();</span>
+        <span class="c1">// ?? also works with reference types.
+</span>        <span class="c1">// Display contents of s, unless s is null,
+</span>        <span class="c1">// in which case display "Unspecified".
+</span>        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">s</span> <span class="p">??</span> <span class="s">"Unspecified"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Further reading (References)</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms173224(VS.80).aspx">http://msdn.microsoft.com/en-us/library/ms173224(VS.80).aspx
+</a><a href="http://msdn.microsoft.com/en-us/library/ms173224.aspx">http://msdn.microsoft.com/en-us/library/ms173224.aspx</a>
+<a href="http://www.superjason.com/archive/2007/06/21/the-little-known-c-sharp-question-mark-operator.aspx">http://www.superjason.com/archive/2007/06/21/the-little-known-c-sharp-question-mark-operator.aspx</a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

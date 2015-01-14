@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Wordpress + Varnish Cache, A match made in heaven</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Recently my other blog, Script and Scroll, started to get a decent amount of traffic. One blog in particular linked back to a post someone published and it g...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/09/07/wordpress-varnish-cache-a-match-made-in-heaven">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Wordpress + Varnish Cache, A match made in heaven</h1>
+    <p class="post-meta">Sep 7, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>Recently my other blog, <a href="http://www.scriptandscroll.com">Script and Scroll</a>, started to get a decent amount of traffic. One blog in particular linked back to a post someone published and it gained a lot of attention. Within a few hours of the link being created I started to get alerts from my monitoring system...Wordpress was slowing down, crapping out and running out of memory when serving pages. The load on my VPS hit the roof and Apache more or less came to a halt. After a quick round of investigating, scanning logs etc, I realized what was happening after seeing the referrer and looking at the page that had linked to us. Right, it was time to do something now that I knew what the problem was. Mind you, I had a caching plugin installed but it wasn&#39;t doing much good. After thinking of what my options were I decided to go with <a href="https://www.varnish-cache.org/">Varnish Cache</a>.</p>
+
+<p>&lt;!-- more --&gt;After installing Varnish (painlessly and in seconds), I switched it to port 80 and switched apache to listen to a different port. It was amazing! My page load speeds before the increase in traffic were about 4-5 seconds, after getting the increase in traffic it was 8+ seconds on average,12+ at one point...After switching over to varnish and tweaking a few things to make wordpress play nice everything just went lightening fast, the home page loaded in less than a second after the first page load (which took about 2-3 secs), other pages consistently loaded in 1-2 seconds. It got even better after I wired up <a href="http://wordpress.org/extend/plugins/w3-total-cache/">W3 Total Cache</a> to use <a href="http://www.rackspace.com/cloud/cloud_hosting_products/files/">Rackspace Cloud files</a> to serve static content and make use of browser Caching. The server load dropped right down. I&#39;ve now in fact scaled back my VPS from 4GB ram to 1.5GB, traffic levels have remained high and peaked above what the site was experiencing when it grind to a halt.</p>
+
+<p>So far so good...I&#39;ll tweak a few things to try and squeeze as much as I can out of it. I&#39;ll document my installation and setup process in another post, possibly later today.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

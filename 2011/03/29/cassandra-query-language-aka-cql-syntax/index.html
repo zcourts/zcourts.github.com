@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Cassandra Query Language AKA CQL syntax</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="NOTE:  CQL V2 reference is available here http://crlog.info/2011/09/17/cassandra-query-language-cql-v2-0-reference/">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/03/29/cassandra-query-language-aka-cql-syntax">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Cassandra Query Language AKA CQL syntax</h1>
+    <p class="post-meta">Mar 29, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>NOTE:  CQL V2 reference is available here <a href="http://crlog.info/2011/09/17/cassandra-query-language-cql-v2-0-reference/">http://crlog.info/2011/09/17/cassandra-query-language-cql-v2-0-reference/</a></p>
+
+<p>A more recent version of the CQL Specification V1.0.0 is available here <a href="http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/">http://crlog.info/2011/06/13/cassandra-query-language-cql-v1-0-0-updated/</a></p>
+
+<p>A very nice break down of the up and coming CQL syntax was posted on the <a href="http://cassandra.apache.org">Cassandra</a> dev list yesterday.
+It breaks down the current state of the query language in easy to understand steps. I&#39;ve copied it purely for the sake
+of duplication and getting it out there as much as possible. While CQL is still very immature it is gaining momentum
+and is likely to become the de-facto interface to Cassandra.&lt;!-- more --&gt;</p>
+
+<p>The document&#39;s contents are directly copied and pasted over from <a href="https://svn.apache.org/viewvc/cassandra/trunk/doc/cql/CQL.html?view=co">https://svn.apache.org/viewvc/cassandra/trunk/doc/cql/CQL.html?view=co</a> :</p>
+
+<h1>Cassandra Query Language (CQL) v1.0.0</h1>
+
+<h2>Table of Contents</h2>
+
+<ol>
+<li><p>Cassandra Query Language (CQL) v1.0.0</p>
+
+<ol>
+<li>Table of Contents</li>
+<li>USE</li>
+<li>SELECT
+
+<ol>
+<li>Specifying Columns</li>
+<li>Column Family</li>
+<li>Consistency Level</li>
+<li>Filtering rows</li>
+<li>Limits</li>
+</ol></li>
+<li>UPDATE
+
+<ol>
+<li>Column Family</li>
+<li>Consistency Level</li>
+<li>Specifying Columns and Row</li>
+</ol></li>
+<li>DELETE
+
+<ol>
+<li>Specifying Columns</li>
+<li>Column Family</li>
+<li>Consistency Level</li>
+<li>Specifying Rows</li>
+</ol></li>
+<li>TRUNCATE</li>
+<li>CREATE KEYSPACE</li>
+<li>CREATE COLUMNFAMILY
+
+<ol>
+<li>Specifying Column Type (optional)</li>
+<li>Column Family Options (optional)</li>
+</ol></li>
+<li>CREATE INDEX</li>
+<li>DROP</li>
+<li>Common Idioms
+
+<ol>
+<li>Specifying Consistency</li>
+<li>Term specification</li>
+</ol></li>
+</ol></li>
+<li><p>Versioning</p></li>
+<li><p>Changes</p></li>
+</ol>
+
+<h2>USE</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;USE &lt;KEYSPACE&gt;; &lt;/code&gt;
+</code></pre></div>
+<p>A <code>USE</code> statement consists of the <code>USE</code> keyword, followed by a valid keyspace name. Its purpose is to assign the per-connection, current working keyspace. All subsequent keyspace-specific actions will be performed in the context of the supplied value.</p>
+
+<h2>SELECT</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT [FIRST N] [REVERSED] &lt;SELECT EXPR&gt; FROM &lt;COLUMN FAMILY&gt; [USING &lt;CONSISTENCY&gt;] [WHERE &lt;CLAUSE&gt;] [LIMIT N]; &lt;/code&gt;
+</code></pre></div>
+<p>A <code>SELECT</code> is used to read one or more records from a Cassandra column family. It returns a result-set of rows, where each row consists of a key and a collection of columns corresponding to the query.</p>
+
+<h3>Specifying Columns</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT [FIRST N] [REVERSED] name1, name2, name3 FROM ... SELECT [FIRST N] [REVERSED] name1..nameN FROM ... &lt;/code&gt;
+</code></pre></div>
+<p>The SELECT expression determines which columns will appear in the results and takes the form of either a comma separated list of names, or a range. The range notation consists of a start and end column name separated by two periods (<code>..</code>). The set of columns returned for a range is start and end inclusive.</p>
+
+<p>The <code>FIRST</code> option accepts an integer argument and can be used to apply a limit to the number of columns returned per row. When this limit is left unset it defaults to 10,000 columns.</p>
+
+<p>The <code>REVERSED</code> option causes the sort order of the results to be reversed.</p>
+
+<p>It is worth noting that unlike the projection in a SQL SELECT, there is no guarantee that the results will contain all of the columns specified. This is because Cassandra is schema-less and there are no guarantees that a given column exists.</p>
+
+<h3>Column Family</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT ... FROM &lt;COLUMN FAMILY&gt; ... &lt;/code&gt;
+</code></pre></div>
+<p>The <code>FROM</code> clause is used to specify the Cassandra column family applicable to a <code>SELECT</code> query.</p>
+
+<h3>Consistency Level</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT ... [USING &lt;CONSISTENCY&gt;] ... &lt;/code&gt;
+</code></pre></div>
+<p>Following the column family clause is an optional consistency level specification.</p>
+
+<h3>Filtering rows</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT ... WHERE KEY = keyname AND name1 = value1 SELECT ... WHERE KEY &gt;= startkey and KEY =&lt; endkey AND name1 = value1 &lt;/code&gt;
+</code></pre></div>
+<p>The WHERE clause provides for filtering the rows that appear in results. The clause can filter on a key name, or range of keys, and in the case of indexed columns, on column values. Key filters are specified using the <code>KEY</code>keyword, a relational operator, (one of <code>=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, and <code>&lt;=</code>), and a term value. When terms appear on both sides of a relational operator it is assumed the filter applies to an indexed column. With column index filters, the term on the left of the operator is the name, the term on the right is the value to filter <em>on</em>.</p>
+
+<p><em>Note: The greater-than and less-than operators (<code>&gt;</code> and <code>&lt;</code>) result in key ranges that are inclusive of the terms. There is no supported notion of &quot;strictly&quot; greater-than or less-than; these operators are merely supported as aliases to <code>&gt;=</code> and <code>&lt;=</code>.</em></p>
+
+<h3>Limits</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;SELECT ... WHERE &lt;CLAUSE&gt; [LIMIT N] ... &lt;/code&gt;
+</code></pre></div>
+<p>Limiting the number of rows returned can be achieved by adding the <code>LIMIT</code> option to a <code>SELECT</code> expression. <code>LIMIT</code> defaults to 10,000 when left unset.</p>
+
+<h2>UPDATE</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE [USING CONSISTENCY ] SET name1 = value1, name2 = value2 WHERE KEY = keyname; &lt;/code&gt;
+</code></pre></div>
+<p>An <code>UPDATE</code> is used to write one or more columns to a record in a Cassandra column family. No results are returned.</p>
+
+<h3>Column Family</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE &lt;COLUMN FAMILY&gt; ... &lt;/code&gt;
+</code></pre></div>
+<p>Statements begin with the <code>UPDATE</code> keyword followed by a Cassandra column family name.</p>
+
+<h3>Consistency Level</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE ... [USING &lt;CONSISTENCY&gt;] ... &lt;/code&gt;
+</code></pre></div>
+<p>Following the column family identifier is an optional consistency level specification.</p>
+
+<h3>Specifying Columns and Row</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE ... SET name1 = value1, name2 = value2 WHERE KEY = keyname; &lt;/code&gt;
+</code></pre></div>
+<p>Rows are created or updated by supplying column names and values in term assignment format. Multiple columns can be set by separating the name/value pairs using commas. Each update statement requires exactly one key to be specified using a WHERE clause and the <code>KEY</code> keyword.</p>
+
+<p>Additionally, it is also possible to send multiple UPDATES to a node at once using a batch syntax:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;BEGIN BATCH [USING ] UPDATE CF1 SET name1 = value1, name2 = value2 WHERE KEY = keyname1; UPDATE CF1 SET name3 = value3 WHERE KEY = keyname2; UPDATE CF2 SET name4 = value4, name5 = value5 WHERE KEY = keyname3; APPLY BATCH &lt;/code&gt;
+</code></pre></div>
+<p>When batching UPDATEs, a single consistency level is used for the entire batch, it appears after the <code>BEGIN BATCH</code> statement, and uses the standard consistency level specification. Batch UPDATEs default to<code>CONSISTENCY.ONE</code> when left unspecified.</p>
+
+<p><em>NOTE: While there are no isolation guarantees, <code>UPDATE</code> queries are atomic within a give record.</em></p>
+
+<h2>DELETE</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;DELETE [COLUMNS] FROM [USING ] WHERE KEY = keyname1 DELETE [COLUMNS] FROM [USING ] WHERE KEY IN (keyname1, keyname2); &lt;/code&gt;
+</code></pre></div>
+<p>A <code>DELETE</code> is used to perform the removal of one or more columns from one or more rows.</p>
+
+<h3>Specifying Columns</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;DELETE [COLUMNS] ... &lt;/code&gt;
+</code></pre></div>
+<p>Following the <code>DELETE</code> keyword is an optional comma-delimited list of column name terms. When no column names are specified, the remove applies to the entire row(s) matched by the WHERE clause</p>
+
+<h3>Column Family</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;DELETE ... FROM &lt;COLUMN FAMILY&gt; ... &lt;/code&gt;
+</code></pre></div>
+<p>The column family name follows the list of column names.</p>
+
+<h3>Consistency Level</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE ... [USING &lt;CONSISTENCY&gt;] ... &lt;/code&gt;
+</code></pre></div>
+<p>Following the column family identifier is an optional consistency level specification.</p>
+
+<h3>Specifying Rows</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;UPDATE ... WHERE KEY = keyname1 UPDATE ... WHERE KEY IN (keyname1, keyname2) &lt;/code&gt;
+</code></pre></div>
+<p>The <code>WHERE</code> clause is used to determine which row(s) a <code>DELETE</code> applies to. The first form allows the specification of a single keyname using the <code>KEY</code> keyword and the <code>=</code> operator. The second form allows a list of keyname terms to be specified using the <code>IN</code> notation and a parenthesized list of comma-delimited keyname terms.</p>
+
+<h2>TRUNCATE</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;TRUNCATE &lt;COLUMN FAMILY&gt; &lt;/code&gt;
+</code></pre></div>
+<p>Accepts a single argument for the column family name, and permanently removes all data from said column family.</p>
+
+<h2>CREATE KEYSPACE</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;CREATE KEYSPACE WITH replication_factor = AND strategy_class = [AND strategy_options. = [AND strategy_options. = ]]; &lt;/code&gt;
+</code></pre></div>
+<p>The <code>CREATE KEYSPACE</code> statement creates a new top-level namespace (aka &quot;keyspace&quot;). Valid names are any string constructed of alphanumeric characters and underscores, but must begin with a letter. Properties such as replication strategy and count are specified during creation using the following accepted keyword arguments:
+<table >
+<tbody >
+<tr >
+keyword
+required
+description
+</tr>
+<tr ></p>
+
+<p><td >replication_factor
+</td></p>
+
+<p><td >yes
+</td></p>
+
+<p><td >Numeric argument that specifies the number of replicas for this keyspace.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >strategy_class
+</td></p>
+
+<p><td >yes
+</td></p>
+
+<p><td >Class name to use for managing replica placement. Any of the shipped strategies can be used by specifying the class name relative to org.apache.cassandra.locator, others will need to be fully-qualified and located on the classpath.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >strategy_options
+</td></p>
+
+<p><td >no
+</td></p>
+
+<p><td >Some strategies require additional arguments which can be supplied by appending the option name to the <code>strategy_options</code> keyword, separated by a colon (<code>:</code>). For example, a strategy option of &quot;DC1&quot; with a value of &quot;1&quot; would be specified as <code>strategy_options:DC1 = 1</code>.
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<h2>CREATE COLUMNFAMILY</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;CREATE COLUMNFAMILY [(name1 type, name2 type, ...)] [WITH keyword1 = arg1 [AND keyword2 = arg2 [AND ...]]]; &lt;/code&gt;
+</code></pre></div>
+<p><code>CREATE COLUMNFAMILY</code> statements create new column family namespaces under the current keyspace. Valid column family names are strings of alphanumeric characters and underscores, which begin with a letter.</p>
+
+<h3>Specifying Column Type (optional)</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;CREATE COLUMNFAMILY (name1 type, name2 type) ...; &lt;/code&gt;
+</code></pre></div>
+<p>It is possible to assign columns a type during column family creation. Columns configured with a type are validated accordingly when a write occurs. Column types are specified as a parenthesized, comma-separated list of column term and type pairs. The list of recognized types are:
+<table >
+<tbody >
+<tr >
+type
+description
+</tr>
+<tr ></p>
+
+<p><td >bytes
+</td></p>
+
+<p><td >Arbitrary bytes (no validation)
+</td>
+</tr>
+<tr ></p>
+
+<p><td >ascii
+</td></p>
+
+<p><td >ASCII character string
+</td>
+</tr>
+<tr ></p>
+
+<p><td >utf8
+</td></p>
+
+<p><td >UTF8 encoded string
+</td>
+</tr>
+<tr ></p>
+
+<p><td >timeuuid
+</td></p>
+
+<p><td >Type 1 UUID
+</td>
+</tr>
+<tr ></p>
+
+<p><td >uuid
+</td></p>
+
+<p><td >Type 4 UUID
+</td>
+</tr>
+<tr ></p>
+
+<p><td >int
+</td></p>
+
+<p><td >4-byte integer
+</td>
+</tr>
+<tr ></p>
+
+<p><td >long
+</td></p>
+
+<p><td >8-byte long
+</td>
+</tr>
+</tbody>
+</table>
+<em>Note: In addition to the recognized types listed above, it is also possible to supply a string containing the name of a class (a sub-class of <code>AbstractType</code>), either fully qualified, or relative to the<code>org.apache.cassandra.db.marshal</code> package.</em></p>
+
+<h3>Column Family Options (optional)</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;CREATE COLUMNFAMILY ... WITH keyword1 = arg1 AND keyword2 = arg2; &lt;/code&gt;
+</code></pre></div>
+<p>A number of optional keyword arguments can be supplied to control the configuration of a new column family.
+<table >
+<tbody >
+<tr >
+keyword
+default
+description
+</tr>
+<tr ></p>
+
+<p><td >comparator
+</td></p>
+
+<p><td >utf8
+</td></p>
+
+<p><td >Determines sorting and validation of column names. Valid values are identical to the types listed in Specifying Column Type above.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >comment
+</td></p>
+
+<p><td >none
+</td></p>
+
+<p><td >A free-form, human-readable comment.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >row_cache_size
+</td></p>
+
+<p><td >0
+</td></p>
+
+<p><td >Number of rows whose entire contents to cache in memory.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >key_cache_size
+</td></p>
+
+<p><td >200000
+</td></p>
+
+<p><td >Number of keys per SSTable whose locations are kept in memory in &quot;mostly LRU&quot; order.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >read_repair_chance
+</td></p>
+
+<p><td >1.0
+</td></p>
+
+<p><td >The probability with which read repairs should be invoked on non-quorum reads.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >gc_grace_seconds
+</td></p>
+
+<p><td >864000
+</td></p>
+
+<p><td >Time to wait before garbage collecting tombstones (deletion markers).
+</td>
+</tr>
+<tr ></p>
+
+<p><td >default_validation
+</td></p>
+
+<p><td >utf8
+</td></p>
+
+<p><td >Determines validation of column values. Valid values are identical to the types listed in Specifying Column Type above.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >min_compaction_threshold
+</td></p>
+
+<p><td >4
+</td></p>
+
+<p><td >Minimum number of SSTables needed to start a minor compaction.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >max_compaction_threshold
+</td></p>
+
+<p><td >32
+</td></p>
+
+<p><td >Maximum number of SSTables allowed before a minor compaction is forced.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >row_cache_save_period_in_seconds
+</td></p>
+
+<p><td >0
+</td></p>
+
+<p><td >Number of seconds between saving row caches.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >key_cache_save_period_in_seconds
+</td></p>
+
+<p><td >14400
+</td></p>
+
+<p><td >Number of seconds between saving key caches.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >memtable_flush_after_mins
+</td></p>
+
+<p><td >60
+</td></p>
+
+<p><td >Maximum time to leave a dirty table unflushed.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >memtable_throughput_in_mb
+</td></p>
+
+<p><td >dynamic
+</td></p>
+
+<p><td >Maximum size of the memtable before it is flushed.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >memtable_operations_in_millions
+</td></p>
+
+<p><td >dynamic
+</td></p>
+
+<p><td >Number of operations in millions before the memtable is flushed.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >replicate_on_write
+</td></p>
+
+<p><td >false
+</td></p>
+
+<p><td >
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<h2>CREATE INDEX</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;CREATE INDEX [index_name] ON &lt;column_family&gt; (column_name); &lt;/code&gt;
+</code></pre></div>
+<p>A <code>CREATE INDEX</code> statement is used to create a new, automatic secondary index for the named column.</p>
+
+<h2>DROP</h2>
+
+<p><em>Synopsis:</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;DROP &lt;KEYSPACE|COLUMNFAMILY&gt; namespace; &lt;/code&gt;
+</code></pre></div>
+<p><code>DROP</code> statements result in the immediate, irreversible removal of keyspace and column family namespaces.</p>
+
+<h2>Common Idioms</h2>
+
+<h3>Specifying Consistency</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;code&gt;... USING &lt;CONSISTENCY&gt; ... &lt;/code&gt;
+</code></pre></div>
+<p>Consistency level specifications are made up the keyword <code>USING</code>, followed by a consistency level identifier. Valid consistency levels are as follows:</p>
+
+<ul>
+<li><p><code>CONSISTENCY ZERO</code></p></li>
+<li><p><code>CONSISTENCY ONE</code> (default)</p></li>
+<li><p><code>CONSISTENCY QUORUM</code></p></li>
+<li><p><code>CONSISTENCY ALL</code></p></li>
+<li><p><code>CONSISTENCY DCQUORUM</code></p></li>
+<li><p><code>CONSISTENCY DCQUORUMSYNC</code></p></li>
+</ul>
+
+<h3>Term specification</h3>
+
+<p>Terms are used in statements to specify things such as keyspaces, column families, indexes, column names and values, and keyword arguments. The rules governing term specification are as follows:</p>
+
+<ul>
+<li><p>Any single quoted string literal (example: <code>&#39;apple&#39;</code>).</p></li>
+<li><p>Unquoted alpha-numeric strings that begin with a letter (example: <code>carrot</code>).</p></li>
+<li><p>Unquoted numeric literals (example: <code>100</code>).</p></li>
+<li><p>UUID strings in hyphen-delimited hex notation (example: <code>1438fc5c-4ff6-11e0-b97f-0026c650d722</code>).</p></li>
+</ul>
+
+<p>Terms which do not conform to these rules result in an exception.</p>
+
+<p>How column name/value terms are interpreted is determined by the configured type.
+<table >
+<tbody >
+<tr >
+type
+term
+</tr>
+<tr ></p>
+
+<p><td >ascii
+</td></p>
+
+<p><td >Any string which can be decoded using ASCII charset
+</td>
+</tr>
+<tr ></p>
+
+<p><td >utf8
+</td></p>
+
+<p><td >Any string which can be decoded using UTF8 charset
+</td>
+</tr>
+<tr ></p>
+
+<p><td >uuid
+</td></p>
+
+<p><td >Standard UUID string format (hyphen-delimited hex notation)
+</td>
+</tr>
+<tr ></p>
+
+<p><td >timeuuid
+</td></p>
+
+<p><td >Standard UUID string format (hyphen-delimited hex notation)
+</td>
+</tr>
+<tr ></p>
+
+<p><td >timeuuid
+</td></p>
+
+<p><td >The string <code>now</code>, to represent a type-1 (time-based) UUID with a date-time component based on the current time
+</td>
+</tr>
+<tr ></p>
+
+<p><td >timeuuid
+</td></p>
+
+<p><td >Numeric value representing milliseconds since epoch
+</td>
+</tr>
+<tr ></p>
+
+<p><td >timeuuid
+</td></p>
+
+<p><td >An <a href="http://en.wikipedia.org/wiki/8601">iso8601 timestamp</a>
+</td>
+</tr>
+<tr ></p>
+
+<p><td >long
+</td></p>
+
+<p><td >Numeric value capable of fitting in 8 bytes
+</td>
+</tr>
+<tr ></p>
+
+<p><td >int
+</td></p>
+
+<p><td >Numeric value of arbitrary size
+</td>
+</tr>
+<tr ></p>
+
+<p><td >bytes
+</td></p>
+
+<p><td >Hex-encoded strings (converted directly to the corresponding bytes)
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<h1>Versioning</h1>
+
+<p>Versioning of the CQL language adheres to the <a href="http://semver.org/">Semantic Versioning</a> guidelines. Versions take the form X.Y.Z where X, Y, and Z are integer values representing major, minor, and patch level respectively. There is no correlation between Cassandra release versions and the CQL language version.
+<table >
+<tbody >
+<tr >
+version
+description
+</tr>
+<tr ></p>
+
+<p><td >Patch
+</td></p>
+
+<p><td >The patch version is incremented when bugs are fixed.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >Minor
+</td></p>
+
+<p><td >Minor version increments occur when new, but backward compatible, functionality is introduced.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >Major
+</td></p>
+
+<p><td >The major version <em>must</em> be bumped when backward incompatible changes are introduced. This should rarely (if ever) occur.
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<h1>Changes</h1>
+<div class="highlight"><pre><code class="language-" data-lang="">Tue, 22 Mar 2011 18:10:28 -0700 - Eric Evans &lt;eevans@rackspace.com&gt;
+ * Initial version, 1.0.0
+</code></pre></div>
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

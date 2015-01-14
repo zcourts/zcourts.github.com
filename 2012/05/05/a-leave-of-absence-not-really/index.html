@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>A leave of absence.... not really.</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Hello all,">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2012/05/05/a-leave-of-absence-not-really">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A leave of absence.... not really.</h1>
+    <p class="post-meta">May 5, 2012 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>Hello all,</p>
+
+<p>So as many of you know already I&#39;ve been working at <a href="http://datasift.com/">DataSift</a> for a while now. Its been totally awesome, for the record.</p>
+
+<p>I&#39;ve gotten at least 30 mails from readers of my blog asking why I&#39;ve stopped blogging. I haven&#39;t stopped :-).
+I can certainly understand why it would seem that way though since I started working I posted once a month or so and the last entry was in December.&lt;!-- more --&gt;</p>
+
+<p>The truth is I have so little time (like seriously) I like to keep myself active so I&#39;ve been involved with quite a few projects. Some on my own and others with friends.  A lot of my code is up on my github page under <a href="https://github.com/zcourts/">zcourts</a> username. Admittedly most of the more interesting stuff is still in my private repositories but all that will change over the next few weeks.</p>
+
+<p>I&#39;ve got a few libraries that I&#39;ve written and have been using, I&#39;ll make those open source under the Apache v2 license as soon as I get round to cleaning them up. Some are in Scala, some are in Java. Although I currently have a little thing against Scala, one of my libs is in the process of being ported to Java (Extended and improved too).</p>
+
+<p>To top it all off I&#39;ve been writing an operating system. I know right, what do I know about OSs. I&#39;ve been working on it for about 2 years, and I only just recently bought <a href="http://www.amazon.co.uk/dp/0135053765"><strong>Andrew  Tanenbaum</strong>&#39;s OS book</a> ...Its nowhere near ready but I have some ideas (that I think are pretty awesome) that I&#39;ve been trying to experiment with. I expect it&#39;ll be another year+ before I release the code for it though :)</p>
+
+<p>What I can say at the moment though is that I&#39;ve most certainly not thrown in the towel on blogging. I&#39;ve also had quite a few request about <a href="http://cassandra.apache.org">Cassandra</a>. I&#39;ll release some code over the next couple of months that would address all your requests (I&#39;ll do some quick tutorials too).</p>
+
+<p>My first little library I&#39;ll release is for messaging. And before anyone thinks, &quot;<a href="http://www.zeromq.org/">ZMQ</a>&quot; let me just say, I tried. But frankly I got pissed off with how much hassle I had to go through to get ZMQ working in Java/Scala. Its nice and simple to use but quickly becomes a pain when the JNI bindings start acting up. Its even 10 times more of a pain when you&#39;re on Windows and I don&#39;t even know how much harder its made my experience because I&#39;m using 64 bit Windows. Anyway, enough of my ranting. I wrote the messaging library to make it easier to do some networking on the JVM. Its got some similar concepts as ZMQ, after all it was &quot;inspired&quot; by it. When it comes to performance, I only want about 100K messages per second send/receive capacity. My library&#39;s been able to send/receive 1 million per second between my laptop and one of my VPS servers located in Canada. If it can be improved, after I make it public I&#39;d welcome any contribution but it performs above and beyond what I need. It&#39;s been written on top of <a href="http://netty.io/">Netty</a> so it is asynchronous and its performance is no surprise because of that fact.</p>
+
+<p>My second library is used for Clustering (Yes I also know about <a href="http://doc.akka.io/docs/akka/2.0.1/cluster/cluster.html">Akka Clusters</a> but I&#39;ve had enough to read and I don&#39;t yet get the Actor model). Inspired by the Apache Cassandra architecture to some extent. It allows you to quickly and easily distribute and load balance any software (on the JVM). It uses the messaging library I spoke of above. This one is in its very early stages but should be useful. As I said its inspired by the way Cassandra allows nodes to just be added, removed etc as well as some stuff I read in the <a href="http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf">Amazon Dynamo white paper</a>. It&#39;ll be a few months before I release this.</p>
+
+<p>I&#39;ve also been experimenting with a &quot;distributed http server&quot;...as you&#39;d expect it uses the clustering stuff above. The idea is pretty simple. I use Apache HTTP server, as do so many others but imagine if you wanted to add 2,3 or 10 servers. You need load balancers, expensive this that and what not. Imagine you had a web server that just did all of it. You scale out  the same way you would a Cassandra cluster. If you think me mad then I probably am. Its a load of work for no apparent reason ;)</p>
+
+<p>These are a few of the side projects I&#39;ve been working on (the ones I&#39;ll make open source soon).  I&#39;ve created my lab where I&#39;ll show case all my work when they&#39;re released. Keep an eye on <a href="http://lab.crlog.info/">lab.crlog.info</a>. I just this week finished helping a friend implementing something, see <a href="http://lab.crlog.info/bookof/">http://lab.crlog.info/bookof/</a> its rough around the edges and far from the working state he&#39;d like it to be but with the limited time we had this is all I could come up with, you can&#39;t even begin to fathom how cool his entire project is. Not to mention how much stuff I&#39;ve learnt while implementing it for him. I&#39;ll re-build it to be much better, knowing all the things I&#39;ve learnt on the first try.</p>
+
+<p>On the other side of things it almost seems I&#39;ve forgotten my full time job but the truth is my work is even better. I think I&#39;ll add a few posts about using our API etc from Java,PHP,Ruby and C#. DataSift has some awesome things going on and the products make it easy for anyone with a little know how to gain some incredible insights at pretty cheap prices.</p>
+
+<p>All in all, in between work and my side projects I spend about 4-5 hrs sleeping, hardly any time left to blog but with a few of these projects closing off I&#39;ll get more time over the next few months.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

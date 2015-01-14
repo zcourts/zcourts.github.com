@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Cassandra Terminology : Cheat Sheet</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="This document will be updated continuously until it is as complete as can be, please let me know what I can add to make it more useful for everyone, especial...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/12/25/cassandra-terminology-cheat-sheet">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Cassandra Terminology : Cheat Sheet</h1>
+    <p class="post-meta">Dec 25, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p><em>This document will be updated continuously until it is as complete as can be, please let me know what I can add to make it more useful for everyone, especially new Cassandra  users</em></p>
+
+<h2>Columns</h2>
+
+<p>At the bottom end of the hierarchy there is a column, a column has three parts to it; A name, value and a timestamp. The name and value is stored as a raw byte array (byte[]) and can be of any size.</p>
+
+<h2>Super Columns</h2>
+
+<p>A super column is similar in terms of having a name,value pair however, it does not have a timestamp.</p>
+
+<p>The major difference between a column and a super column is that :</p>
+
+<p>A column maps to the binary representation of a string value and a super column maps to a number of columns.&lt;!-- more --&gt;</p>
+
+<h2>Column Family (CF)</h2>
+
+<p>To group columns and super columns, Cassandra has, what is known as a Column Family (CF) . A column family can be of type STANDARD or SUPER. Standard column families store the smaller column types which have a name,value and timestamp.</p>
+
+<h2>Super Column Family (CF)</h2>
+
+<p>Similar to a standard column family, however, it groups the super columns</p>
+
+<h2>Rows</h2>
+
+<p>Within a CF columns are grouped within a row (Similar relationship between rows and columns in an RDBMS. A row contains a key, this key map to the columns you have in that row. The row key again uses the column names as the internal key (internal i.e. within the row) to which the row key maps. The columns that are contained within a row can be of types, SUPER or STANDARD. Depending on which one your columns are the Column family’s type also matches. In other words, if you have a set of columns that are all of the type SUPER then your column family will also be of type SUPER, the opposite is also true.</p>
+
+<h2>Keyspace</h2>
+
+<p>Cassandra’s data model has another layer within its encapsulation hierarchy, the Keyspace. A Keyspace is the outer most layer of Cassandra’s data model, it encapsulates all the column families you create…</p>
+
+<h2>Node</h2>
+
+<p>A Cassandra Node is a single server instance within a group of Nodes. In most cases, this is a single physical computer or a single virtual machine instance.</p>
+
+<h2>Cluster</h2>
+
+<p>A Cassandra cluster is a group of Nodes that distributes your work amongst them.</p>
+
+<h2>Hinted handoff</h2>
+
+<p><a href="http://wiki.apache.org/cassandra/HintedHandoff">Hinted</a><a href="http://wiki.apache.org/cassandra/HintedHandoff">handoff</a> is the process by which the Cassandra cluster temporarily writes your data to a Node in place of another. This happens when the Node the data was to be written to is offline or cannot be reached for some reason. The data is written to a temporary Node which “hands” off the data to the correct Node once it is back online.</p>
+
+<h2>Partitioner</h2>
+
+<p>The partitioner is responsible for distributing rows (by key) across nodes in the cluster.
+It is always recommended that you choose the “RandomPartitioner” since it ensures that your cluster’s load is balanced.</p>
+
+<h2>Replication Factor</h2>
+
+<p><a href="http://wiki.apache.org/cassandra/Operations#Replication">Replication</a>factor is simply how many Nodes in the cluster you want a copy of the data to be on. For e.g within a 5 Node cluster and a replication factor of 2, then all data is stored on two different Nodes.</p>
+
+<h2>Gossip Failure detection</h2>
+
+<p>Cassandra uses gossip protocols to detect machine failure and recover when a machine is brought back into the cluster.</p>
+
+<h3>CAP theorem</h3>
+
+<p>The <strong>CAP</strong> theorem (<a href="http://www.cs.berkeley.edu/%7Ebrewer/cs262b-2004/PODC-keynote.pdf">Brewer</a>) states that you have to pick two of <strong>Consistency</strong>, <strong>Availability</strong>, <strong>Partition tolerance</strong>: You can&#39;t have the three at the same time and get an acceptable latency.</p>
+
+<p>Cassandra values Availability and Partitioning tolerance (<strong>AP</strong>). Tradeoffs between consistency and latency are tunable in Cassandra. You can get strong consistency with Cassandra (with an increased latency).</p>
+
+<h2>Eventual Consistency</h2>
+
+<p>Casandra has (configurable) weak <a href="http://wiki.apache.org/cassandra/ArchitectureOverview#Consistency">consistency</a>. As the data is replicated, the latest version of something is sitting on some node in the cluster, but older versions are still out there on other nodes, but eventually all nodes will see the latest version.
+More specifically: R=read replica count W=write replica count N=replication factor Q=<strong>QUORUM</strong> (Q = N / 2 + 1)</p>
+
+<ul>
+<li><p>If W + R &gt; N, you will have consistency</p></li>
+<li><p>W=1, R=N</p></li>
+<li><p>W=N, R=1</p></li>
+<li><p>W=Q, R=Q where Q = N / 2 + 1</p></li>
+</ul>
+
+<p>Cassandra provides consistency when R + W &gt; N (read replica count + write replica count &gt; replication factor).</p>
+
+<p>You get consistency if R + W &gt; N, where R is the number of records to read, W is the number of records to write, and N is the replication factor. A ConsistencyLevel of ONE means R or W is 1. A ConsistencyLevel of QUORUM means R or W is ceiling((N+1)/2). A ConsistencyLevel of ALL means R or W is N. So if you want to write with a ConsistencyLevel of ONE and then get the same data when you read, you need to read with ConsistencyLevel ALL.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

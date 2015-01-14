@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zcourts AKA Courtney Robinson</title>
+    <description>Making the web a messier, better place.
+</description>
+    <link>http://zcourts.com//</link>
+    <atom:link href="http://zcourts.com//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 14 Jan 2015 16:49:01 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Jan 2015 16:49:01 +0000</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Unifying my web presence</title>
+        <description>&lt;p&gt;&lt;em&gt;sigh&lt;/em&gt;, this started out so well. I organized everything into &amp;quot;logical&amp;quot; sites...
+Turns out it&amp;#39;s a major pain to maintain! So from today, I&amp;#39;ll be bring all my blogs/sites/whatever, under one roof/domain!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+        <link>http://zcourts.com//2015/01/12/the-new-zcourts.com</link>
+        <guid isPermaLink="true">http://zcourts.com//2015/01/12/the-new-zcourts.com</guid>
+        
+        
+        <category>info</category>
+        
+      </item>
+    
+      <item>
+        <title>HyperLogLog++: Google&#39;s Take On Engineering HLL</title>
+        <description></description>
+        <pubDate>Fri, 24 Oct 2014 07:35:46 +0100</pubDate>
+        <link>http://zcourts.com//2014/10/24/hyperloglog-googles-take-on-engineering-hll</link>
+        <guid isPermaLink="true">http://zcourts.com//2014/10/24/hyperloglog-googles-take-on-engineering-hll</guid>
+        
+        
+        <category>general</category>
+        
+      </item>
+    
+      <item>
+        <title>Breaking the silence: Politics, Dictorships and ignorance VS the Web</title>
+        <description>&lt;p&gt;I try to avoid talking about politics. I think most politicians represent the worst of the general populous.&lt;/p&gt;
+
+&lt;p&gt;Throughout history history the human race has proven time and time again that we&amp;#39;re our own worse enemies. We fear the things we don&amp;#39;t know or understand, persecute each other and those that dare question or step outside the norm. We are a destructive group of beings.&lt;/p&gt;
+
+&lt;p&gt;Perhaps our greatest flaw is our estranged disillusion of the illusion of control. That didn&amp;#39;t make sense to me the first time I said it in my head but I&amp;#39;m sure it&amp;#39;s what I mean. We&amp;#39;re always trying to control things, people and even time.
+We like to experiment, and for very brief moments in each era the experiment starts to look to be successful. We appear to be in control (this is where the illusion of control sits). But every so often, every now and again, a little piece of our frankenstein contraption falls off. That is when we realize we&amp;#39;re not really in control. And the disillusion begins and at the strike of reality we become estranged to control.&amp;lt;!-- more --&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the dawn of reality leaves us in a position where we don&amp;#39;t know what to do. It can be almost as if everything you knew up to that point was all a lie. Almost like a tale from a film. And where am I going with this?&lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;s been just over 25yrs since the debut of the web. Just over a decade since it was transformed into what we now know it to be. At it&amp;#39;s core the web should be open. It was unfortunate that the internet&amp;#39;s backbone had to be designed with central points of control but it is quite possibly too late to change the fact that ISPs are required.&lt;/p&gt;
+
+&lt;p&gt;We&amp;#39;re at a pivotal moment in history. A large piece of the frankenstein monster is falling off and the disillusion of control ensues. In ~6yrs we will look back at this decade as a turning point, hopefully for the better. While we&amp;#39;ll look back and may miss the full impact of this decade, the next few generations will feel it the most. We&amp;#39;re at a point where we will decide if they will feel proud or betrayed by our generation. Democracy, dictatorships, whatever else they want to call themselves are in a position where the strike of reality leaves them not knowing what to do. Blindsided by their ignorance of the unknown, they react by unknowingly (or stupidly) pouring more fuel on an already raging flame. We often give media coverage to disruptive startups in all sorts of sectors and have slowly but surely glossed over the disruption technology is delivering to the face of politics.&lt;/p&gt;
+
+&lt;p&gt;The web is under threat. Correction, the web has always been under threat from those seeking to gain complete control of it. It just matters now because more people have turned their attention to it. I can&amp;#39;t remember where I read this, but I remember a quote saying something like, &amp;quot;revolutions happen when the people are informed of their rights (or the fact they have none)&amp;quot; or something to that effect.&lt;/p&gt;
+
+&lt;p&gt;Many people didn&amp;#39;t care, many still don&amp;#39;t, when they were unaware of the fact their governments keep a close eye on them. Or some knew but saw it as a small price to pay for the supposed freedoms and safety they are privy to. We&amp;#39;re such a brutal set of beings, it doesn&amp;#39;t matter until it affects us directly. It&amp;#39;s not like most of the world didn&amp;#39;t already know about the &amp;quot;great firewall of China&amp;quot; and others like it but it seemingly didn&amp;#39;t matter until it wasn&amp;#39;t just everyone else, it was us too. Why can&amp;#39;t we learn? Why can&amp;#39;t we every use the mistakes of the past to make a better future? Must we always repeat the same mistakes, albeit in a slightly different form, every time. I&amp;#39;m hesitant to say this because obviously the lives of those lost does not even begin to compare but we (human race) made a similar mistake with the holocaust. People knew, and ignored it practically until it was at their doorstep. Makes you wonder doesn&amp;#39;t it? What kind of cretins are we?&lt;/p&gt;
+
+&lt;p&gt;Money, greed, power are always motives. They help create the illusions we seemingly need to press on. But who is it that has the real power?
+Is it the people or those empowered by them? Chose those words carefully to point out that in both cases, it&amp;#39;s the people that have the real power. If we don&amp;#39;t empower our politicians, what different are they then compared to you or me? Richer, probably. More connected, obviously. Empowered? Only if we allow them to be.&lt;/p&gt;
+
+&lt;p&gt;The battles being fought on all angles will shape the future. Not just those currently affected by the immediate impacts but the future of you and me. The future of our kids, their kids and kids&amp;#39; kids... We&amp;#39;ve had our taste of a great web. It&amp;#39;s shown that it has the potential to do so many things. It has and continues to break down so many barriers between all races and creeds on this puny planet. You got to ask yourself, do you want to be responsible for that potential&amp;#39;s demise? Do you want to play a part in delaying (yes, delaying, it&amp;#39;ll eventually happen, only a matter of time) the disruption?
+No one knows what the future holds, but think of all we&amp;#39;ve achieved. Do we want to step back? Think about if science hadn&amp;#39;t been suppressed in the middle ages, who knows how much more advanced our society may be. The current struggle to control and suppress the reaches of the web is on par with that suppression. We all have a role to play and there is no middle ground, you&amp;#39;re either for or against.&lt;/p&gt;
+
+&lt;p&gt;You might be tempted to make the argument that &amp;quot;the government knows best&amp;quot; or that their actions ensures your continued safety and security. Yes, there is no denying that there are people out there who would want to hurt you and those you love. Maybe the government being able to control what people see and do helps keep you safe...maybe. But is it worth the price and not just that are you willing to pay that price? Knowing that those who come after you probably won&amp;#39;t have the ability to make a choice of whether they want to pay that price. That aside, why this way? Controlling everything and everyone just isn&amp;#39;t a maintainable route. What happens if we decide to be controlled and future generations decide they don&amp;#39;t want to be? How will their voices be suppressed, what level of action will they take when another piece of the frankenstein monster that is control, falls off?&lt;/p&gt;
+
+&lt;p&gt;People seem to get caught up with thinking this is all about the web and this post has largely followed that trend, but this goes way beyond that. Democratic or not, every human being has a right to lead the life they choose, not one dictated by others. Which is why it is so amazing that something like privacy only made it into the human rights act 1998 (European Convention on Human Rights. Article 8.1). It&amp;#39;s up to us that, as we figure out what the web is, what we want from and where it ends up, we don&amp;#39;t allow it to erode. The progress of generations will depend on the decisions we make as a collective over the next few years.&lt;/p&gt;
+
+&lt;p&gt;Don&amp;#39;t think because it&amp;#39;s got &amp;quot;technology&amp;quot; somewhere in there that you don&amp;#39;t understand or can&amp;#39;t do anything about it. Reach out to those who can. Remind those making stupid decisions why they&amp;#39;re in a position to make those decisions. Shout at your local rep.. Write letters. Sign petitions. Let your voice be heard. There is no middle ground. Say something or sit silent as everyone else determines your future for you. If you won&amp;#39;t do it for you, do it for those that will follow. For those who will look back and be proud that you weren&amp;#39;t silent.&lt;/p&gt;
+
+&lt;p&gt;USA, UK, China, Turkey, Russia some of the bigger ones that are setting very bad examples. They&amp;#39;re stupid mistakes, none they haven&amp;#39;t made before either. Some people never learn it seems. &lt;em&gt;sigh, humans&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 23 Mar 2014 23:02:36 +0000</pubDate>
+        <link>http://zcourts.com//2014/03/23/breaking-the-silence-politics-dictorships-and-ignorance-vs-the-web</link>
+        <guid isPermaLink="true">http://zcourts.com//2014/03/23/breaking-the-silence-politics-dictorships-and-ignorance-vs-the-web</guid>
+        
+        <category>democracy</category>
+        
+        <category>destroy the web</category>
+        
+        <category>dictatorships</category>
+        
+        <category>history</category>
+        
+        <category>ignorance</category>
+        
+        <category>mistakes</category>
+        
+        <category>nsa</category>
+        
+        <category>politicians</category>
+        
+        <category>russia</category>
+        
+        <category>spying</category>
+        
+        <category>turkey</category>
+        
+        <category>twitter</category>
+        
+        <category>uk</category>
+        
+        <category>usa</category>
+        
+        <category>web</category>
+        
+        
+        <category>politics</category>
+        
+      </item>
+    
+      <item>
+        <title>Android debugging over bluetooth (without root)</title>
+        <description>&lt;p&gt;So I&amp;#39;m on a train to Reading and wanted to continue working on an app I&amp;#39;ve been hacking at but my USB cable is annoyingly inconvenient and Ubuntu keeps throwing a fit because I haven&amp;#39;t been able to configure it to properly handle MTP enabled devices.   To get debugging going here&amp;#39;s what I&amp;#39;ve just done.&amp;lt;!-- more --&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Connect the phone via USB and from the terminal enter (to run adb in tcp ip mode)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;
+adb tcpip 4455
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now on the phone enable debugging from Settings -&amp;gt; Developer options -&amp;gt; enable debugging.&lt;/p&gt;
+
+&lt;p&gt;Next enable  bluetooth and pair the phone with the laptop. Once paired, unpair the two and on the android device go to Settings -&amp;gt; Tethering and portable hotspot then enable &amp;quot;Bluetooth tethering&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;Now go back to settings -&amp;gt; Blutetooth and repair the device with the laptop.&lt;/p&gt;
+
+&lt;p&gt;On Ubuntu click your network icon in the task bar to list the available networks&lt;/p&gt;
+
+&lt;p&gt;In Ubuntu click the network icon again after successfully connecting to the bluetooth network and click &amp;quot;Connection information&amp;quot; towards the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-114005.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-114005.png&quot; alt=&quot;bluetooth Screenshot from 2013-07-19 11:40:05&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From the window that opens, note the Primary DNS IP. Copy it, write it down, whatever you need to but you need it for the next step.&lt;/p&gt;
+
+&lt;p&gt;Now from the command line again enter:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;
+adb connect 192.168.44.1:4455
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That should produce&lt;/p&gt;
+
+&lt;p&gt;connected to 192.168.44.1:4455&lt;/p&gt;
+
+&lt;p&gt;Now if you&amp;#39;re using Eclipse, Intellij or any other IDE with adb support  you can look at logcat to start seeing logs from the device:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113114.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113114-e1374230755917.png&quot; alt=&quot;bluetooth Screenshot from 2013-07-19 11:31:14&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From here on you can deploy your App to the device and/or debug it without a USB. And obviously each time just pair the devices and reconnect. You won&amp;#39;t have to repeat all the steps - just those two.&lt;/p&gt;
+
+&lt;p&gt;Below are a series of screenshots that might help. They&amp;#39;re in no particular order, I&amp;#39;m writing this post on the train and taking screenshots on the phone and laptop and uploading from both directly to the same post so it is what it is but should hopefully still be useful.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-112732.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-112732.png&quot; alt=&quot;bluetooth-Screenshot from 2013-07-19 11:27:32&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113055.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113055.png&quot; alt=&quot;bluetooth - Screenshot from 2013-07-19 11:30:55&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-26-56.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-26-56.png&quot; alt=&quot;wpid-Screenshot_2013-07-19-11-26-56.png&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-28-54.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-28-54.png&quot; alt=&quot;wpid-Screenshot_2013-07-19-11-28-54.png&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-28-59.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/wpid-screenshot_2013-07-19-11-28-59.png&quot; alt=&quot;wpid-Screenshot_2013-07-19-11-28-59.png&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-112816.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-112816.png&quot; alt=&quot;bluetooth Screenshot from 2013-07-19 11:28:16&quot;&gt;&lt;/a&gt; &lt;a href=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113016.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/07/bluetooth-screenshot-from-2013-07-19-113016.png&quot; alt=&quot;bluetooth Screenshot from 2013-07-19 11:30:16&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Any questions, suggestions, feel free to ask.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 19 Jul 2013 11:53:17 +0100</pubDate>
+        <link>http://zcourts.com//2013/07/19/android-debugging-over-bluetooth-without-root</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/07/19/android-debugging-over-bluetooth-without-root</guid>
+        
+        <category>adb</category>
+        
+        <category>android</category>
+        
+        <category>android wireless deployement</category>
+        
+        <category>bluetooth</category>
+        
+        <category>bluetooth debug</category>
+        
+        <category>no root</category>
+        
+        <category>tcp debugging</category>
+        
+        <category>tcpip</category>
+        
+        
+        <category>android</category>
+        
+      </item>
+    
+      <item>
+        <title>My PhD&#39;s a go! - Graph database with the distributed nature of Cassandra and the Graph properties of Neo4J</title>
+        <description>&lt;p&gt;I&amp;#39;ve been thinking about this for a while now and I&amp;#39;ve made a solid decision finally. At some point later this year I&amp;#39;ll be starting a PhD (Probably October).&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve been using &lt;a href=&quot;http://cassandra.apache.org/&quot;&gt;Apache Cassandra&lt;/a&gt; for years now, since 2008 not long after Facebook open sourced it. Since then I&amp;#39;ve played with most of the major NoSQL databases and frameworks (Neo4J, HBase, CouchDB, Hadoop, etc) and in virtually all the projects I&amp;#39;ve found the need to repeatedly be modelling graph or graph-like data. In some cases it&amp;#39;s worked out great, in others it was a terrible idea but luckily I&amp;#39;ve always recognised very early on when the data model is just terrible for that DB so haven&amp;#39;t wasted time on it.&amp;lt;!-- more --&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;More to the point though, Graph databases are extremely useful. And there have been numerous attempts at implementing a graph interface on top of existing DBs, &lt;a href=&quot;http://thinkaurelius.github.io/titan/&quot;&gt;Titan&lt;/a&gt; for example runs on top of &lt;a href=&quot;http://cassandra.apache.org/&quot;&gt;Cassandra&lt;/a&gt;, &lt;a href=&quot;http://hbase.apache.org/&quot;&gt;HBase&lt;/a&gt; or &lt;a href=&quot;http://www.oracle.com/technetwork/database/berkeleydb/overview/index-093405.html&quot;&gt;BerkleyDB&lt;/a&gt;. Or even native Graph DBs such as Twitter&amp;#39;s &lt;a href=&quot;https://github.com/twitter/flockdb&quot;&gt;FlockDB&lt;/a&gt; or &lt;a href=&quot;http://www.neo4j.org/&quot;&gt;Neo4J&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But I think this area is still under-developed and there&amp;#39;s a lot of room for research and improvement.&lt;/p&gt;
+
+&lt;p&gt;My first order of business is keeping Java away from the implementation! Don&amp;#39;t get me wrong, I love Java as much as the next guy but from my experience with Cassandra, HBase and Hadoop, Java adds unnecessary problems to an already complicated situation. I am especially disappointed that until this day Sun/Oracle has not sorted out the JVM memory size limit. Seriously, with all the cloud computing malarkey, memory is cheaper than ever, there are massive advantages to storing as much information in memory as possible but the JVM craps out at about 8GB on 64 bit machines. You can try to push it further, people have been known to use bigger heap sizes but you&amp;#39;re asking for trouble doing that.&lt;/p&gt;
+
+&lt;p&gt;What I am considering and have pretty much decided is that I&amp;#39;ll be implementing whatever results from my PhD in &lt;a href=&quot;http://www.haskell.org/&quot;&gt;Haskell&lt;/a&gt;. For a few reasons&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I get memory management&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It&amp;#39;s a beautiful language&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;No crappy 8GB memory limit&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I want to learn it (this should probably have been  number 1)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I still get cross-platform support&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Better interface with native C/C++ libraries because some things are just better left in C&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I&amp;#39;m familiar with Haskell so a part of this will just be getting to know it as well as I do Java, PHP, Scala etc. My other reasoning is simply that I am combining things I&amp;#39;m enthusiastic about. &amp;quot;Big Data&amp;quot; and the promise of learning a language that intrigues me. It&amp;#39;ll be fun!&lt;/p&gt;
+
+&lt;p&gt;Ultimately the more serious side of my research will focus on developing a completely distributed graph database. The real challenge, or the big problem I&amp;#39;m going after is automatic partitioning of graph data across a cluster. Imagine a database with the horizontal scalability (add machines as opposed to CPU/RAM) of Cassandra but with the graph processing capabilities of Neo4J.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m fortunate enough to know &lt;a href=&quot;http://staffweb.cms.gre.ac.uk/%7Ewc06/&quot;&gt;Chris Walshaw&lt;/a&gt; who is well established in the graph partitioning/processing space and has agreed to be my project supervisor.&lt;/p&gt;
+
+&lt;p&gt;For once I&amp;#39;ll be in education and enjoying it because it&amp;#39;ll be under my terms and doing things I like, pretty exciting times ahead!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 28 Jun 2013 23:40:04 +0100</pubDate>
+        <link>http://zcourts.com//2013/06/28/my-phds-a-go-graph-database-with-the-distributed-nature-of-cassandra-and-the-graph-properties-of-neo4j</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/06/28/my-phds-a-go-graph-database-with-the-distributed-nature-of-cassandra-and-the-graph-properties-of-neo4j</guid>
+        
+        <category>cassandra</category>
+        
+        <category>chris walshaw</category>
+        
+        <category>distributed database</category>
+        
+        <category>distributed graph database</category>
+        
+        <category>flockdb</category>
+        
+        <category>graph</category>
+        
+        <category>graph database</category>
+        
+        <category>graph partitioning</category>
+        
+        <category>graph processing</category>
+        
+        <category>hadoop</category>
+        
+        <category>haskell</category>
+        
+        <category>hbase</category>
+        
+        <category>jvm</category>
+        
+        <category>neo4j</category>
+        
+        <category>PhD</category>
+        
+        <category>titan</category>
+        
+        
+        <category>general</category>
+        
+      </item>
+    
+      <item>
+        <title>Institutionally racist - London MET, UK Politicians, you&#39;re pissing off someone in tech, a programmer, hacker and I&#39;m gonna piss you back off!</title>
+        <description>&lt;p&gt;WARNING: I am going to rant. I am going to swear. This is very off topic to my usual posts, if you&amp;#39;re going to be offended by me swearing or slagging off the London MET or UK Government, STOP reading now because I will not apologise for it and chances are if you nag me about being explicit I&amp;#39;ll tell you to bugger off. And that&amp;#39;s me putting it politely...&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;!-- more --&amp;gt;I drive you pull me over every mile, I walk, you stop me all the while. The &lt;a href=&quot;http://content.met.police.uk/&quot;&gt;London metropolitan&lt;/a&gt; police is a set of racist fucks. I&amp;#39;m contracting/freelancing while building my start up. I was on the way home last night from my current contract and got stopped and searched :O .&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s get one thing straight, I wear a jeans and T-shirt wherever and whenever I want. Seriously, most people get into the tech industry because it&amp;#39;s a thing we do. So no, I won&amp;#39;t dress up in a suit to please you, no I won&amp;#39;t apologise for working until whatever time I want. Up yours! If I won&amp;#39;t dress up to attend my own meetings why the hell would I dress up to prevent you people treating me like a criminal! I wasn&amp;#39;t even going to attend my own graduation next month because they expect me to wear that ridiculous robe, only reason I changed my mind is because my dad&amp;#39;s flying almost 5000 miles to come see me graduate!
+I am a very no bullshit kind of person. If the answer to a question can simply be &amp;quot;yes&amp;quot; or &amp;quot;no&amp;quot; I would much rather you say it and shut up than give me a long ass explanation of why it has to be either. To give some background on where this got annoying, see this &lt;a href=&quot;https://twitter.com/zcourts/status/261733649047773184&quot;&gt;Tweet&lt;/a&gt; from last year.
+&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/twitter-police-msgs.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/twitter-police-msgs.png&quot; alt=&quot;twitter-police-msgs&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Me getting pulled over became so annoying I changed my driving pattern, I went to Uni an hour or 2hrs earlier than usual, I stayed back and worked until later than I wanted and I generally avoided Greenwich and Lewisham main roads, opting instead for all the back roads the lovely Google Maps could dig out. It got the point where people didn&amp;#39;t believe me any more until one early morning probably 2 days before Christmas last year my mum wanted to go to &lt;a href=&quot;http://www.smithfieldmarket.com/&quot;&gt;Smithfield Market&lt;/a&gt;. Now this place opens at ridiculous o&amp;#39;clock in the morning so we were in the car with me driving at about 3am to get to this place, and wouldn&amp;#39;t you know it, I got pulled over about 4 miles from our house going through Bromley. My mum, two brothers and my other half were in the car. This time, I didn&amp;#39;t get a reason for being pulled over they asked for my license then radioed in and 2 mins later gave it back. No I don&amp;#39;t speed, I&amp;#39;m convinced the moment they catch me speeding it&amp;#39;ll be enough for me to get assaulted and harassed even further so I don&amp;#39;t. I&amp;#39;ve made up my mind that if it gets to that point I&amp;#39;m just going to knock one of them the fuck out, that&amp;#39;ll give you lot something to stop me for. That idiot pissed me off as well, asked where I was going and I said shopping, he looked at me and twisted his ugly face as if I was lying.
+Now, I generally try to give everyone, no matter how blatantly obvious and stupid the thing is, the benefit of the doubt. There comes a point when you just need to wake up and realising people are just taking the piss now. And that&amp;#39;s what the &lt;a href=&quot;https://twitter.com/metpoliceuk&quot;&gt;London Met&lt;/a&gt; is doing. I make it a point to avoid the bastards because you&amp;#39;re either institutionally racist or the force just aim to hire the most racist bastards around. Either way the London met is just full of morons you want to punch. As the image above shows, I started driving last year and it&amp;#39;s become common place for me to be pulled over for NOTHING. To this day I&amp;#39;ve not been given a good reason. I&amp;#39;ve had shitty excuses, at the start there were things like, oh your insurance hasn&amp;#39;t shown up on our system yet, or the plates don&amp;#39;t match the car. That got old real quick and now they just say something along the lines of oh it&amp;#39;s just a &amp;quot;routine&amp;quot; check.  So it&amp;#39;s routine for you to check me every week yes?&lt;/p&gt;
+
+&lt;p&gt;For anyone that knows me, I make it a point not to get involved with politics. To date I&amp;#39;ve seen one politician that has been able to say something without their every word not registering as a lie and me just there thinking &amp;quot;Lying bastard, if I could lock you up in a dungeon and have you scolded for every lie you just told, you&amp;#39;d be dead from that speech alone&amp;quot;. It was a New Zealand dude giving a speech on a bill about &lt;a href=&quot;http://www.youtube.com/watch?v=18t-CUgMzt8&quot;&gt;Gay marriage&lt;/a&gt; (video on YouTube), I&amp;#39;ve never seen another politician look so genuine so he&amp;#39;s either a very good liar or a very genuine guy and I&amp;#39;m inclined to think he&amp;#39;s just genuine.&lt;/p&gt;
+
+&lt;p&gt;Politics is annoying, I love the idea behind a democracy, philosophically it&amp;#39;s great but do we really live in a democracy? I&amp;#39;ve come to the conclusion that it&amp;#39;s all just a front and as far as I&amp;#39;m concerned the government is no better than an organised criminal gang. The only real difference is they can be criminals and it&amp;#39;s legal. Whether we live in a true democracy or not is something I&amp;#39;ll leave for the stoners and philosophers to argue about. I&amp;#39;ll surely punch one of them if I were to debate the point with them! But seriously...&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/i-am-free.jpg&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/i-am-free.jpg&quot; alt=&quot;i am free&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To the UK government and it&amp;#39;s racist bastard of a police force. I have always been a law abiding citizen, I&amp;#39;ve never done drugs, I don&amp;#39;t go on binge drinking sprees, I&amp;#39;m generally a guy working hard trying to make something of his life and I&amp;#39;ve always let you get on with matters that concern you because it never concerned me. You did your legally illegal, but legal job and I teach myself a load of different programming languages to do my job!&lt;/p&gt;
+
+&lt;p&gt;But you know what,  your job does concern me, because you&amp;#39;re not doing what you&amp;#39;re suppose to you shit heads! I&amp;#39;m thinking whether it&amp;#39;ll be more fun to start an uprising and watch you roll around and cry or just be me and patiently work my way through you&amp;#39;re crap fest and just run for prime minister. I can be a man of infinite patience if I want to be! So far I&amp;#39;ve decided a few things:&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m going to become way more active in politics from now on, and no I&amp;#39;m not going to become some protester throwing bottles. Do I look like I have that kinda time? It&amp;#39;s 2013, technology is at it&amp;#39;s best and poised to get better. Lukily for me I can build just about any tech I put my mind to, unfortunately for you this means I&amp;#39;m going to aim to change the battle field. Forget protesting, marching, hunger strikes and the like (who has the time, plus hunger strike? I can&amp;#39;t live without my chicken!). There&amp;#39;s a time and place for everything and 2013 is not the place for such primitive things. Not for my generation anyway...&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m going to build an app in the next few months that allows people to take pictures of police and other government officials being bastards and have you all named and shamed! I&amp;#39;m contemplating what else to build to aid my campaign, we&amp;#39;ll see.&lt;/p&gt;
+
+&lt;p&gt;And no, I have no intention of breaking the law, how would that help me at all? I won&amp;#39;t even contemplate hacking, hello, freedom of information act 2000! And yes the info I can get via that route is limited but I won&amp;#39;t need any more than that!  I can think of a lot of things I can do with the skills I have that will make things that much more harder for you to get away with the shit you are.&lt;/p&gt;
+
+&lt;p&gt;When I manage to get your attention, yes not if I do, but when I do, I shall see to it you regret pissing me off! You know, this could have gone very differently, I honestly would rather not be involved in politics, if you hadn&amp;#39;t been treating me like a criminal for being me none of this would have happened and I&amp;#39;d have just happily let you carry on being bastards in your own world. It&amp;#39;s annoying enough being me sometimes, I am Jamaican and proud! But the downside of that is every other moron I meet who finds out I&amp;#39;m Jamaican assumes I smoke, assumes I like every Bob Marley song, assumes I&amp;#39;m in a gang or associate with some.&lt;/p&gt;
+
+&lt;p&gt;Building an app and other tech things to take a stand  is going to be more representative of who I am rather than who these idiots are trying to make me out to be. Aptly put by &lt;a href=&quot;https://twitter.com/zcourts/status/350021035875246080&quot;&gt;Gareth&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 27 Jun 2013 08:10:51 +0100</pubDate>
+        <link>http://zcourts.com//2013/06/27/institutionally-racist-london-met-uk-politicians-youre-pissing-off-someone-in-tech-a-programmer-hacker-and-im-gonna-piss-you-back-off</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/06/27/institutionally-racist-london-met-uk-politicians-youre-pissing-off-someone-in-tech-a-programmer-hacker-and-im-gonna-piss-you-back-off</guid>
+        
+        <category>government</category>
+        
+        <category>london</category>
+        
+        <category>london met</category>
+        
+        <category>police</category>
+        
+        <category>racist</category>
+        
+        
+        <category>politics</category>
+        
+      </item>
+    
+      <item>
+        <title>Finding that blogging balance!</title>
+        <description>&lt;p&gt;I work hard. Least that&amp;#39;s what I get told :P - I&amp;#39;ve found it hard to find the time to blog as I much as I&amp;#39;d like to but after a recent conversation I had an epiphany. While I&amp;#39;m working on &lt;a href=&quot;http://fillta.com&quot;&gt;Fillta &lt;/a&gt;I&amp;#39;ve decided to do some contract jobs, &amp;quot;student internships&amp;quot; and whatever else I can to survive while I do it. After a recent interview I got a really nice compliment from the guy and it got me thinking. He basically said I&amp;#39;m way more knowledgeable than he expected, my age and being a recent graduate (Technically not true, graduation is in July) completely hides my experience and knowledge from an outset. He said he&amp;#39;d checked out my blog from my CV and it didn&amp;#39;t reflect it either...&lt;/p&gt;
+
+&lt;p&gt;So starting next week (finishing up 2 projects now) I&amp;#39;ll be writing a blog post at least 3 per week with the intention that as I get back into it I&amp;#39;ll increase the amount.&amp;lt;!-- more --&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;The most difficult thing I&amp;#39;ll have to do right now is find a way to balance Personal life, Fillta, my open source contributions and all the other projects I have on. I currently clock 18hrs a day on average with 2 and 3 day bursts not being unusual!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m up for suggestions on topics. This blog still gets around 200 people a day from my old posts so if you&amp;#39;re a &amp;quot;regular&amp;quot; reader you can comment with suggestions.&lt;/p&gt;
+
+&lt;p&gt;These are things I have in mind, in no particular order (just as they come to mind):&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Apache Cassandra - (Especially data modelling, people seem to have more trouble with that)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hadoop / MapReduce&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Netty&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Higgs.IO (hehe)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bloom Filters (Did my final year project on it)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Java&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scala&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Haskell (Still learning so overly keen on this one)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;JavaScript&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AngularJS&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;HTML5/CSS3&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;C# (Not overly keen, don&amp;#39;t have any Windows devices anymore but Windows 7 is in a VM with visual studio)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Android (Used MoSync, Appcelerator, Native API, wouldn&amp;#39;t mind PhoneGap just to learn it)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BackboneJS (Prefer AngularJS by far but I get on with virtually anything if I have to)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PHP&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ruby - Although I&amp;#39;ve only done a little with rails&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Python&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NodeJS&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NLTK&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;C++ (If I must with either Boost or QT)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MySQL&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3D Computer Graphics (Did an OpenGL module recently, was interesting)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ZeroMQ&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Actually, having written those topics I&amp;#39;ve got quite a few things there, should give me topics for a few months or so but still welcome suggestions.  The plan is to do some tutorial style posts. Looking at the stats my previous tutorials pull in the most visitors.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Jun 2013 17:29:52 +0100</pubDate>
+        <link>http://zcourts.com//2013/06/24/finding-that-blogging-balance</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/06/24/finding-that-blogging-balance</guid>
+        
+        <category>android</category>
+        
+        <category>apache cassandra</category>
+        
+        <category>backbonejs</category>
+        
+        <category>bloom filter</category>
+        
+        <category>c#</category>
+        
+        <category>c++</category>
+        
+        <category>css3</category>
+        
+        <category>hadoop</category>
+        
+        <category>haskell</category>
+        
+        <category>higgs.io</category>
+        
+        <category>html5</category>
+        
+        <category>java</category>
+        
+        <category>mapreduce</category>
+        
+        <category>mosync</category>
+        
+        <category>mysql</category>
+        
+        <category>netty</category>
+        
+        <category>nltk</category>
+        
+        <category>nodejs</category>
+        
+        <category>opengl</category>
+        
+        <category>phonegap</category>
+        
+        <category>php</category>
+        
+        <category>python</category>
+        
+        <category>ruby</category>
+        
+        <category>scala</category>
+        
+        <category>zeromq</category>
+        
+        
+        <category>angularjs</category>
+        
+        <category>c#</category>
+        
+        <category>fillta</category>
+        
+        <category>haskell</category>
+        
+        <category>java</category>
+        
+        <category>javascript</category>
+        
+        <category>php</category>
+        
+        <category>scala</category>
+        
+      </item>
+    
+      <item>
+        <title>Configuring Ubuntu for VirtualBox to detect USB devices</title>
+        <description>&lt;p&gt;I&amp;#39;ve been developing Android Apps are more often recently but I&amp;#39;ve found the Linux support for some android tools less than appealing.
+In particular, I&amp;#39;ve been using &lt;a href=&quot;http://www.mosync.com/&quot;&gt;MOSYNC&lt;/a&gt; and they don&amp;#39;t provide a Linux installer, you have to &lt;a href=&quot;http://www.mosync.com/docs/sdk/tools/guides/extensions/building-mosync-source-linux/index.html&quot;&gt;compile it from source&lt;/a&gt;. That&amp;#39;s all well and good until something goes wrong then you spend forever trying to re-compile and fix build issues, time I&amp;#39;d rather spend doing something else.&lt;/p&gt;
+
+&lt;p&gt;Since I refuse to go back to windows as a main OS after it annoyed the crap outta me recently, I settled for the next best thing, virtualisation! I&amp;#39;m using &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; which is honestly one of the most awesome opensource software I know of! With Windows installed in VirtualBox, I was set...or so I thought. USB devices weren&amp;#39;t being picked up by VirtualBox. A quick Google revealed that this is a common issue and well documented on &lt;a href=&quot;https://forums.virtualbox.org/viewtopic.php?f=8&amp;amp;t=45349&quot;&gt;page 52 of the VirtualBox user manual (People read those?)&lt;/a&gt;. If you&amp;#39;d like to read it, it&amp;#39;s all well documented in the &lt;a href=&quot;https://www.virtualbox.org/manual/ch03.html#idp19029008&quot;&gt;user manual under VirtualBox USB support&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So to the point, the problem is that when VirtualBox is installed your user account probably wasn&amp;#39;t added to the group it created. You can check and make sure you&amp;#39;re facing the same issue by running the command:
+&amp;lt;!-- more --&amp;gt;
+&lt;code&gt;bash
+ls -lR /dev/vboxusb
+&lt;/code&gt;
+If it outputs &amp;quot;Permission denied&amp;quot; then it&amp;#39;s probably the same issue. Now trying running it with sudo
+&lt;code&gt;bash
+sudo ls -lR /dev/vboxusb
+&lt;/code&gt;
+If it lists all your USB devices then that means its very likely the same problem. You can confirm this by running
+```bash&lt;/p&gt;
+
+&lt;p&gt;VBoxManage list usbhost&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;If  it says &quot;None&quot; and then running it with sudo lists the devices there&#39;s a good chance this solution will work for you...if not you can try it anyway. As I said earlier the problem is probably that your user account isn&#39;t in the right group. There are two ways to fix this, from the command line or through a GUI tool. The command line is quicker simply type
+```bash
+usermod -a -G vboxusers courtney #change courtney to your username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to use a GUI tool install system tools and use it to add your user account to the &amp;quot;vboxusers&amp;quot; users group. There&amp;#39;s a &lt;a href=&quot;http://askubuntu.com/a/66727/10273&quot;&gt;short guide here&lt;/a&gt; but in short run&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install gnome-system-tools
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then add yourself, see images below:&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_590&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;670&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/users-2.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/users-2.png&quot; alt=&quot;Find vboxusers and add your account to it&quot;&gt;&lt;/a&gt; Find vboxusers and add your account to it[/caption]&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_591&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;670&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/user-11.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/user-11.png&quot; alt=&quot;Search for users&quot;&gt;&lt;/a&gt; Search for users[/caption]&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;#39;re added, you&amp;#39;ll need to logout, and log back in for group permissions to take effect.&lt;/p&gt;
+
+&lt;p&gt;When you&amp;#39;re logged back in, fire up virtual box, don&amp;#39;t start windows, we&amp;#39;re not quite finished yet. Open the settings dialog and select &amp;quot;USB&amp;quot; from the list of options on the left.
+Now click the + icon to add a filter&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_592&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;670&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/add-filter.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/add-filter.png&quot; alt=&quot;Add virtualbox usb filter&quot;&gt;&lt;/a&gt; Add virtualbox usb filter[/caption]&lt;/p&gt;
+
+&lt;p&gt;You should now have your USB devices listed, select the one you want from the list. For more info on filters, check the VirtualBox usb support page I linked to earlier.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_593&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;666&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/samsung-filter.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/samsung-filter.png&quot; alt=&quot;SamSung S3 added as a filter&quot;&gt;&lt;/a&gt; SamSung S3 added as a filter[/caption]&lt;/p&gt;
+
+&lt;p&gt;Hit OK and start windows. Windows will now get access to your device and install whatever drivers it needs to so that you get the usual open device dialog like this:&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_594&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;670&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/windows-ht-9300.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/windows-ht-9300.png&quot; alt=&quot;S3 detected in VirtualBox&quot;&gt;&lt;/a&gt; S3 detected in VirtualBox[/caption]&lt;/p&gt;
+
+&lt;p&gt;Now one last thing! If you get Ubuntu automounting your device and showing that annoying popup hundreds of times, then unplug the device and prevent Ubuntu from automounting.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_595&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;393&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/annoying-ubuntu-popup.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/annoying-ubuntu-popup.png&quot; alt=&quot;Annoying ubuntu popup&quot;&gt;&lt;/a&gt; Annoying ubuntu popup[/caption]&lt;/p&gt;
+
+&lt;p&gt;Follow the instructions over at &lt;a href=&quot;https://help.ubuntu.com/community/Mount/USB&quot;&gt;Ubuntu&amp;#39;s docs&lt;/a&gt;. In short, open &amp;quot;&lt;strong&gt;dconf-editor&lt;/strong&gt;&amp;quot; if it&amp;#39;s not installed then install it with&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bashsudo apt-get install dconf-editor&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Open it and &amp;quot;Browse to &lt;strong&gt;org.gnome.desktop.media-handling&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;quot;attachment_596&amp;quot; align=&amp;quot;aligncenter&amp;quot; width=&amp;quot;670&amp;quot;]&lt;a href=&quot;http://crlog.files.wordpress.com/2013/06/disable-automount.png&quot;&gt;&lt;img src=&quot;http://crlog.files.wordpress.com/2013/06/disable-automount.png&quot; alt=&quot;disable automount device on ubuntu&quot;&gt;&lt;/a&gt; disable automount device on ubuntu[/caption]&lt;/p&gt;
+
+&lt;p&gt;Uncheck the box, close it and move on!&lt;/p&gt;
+
+&lt;p&gt;That&amp;#39;s that! Now you can get all the Windows better tools for Android on Windows and stay with Ubuntu!&lt;/p&gt;
+
+&lt;p&gt;Links:
+&lt;a href=&quot;https://www.virtualbox.org/ticket/8978&quot;&gt;Cannot find USB bug report&lt;/a&gt;
+&lt;a href=&quot;https://www.virtualbox.org/ticket/10087&quot;&gt;No USB available with non root user&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 02 Jun 2013 14:11:46 +0100</pubDate>
+        <link>http://zcourts.com//2013/06/02/configuring-ubuntu-for-virtualbox-to-detect-usb-devices</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/06/02/configuring-ubuntu-for-virtualbox-to-detect-usb-devices</guid>
+        
+        <category>android</category>
+        
+        <category>mosync</category>
+        
+        <category>permission denied</category>
+        
+        <category>usb</category>
+        
+        <category>usb devices</category>
+        
+        <category>virtualbox</category>
+        
+        <category>virtualbox list usb devices</category>
+        
+        <category>virtualbox usb setup</category>
+        
+        <category>windows</category>
+        
+        
+        <category>android</category>
+        
+        <category>ubuntu</category>
+        
+      </item>
+    
+      <item>
+        <title>AngularJS: If you don&#39;t have a dot, you&#39;re doing it wrong!</title>
+        <description>&lt;p&gt;This has bitten me twice in the last 3 days so I&amp;#39;m doing a quick post to remind myself.&lt;/p&gt;
+
+&lt;p&gt;With AngularJS models, you typically have two way bindings between UI elements and your controller&amp;#39;s properties. Directly from the &lt;a href=&quot;http://docs.angularjs.org/api/ng.directive:input.text&quot;&gt;docs&lt;/a&gt; (&lt;a href=&quot;http://plnkr.co/edit/PCUFA3yARnIdpks84W4Z&quot;&gt;Plunker&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doctype&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;script.js&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/head&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myForm&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Ctrl&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Single&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;word&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;error&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myForm.input.$error.required&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/span&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;error&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myForm.input.$error.pattern&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;Single&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/span&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/tt&amp;gt;&amp;lt;br/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$valid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/tt&amp;gt;&amp;lt;br/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/tt&amp;gt;&amp;lt;br/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$valid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/tt&amp;gt;&amp;lt;br/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/tt&amp;gt;&amp;lt;br/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/form&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/body&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/html&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;lt;!-- more --&amp;gt;JavaScript&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Ctrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;guest&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\w&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;*$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This all works great until you get a simple property that&amp;#39;s a &amp;#39;primitive&amp;#39; so numbers, boolean etc. and you need to use this property within an angular repeater or another directive which creates its own scope. The problem is that, because JavaScript is a pass by value language, primitive types are copied within nested scopes. This means that, if a property changes within a local scope, the original/parent version of the property isn&amp;#39;t updated with those changes. Not only that, angular (for good reason) no longer allow duplicates within a repeater, which is what lead me to &lt;a href=&quot;http://stackoverflow.com/a/15975118/400048&quot;&gt;StackOverflow&lt;/a&gt; the first time I encountered this.&lt;/p&gt;
+
+&lt;p&gt;The solution is simply replace the primitive with a JavaScript hash/object so instead of doing something like this:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Ctrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myProperty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should do&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Ctrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myProperty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;someName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I highly recommend watching this talk by &lt;a href=&quot;http://www.youtube.com/watch?v=ZhfUv0spHCY&quot;&gt;Miško Hevery&lt;/a&gt; on AngularJS best practices. I&amp;#39;ve watched it...not I just need to remember all of it :D&lt;/p&gt;
+
+&lt;p&gt;[youtube=&lt;a href=&quot;http://www.youtube.com/watch?v=ZhfUv0spHCY&quot;&gt;http://www.youtube.com/watch?v=ZhfUv0spHCY&lt;/a&gt;]&lt;/p&gt;
+
+&lt;p&gt;For further reading, Jim Hoskins did a more in depth write up on &lt;a href=&quot;http://jimhoskins.com/2012/12/14/nested-scopes-in-angularjs.html&quot;&gt;nested scopes in AngularJS&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 31 May 2013 22:30:33 +0100</pubDate>
+        <link>http://zcourts.com//2013/05/31/angularjs-if-you-dont-have-a-dot-youre-doing-it-wrong</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/05/31/angularjs-if-you-dont-have-a-dot-youre-doing-it-wrong</guid>
+        
+        <category>angularjs</category>
+        
+        <category>bindings</category>
+        
+        <category>models</category>
+        
+        <category>nest scope</category>
+        
+        <category>properties</category>
+        
+        <category>reference types</category>
+        
+        <category>scopes</category>
+        
+        <category>two way binding</category>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>AngularJS: Building completely asynchronous and autonomous single page user interfaces (Part 2)</title>
+        <description></description>
+        <pubDate>Thu, 30 May 2013 14:27:28 +0100</pubDate>
+        <link>http://zcourts.com//2013/05/30/angularjs-building-completely-asynchronous-and-autonomous-single-page-user-interfaces-part-2</link>
+        <guid isPermaLink="true">http://zcourts.com//2013/05/30/angularjs-building-completely-asynchronous-and-autonomous-single-page-user-interfaces-part-2</guid>
+        
+        
+        <category>general</category>
+        
+      </item>
+    
+  </channel>
+</rss>

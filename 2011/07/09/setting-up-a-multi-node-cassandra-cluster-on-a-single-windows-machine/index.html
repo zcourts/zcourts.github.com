@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Setting up a multi-node Cassandra cluster on a single Windows machine</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="In Windows explorer, go to &quot;C:\Windows\System32\drivers\etc&quot;Copy the file called &quot;hosts&quot; to your desktop ( or any editable location)Open ...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/07/09/setting-up-a-multi-node-cassandra-cluster-on-a-single-windows-machine">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Setting up a multi-node Cassandra cluster on a single Windows machine</h1>
+    <p class="post-meta">Jul 9, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>In Windows explorer, go to &quot;C:\Windows\System32\drivers\etc&quot;
+Copy the file called &quot;hosts&quot; to your desktop ( or any editable location)
+Open the hosts file from the desktop and add the following to the end of the file:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">#cassandra nodes
+127.0.0.1               127.0.0.2
+127.0.0.1               127.0.0.3
+127.0.0.1               127.0.0.4
+127.0.0.1               127.0.0.5
+127.0.0.1               127.0.0.6
+</code></pre></div>
+<p>&lt;!-- more --&gt;Each line represents a node in your cluster to be.You can replace 127.0.0.1...6
+with any host name you desire such as node1,node2, etc... it should* still work
+Next, re-name the hosts file in &quot;C:\Windows\System32\drivers\etc&quot; to hosts.bak i.e
+&quot;C:\Windows\System32\drivers\etc\hosts.bak&quot;. You may need admin permission to do this.
+Now copy the modified hosts file from your desktop (or wherever you copied it to) to
+&quot;C:\Windows\System32\drivers\etc&quot;. If you have a web server running you can access it by typing,
+any of the nodes you entered i.e 127.0.0.2 for e.g.
+Download the latest version of <a href="http://cassandra.apache.org">Cassandra</a> from the <a href="http://cassandra.apache.org/download/">Cassandra download page</a>.
+Now, there are several ways you could do this part but the method I use presents far fewer problems later on.
+Create a folder at the root of your drive called cassandra, i.e &quot;C:\cassandra&quot;, and in the cassandra folder, create
+6 folders named 1 to 6(or however many nodes you want).
+You should now have a folder structure looking like this:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">C:\cassandra
+            \1
+            \2
+            \3
+            \4
+            \5
+            \6
+</code></pre></div>
+<p>Extract the files from the cassandra download once into each sub-directory.
+i.e put the cassandra files/folders (bin,conf,interface,lib,javadoc, etc) in each folder (1...6)
+Starting with the folder named &quot;1&quot;, open cassandra.yaml file for editing. i.e. Open</p>
+<div class="highlight"><pre><code class="language-" data-lang="">"C:\cassandra\1\conf\cassandra.yaml"
+</code></pre></div>
+<p>.
+Give the cluster name a meaningful value :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cluster_name: 'Awesomeness'
+</code></pre></div>
+<p>We want to make the first and second node seed nodes so ensure that auto_bootstrap is
+false for these two but true for the others</p>
+<div class="highlight"><pre><code class="language-" data-lang="">auto_bootstrap: false
+</code></pre></div>
+<p>Provide the seed nodes for each cassandra.yaml file as 127.0.0.1 and 127.0.0.2</p>
+<div class="highlight"><pre><code class="language-" data-lang="">seed_provider:
+    # Addresses of hosts that are deemed contact points.
+    # Cassandra nodes use this list of hosts to find each other and learn
+    # the topology of the ring.  You must change this if you are running
+    # multiple nodes!
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "&lt;ip1&gt;,&lt;ip2&gt;,&lt;ip3&gt;"
+          - seeds: "127.0.0.1,127.0.0.2"
+</code></pre></div>
+<p><strong>IMPORTANT</strong>: You need to ensure that the following values are changed for each node:</p>
+
+<h1>directories where Cassandra should store data on disk.</h1>
+<div class="highlight"><pre><code class="language-" data-lang="">data_file_directories:
+    - /cassandra/1/var/lib/cassandra/data
+
+# commit log
+commitlog_directory: /cassandra/1/var/lib/cassandra/commitlog
+
+# saved caches
+saved_caches_directory: /cassandra/1/var/lib/cassandra/saved_caches
+</code></pre></div>
+<p>Notice the &quot;/cassandra/<strong>1</strong>/var/lib/&quot;, this path changes to &quot;/cassandra/<strong>2</strong>/var/lib/&quot;. Its important each tell each node to
+use a different location to store its data.
+Finally make the following changes to the first file:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">listen_address: 127.0.0.1
+rpc_address: 127.0.0.1
+</code></pre></div>
+<p>Once that&#39;s done, save the cassandra.yaml file. Copy the edited file into the conf folder of the other nodes
+(make any other tweaks you like to the configuration) .
+Edit each cassandra.yaml file as described above making sure you change the path and the host as well as the boot strap
+option.
+So in the end yor configuration will be similar to:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Node 1 = 127.0.0.1 
+Node 2 = 127.0.0.2
+Node 3 = 127.0.0.3
+Node 4 = 127.0.0.4
+Node 5 = 127.0.0.5
+Node 6 = 127.0.0.6
+</code></pre></div>
+<p><strong>IMPORTANT:</strong> Go into each node&#39;s bin directory and edit cassandra.bat file, for each node change the line that says &quot;-Dcom.sun.management.jmxremote.port=7199<sup>&quot;</sup> changing the 7199 to a unique number. This is the JMX port that allows you to connect to your cluster using nodetool or JConsole each node needs to have their own port so each bat file must be edited and have a unique port set.
+Once you have edited cassandra.bat go to each of your bin folders and double click cassandra.bat to start each node.
+It will show the standard output and as your nodes join the cluster the existing node should have an output similar to: </p>
+<div class="highlight"><pre><code class="language-" data-lang="">Starting Cassandra Server
+ INFO 00:31:45,810 Logging initialized
+ INFO 00:31:45,829 JVM vendor/version: Java HotSpot(TM) Client VM/1.6.0_26
+ INFO 00:31:45,830 Heap size: 1070399488/1070399488
+ INFO 00:31:45,832 JNA not found. Native methods will be disabled.
+ INFO 00:31:45,847 Loading settings from file:/C:/cassandra/6/conf/cassandra.yaml
+ INFO 00:31:46,001 DiskAccessMode 'auto' determined to be standard, indexAccessMode is standard
+ INFO 00:31:46,194 Global memtable threshold is enabled at 340MB
+ INFO 00:31:46,196 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,205 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,207 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,209 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,212 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,235 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,342 Opening \cassandra\6\var\lib\cassandra\data\system\LocationInfo-g-5
+ INFO 00:31:46,417 Couldn't detect any schema definitions in local storage.
+ INFO 00:31:46,419 Found table data in data directories. Consider using the CLI to define your schema.
+ INFO 00:31:46,422 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,423 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,424 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,425 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,426 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,427 Removing compacted SSTable files (see http://wiki.apache.org/cassandra/MemtableSSTable)
+ INFO 00:31:46,441 Creating new commitlog segment /cassandra/6/var/lib/cassandra/commitlog\CommitLog-1310167906441.log
+ INFO 00:31:46,456 Replaying \cassandra\6\var\lib\cassandra\commitlog\CommitLog-1310166938103.log
+ INFO 00:31:46,506 Finished reading \cassandra\6\var\lib\cassandra\commitlog\CommitLog-1310166938103.log
+ INFO 00:31:46,507 Log replay complete, 0 replayed mutations
+ INFO 00:31:46,513 Cassandra version: 2011-06-24_17-00-57
+ INFO 00:31:46,514 Thrift API version: 19.10.0
+ INFO 00:31:46,514 Loading persisted ring state
+ INFO 00:31:46,519 Starting up server gossip
+ INFO 00:31:46,534 Enqueuing flush of Memtable-LocationInfo@24118161(29/36 serialized/live bytes, 1 ops)
+ INFO 00:31:46,536 Writing Memtable-LocationInfo@24118161(29/36 serialized/live bytes, 1 ops)
+ INFO 00:31:46,752 Completed flushing \cassandra\6\var\lib\cassandra\data\system\LocationInfo-g-6-Data.db (80 bytes)
+ INFO 00:31:46,786 Starting Messaging Service on port 7000
+ INFO 00:31:46,803 Using saved token 102593982436182981303623068613937633300
+ INFO 00:31:46,805 Enqueuing flush of Memtable-LocationInfo@6530849(53/66 serialized/live bytes, 2 ops)
+ INFO 00:31:46,805 Writing Memtable-LocationInfo@6530849(53/66 serialized/live bytes, 2 ops)
+ INFO 00:31:47,016 Completed flushing \cassandra\6\var\lib\cassandra\data\system\LocationInfo-g-7-Data.db (163 bytes)
+ INFO 00:31:47,028 Will not load MX4J, mx4j-tools.jar is not in the classpath
+ INFO 00:31:47,088 Binding thrift service to /127.0.0.6:9160
+ INFO 00:31:47,093 Using TFastFramedTransport with a max frame size of 15728640 bytes.
+ INFO 00:31:47,097 Listening for thrift clients...
+&lt;span style="color:#ff0000;"&gt; INFO 00:38:04,061 Node /127.0.0.1 is now part of the cluster INFO 00:38:04,062 InetAddress /127.0.0.1 is now UP INFO 00:38:04,066 Node /127.0.0.3 is now part of the cluster INFO 00:38:04,067 InetAddress /127.0.0.3 is now UP INFO 00:38:04,068 Node /127.0.0.4 is now part of the cluster INFO 00:38:04,069 InetAddress /127.0.0.4 is now UP INFO 00:38:04,071 Node /127.0.0.5 is now part of the cluster INFO 00:38:04,073 InetAddress /127.0.0.5 is now UP&lt;/span&gt;
+</code></pre></div>
+<p>Notice the sections highlighted in red above. To further verify it all open the windows command line and type:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd C:\cassandra\1\bin
+C:\cassandra\1\bin&gt;nodetool -h 127.0.0.1 -p 7199 ring
+Starting NodeTool
+Address         DC          Rack        Status State   Load            Owns    Token
+                                                                               168491748725623446302120781415458496600
+127.0.0.4       datacenter1 rack1       Up     Normal  15.21 KB        7.68%   11425225278660601160740228674692519427
+127.0.0.1       datacenter1 rack1       Up     Normal  6.54 KB         7.84%   24758542403423023699811268504211696378
+127.0.0.6       datacenter1 rack1       Up     Normal  15.21 KB        45.75%  102593982436182981303623068613937633300
+127.0.0.3       datacenter1 rack1       Up     Normal  15.21 KB        14.36%  127025561568971490267469092579669239579
+127.0.0.5       datacenter1 rack1       Up     Normal  15.21 KB        24.37%  168491748725623446302120781415458496600
+</code></pre></div>
+<p>That actually shows 5 of my nodes instead of 6...I think I forgot to start one somehow. Anyway, you get the point.</p>
+
+<p>Hope this has been helpful, it can be tricky if you don&#39;t get it all right but just ask in the comments and I&#39;ll do what I can to help.
+PS: Just to be clear, you&#39;d only do this for lowly testing purposes. In fact its not a very good idea to be testing anything aside from some examples with a setup like this...IT IS NOT FOR PRODUCTION, you&#39;ve been warned!</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

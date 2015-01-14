@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Making the web a messier, better place.
+">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//posts/5/">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <article class="post-content">
+    <div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <div id="toctitle">
+                  <h2>Contents</h2>
+               </div>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Quick tips for squeezing performance out of Google's Javascript charts with live (continuous) data/streams</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-2">
+                     <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">Setting up a multi-node Cassandra cluster on a single Windows machine</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-3">
+                     <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">Getting started with PHPUnit unit testing</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-4">
+                     <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">Creating a String class to represent and manipulate strings in PHP</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-5">
+                     <a href="#tocAnchor-1-5"><span class="tocnumber">5</span> <span class="toctext">Installing Xampp and adding/updating PHPUnit and PHPDocumenter and configuring Netbeans 7 to use them on Windows</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-6">
+                     <a href="#tocAnchor-1-6"><span class="tocnumber">6</span> <span class="toctext">Upgrading Eclipse on Ubuntu (from 3.5 to 3.7 indigo -  works for other versions too)</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-7">
+                     <a href="#tocAnchor-1-7"><span class="tocnumber">7</span> <span class="toctext">Ubuntu 11.04 black screen fix (after install or upgrade)</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-8">
+                     <a href="#tocAnchor-1-8"><span class="tocnumber">8</span> <span class="toctext">CQL : Creating a column family</span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-9">
+                     <a href="#tocAnchor-1-9"><span class="tocnumber">9</span> <span class="toctext">CQL : Creating a simple keyspace </span></a>
+                  </li>
+                  <li class="toc_level-1 toc_section-10">
+                     <a href="#tocAnchor-1-10"><span class="tocnumber">10</span> <span class="toctext">Cassandra Query Language (CQL) v1.0.0 (UPDATED)</span></a>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div><h1 id="tocAnchor-1-1">
+   <a href="/2011/08/07/quick-tips-for-squeezing-performance-out-of-googles-javascript-charts-with-live-continuous-data">Quick tips for squeezing performance out of Google's Javascript charts with live (continuous) data/streams</a>
+</h1>
+<p class="author">
+    <span class="date">2011-08-07 11:18:42 +0100</span>
+</p>
+<div class="content">
+    <p>I, until a few days ago always used JQuery for literally everything that needed Javascript. I've recently needed to use <a href="http://code.google.com/apis/chart/">Google charts</a> to show a live graphical representation of data. It needed to be a widget that didn't rely on any framework so I had to brush up on my Javascript and forget all the easy stuff JQuery usually gives me! The chart would be updated EVERY SECOND, yeah pretty often! In every second there could be any amount of new points to be plotted. In addition, I'm only interested in points that have occurred within a fixed time period, the results of all this will be an "animated" graph that shifts left when data is updated.&lt;!-- more --&gt;</p>
+
+</div>
+
+<h1 id="tocAnchor-1-2">
+   <a href="/2011/07/09/setting-up-a-multi-node-cassandra-cluster-on-a-single-windows-machine">Setting up a multi-node Cassandra cluster on a single Windows machine</a>
+</h1>
+<p class="author">
+    <span class="date">2011-07-09 01:01:53 +0100</span>
+</p>
+<div class="content">
+    <p>In Windows explorer, go to "C:\Windows\System32\drivers\etc"
+Copy the file called "hosts" to your desktop ( or any editable location)
+Open the hosts file from the desktop and add the following to the end of the file:</p>
+
+</div>
+
+<h1 id="tocAnchor-1-3">
+   <a href="/2011/07/04/getting-started-with-phpunit-unit-testing">Getting started with PHPUnit unit testing</a>
+</h1>
+<p class="author">
+    <span class="date">2011-07-04 06:00:50 +0100</span>
+</p>
+<div class="content">
+    <p>The follow up to my<a href="http://crlog.info/2011/07/02/creating-a-string-class-to-represent-and-manipulate-strings-in-php/"> previous post</a>. The below is the php unit test class for the string class example I wrote.</p>
+
+</div>
+
+<h1 id="tocAnchor-1-4">
+   <a href="/2011/07/03/creating-a-string-class-to-represent-and-manipulate-strings-in-php">Creating a String class to represent and manipulate strings in PHP</a>
+</h1>
+<p class="author">
+    <span class="date">2011-07-03 08:11:26 +0100</span>
+</p>
+<div class="content">
+    <p>In getting started with PHPUnit, I didn't have any code I felt like writing unit tests for. Mainly because I wanted to start with something very simple. I started writing some code, one thing lead to another and I ended with a simple class to represent a string. It only has a few methods but it was more than enough to provide me with quite a few test cases. The unit test for the class in another post I'm going to do soon. (<del>PHP Unit tests for string class is here</del>)</p>
+
+</div>
+
+<h1 id="tocAnchor-1-5">
+   <a href="/2011/07/02/installing-xampp-and-adding-orupdating-phpunit-and-phpdocumenter-and-configuring-netbeans-7-to-use-them-on-windows">Installing Xampp and adding/updating PHPUnit and PHPDocumenter and configuring Netbeans 7 to use them on Windows</a>
+</h1>
+<p class="author">
+    <span class="date">2011-07-02 10:33:51 +0100</span>
+</p>
+<div class="content">
+    <p>That title is quite a mouthful isn't it? I usually do development on <a href="http://www.ubuntu.com/">Ubuntu </a>and only ever develop Windows specific programs on Windows using <a href="http://www.microsoft.com/NET/">.NET</a> but I've found the need to setup an environment to do some <a href="http://www.php.net">PHP</a>/<a href="http://www.mysql.com">MySQL</a> dev on windows (7). I'm running Windows 7 but the steps should work fine for XP and Vista too.</p>
+
+</div>
+
+<h1 id="tocAnchor-1-6">
+   <a href="/2011/06/30/upgrading-eclipse-on-ubuntu-from-3-5-to-3-7-indigo-works-for-other-versions-too">Upgrading Eclipse on Ubuntu (from 3.5 to 3.7 indigo -  works for other versions too)</a>
+</h1>
+<p class="author">
+    <span class="date">2011-06-30 01:54:42 +0100</span>
+</p>
+<div class="content">
+    <p>After upgrading my Ubuntu version to 11.04 I installed eclipse using the software centre.
+It turns out that only v3.5 of Eclipse is available (as the latest) from the software Centre.  I wanted to update to 3.7 but I wanted to keep all the links set up by the software centre e.g On the new Ubuntu "Start Page" or the new toolbar, in addition I want to be able to use the software centre to uninstall eclipse if the need arises.&lt;!-- more --&gt;</p>
+
+</div>
+
+<h1 id="tocAnchor-1-7">
+   <a href="/2011/06/22/ubuntu-11-04-black-screen-fix-after-install-or-upgrade">Ubuntu 11.04 black screen fix (after install or upgrade)</a>
+</h1>
+<p class="author">
+    <span class="date">2011-06-22 21:54:35 +0100</span>
+</p>
+<div class="content">
+    <p>I have been stumped for the last two days with my Ubuntu install.
+I naively upgraded to 11.04 without checking the <a href="https://wiki.ubuntu.com/NattyNarwhal/ReleaseNotes">Ubuntu release notes</a>... Turns out their is a known bug affecting <a href="https://wiki.ubuntu.com/NattyNarwhal/ReleaseNotes#Ubuntu_ARM">Ubuntu ARM</a> installs.</p>
+
+</div>
+
+<h1 id="tocAnchor-1-8">
+   <a href="/2011/06/18/cql-creating-a-column-family">CQL : Creating a column family</a>
+</h1>
+<p class="author">
+    <span class="date">2011-06-18 17:28:24 +0100</span>
+</p>
+<div class="content">
+    <p>Following on from my last post about how to <a href="http://crlog.info/2011/06/13/cql-creating-a-simple-keyspace/">create a keyspace with CQL</a>,  in this tutorial/post I'll create a Coloumn family. Unless this has changed recently CQL does not support creating supoer column families. As far as I know there are no plans to do so either...&lt;!-- more --&gt;</p>
+
+</div>
+
+<h1 id="tocAnchor-1-9">
+   <a href="/2011/06/14/cql-creating-a-simple-keyspace">CQL : Creating a simple keyspace </a>
+</h1>
+<p class="author">
+    <span class="date">2011-06-14 00:59:35 +0100</span>
+</p>
+<div class="content">
+    <p>I promised a few tutorials covering <a href="http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/">CQL</a> examples so I'm going to kick off a series to demonstrate all/most of the features of <a href="http://cassandra.apache.org">Cassandra</a>'s new query language, CQL.</p>
+
+</div>
+
+<h1 id="tocAnchor-1-10">
+   <a href="/2011/06/13/cassandra-query-language-cql-v1-0-0-updated">Cassandra Query Language (CQL) v1.0.0 (UPDATED)</a>
+</h1>
+<p class="author">
+    <span class="date">2011-06-13 20:44:20 +0100</span>
+</p>
+<div class="content">
+    <p>NOTE: CQL V2 reference is available here <a href="http://crlog.info/2011/09/17/cassandra-query-language-cql-v2-0-reference/">http://crlog.info/2011/09/17/cassandra-query-language-cql-v2-0-reference/</a></p>
+
+</div>
+
+
+
+<div class="pagination">
+    
+        <a href="/posts/4/">« Prev</a>
+    
+
+    
+        
+            <a href="/index.html">1</a>
+        
+    
+        
+            <a href="/posts/2/">2</a>
+        
+    
+        
+            <a href="/posts/3/">3</a>
+        
+    
+        
+            <a href="/posts/4/">4</a>
+        
+    
+        
+            <em>5</em>
+        
+    
+        
+            <a href="/posts/6/">6</a>
+        
+    
+        
+            <a href="/posts/7/">7</a>
+        
+    
+        
+            <a href="/posts/8/">8</a>
+        
+    
+        
+            <a href="/posts/9/">9</a>
+        
+    
+
+    
+        <a href="/posts/6/">Next »</a>
+    
+</div>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

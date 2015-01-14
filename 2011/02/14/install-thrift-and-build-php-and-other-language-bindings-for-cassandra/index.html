@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Install thrift and build PHP (and other language) bindings for Cassandra</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Install thrift and build PHP bindings for Cassandra">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/02/14/install-thrift-and-build-php-and-other-language-bindings-for-cassandra">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Install thrift and build PHP (and other language) bindings for Cassandra</h1>
+    <p class="post-meta">Feb 14, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <h1>Install thrift and build PHP bindings for Cassandra</h1>
+
+<p>This guide should work for 0.7+ versions of Cassandra. Other versions may need tweaking here and there but the general path should be similar. Lets begin...</p>
+
+<p>Install thrift dependencies</p>
+<div class="highlight"><pre><code class="language-“sh”" data-lang="“sh”"> yum install automake libtool flex bison pkgconfig gcc-c++ boost-devel libevent-devel zlib-devel python-devel ruby-devel
+</code></pre></div>
+<p>Download thrift</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> wget http://mirrors.enquira.co.uk/apache/incubator/thrift/0.5.0-incubating/thrift-0.5.0.tar.gz
+extract
+
+tar –xvf  thrift-0.5.0.tar.gz
+
+<span class="nb">cd</span>  thrift-0.5.0
+
+./configure
+
+make <span class="o">&amp;&amp;</span> make install
+</code></pre></div>
+<p>Once its all completed you should now be able to run thrift, test it by typing:</p>
+
+<p>thrift</p>
+
+<p>and you should get an output telling you a bunch of options are available. If not something went wrong when you were installing and you need to try and find where the error occurred and fix it.</p>
+
+<p>Now lets download Cassandra’s source so that we can get the thrift file from it:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> wget  http://mirror.fubra.com/ftp.apache.org/cassandra/0.7.0/apache-cassandra-0.7.0-src.tar.gz
+
+tar -xvf apache-cassandra-0.7.0-src.tar.gz
+ <span class="nb">cd </span>apache-cassandra-0.7.0-src/interface
+</code></pre></div>
+<p>You should see some files listed, the one we’re interested in is cassandra.thrift ...</p>
+
+<p>Now we can generate the thrift bindings for any of the supported languages:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> <span class="c">#thrift --gen XYZ cassandra.thrift</span>
+</code></pre></div>
+<p>Where xyz is the language you need, so for PHP it would be:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> thrift --gen php cassandra.thrift
+</code></pre></div>
+<p>You will now have a gen-php folder in the directory, it contains the subdirectory for Cassandra and finally the php files. The files cassandra_constants.php, Cassandra.php  and cassandra_types.php should have been generated.</p>
+
+<p>Lets copy the generate files to our website include path for use later.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> <span class="nb">cd </span>gen-php
+ tar –cvf cassandra.php.tar
+ <span class="c">#now copy or move (mv) the archive to your website’s include path</span>
+ <span class="c">#cp cassandra.php.tar /home/username/websiteRoot/includes/thrift</span>
+
+</code></pre></div>
+<p>You can now include these files in your PHP program. There are additional files that you need to find and include. One such file is Thrift.php, depending on the system you’re running the location may be different.</p>
+
+<p>On my Centos distro, it is located in /usr/lib/php/ - along with the folders “protocol” and “transport” and a second file, “autoload.php”</p>
+
+<p>If you open the Cassandra.php file from earlier, you’ll notice it is including files from “thrift_root” or similar. These files are the ones you need to copy to wherever you want you thrift root location to be. Since I only have the thrift files in /usr/lib/php I’m going to tar this folder and copy it to a location where I want to include files from. If that directory contains files not belonging to thrift then only copy Thrift.php, protocol and transport.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"> <span class="c">#create an archive of the required files</span>
+ <span class="nb">cd</span> /usr/lib/php/
+ tar  -cvf  thrift.php.tar <span class="k">*</span>
+ <span class="c">#now copy or move (mv) the archive to your website’s include path</span>
+ <span class="c">#cp thrift.php.tar /home/username/websiteRoot/includes/thrift</span>
+</code></pre></div>
+<p>We now have the Cassandra PHP bindings as well as the required PHP thrift files.
+extract the files from the tar archives and put them all in the folder thrift (or whichever you want).</p>
+
+<p>Cassandra.php,Cassandra_constants.php and Cassandra_types.php includes the thrift php files in the following manner:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"> include_once $GLOBALS['THRIFT_ROOT'].'/Thrift.php';
+</code></pre></div>
+<p>You need to therefore set THRIFT_ROOT in your PHP file like this:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"> $GLOBALS['THRIFT_ROOT'] = '/home/username/websiteRoot/includes/thrift';
+
+//where /home/username/websiteRoot/includes/thrift is the location of Thrift.php
+</code></pre></div>
+<p>You’re now ready to test it all out. The example at  <a href="http://wiki.apache.org/cassandra/ThriftExamples#PHP">http://wiki.apache.org/cassandra/ThriftExamples#PHP</a></p>
+
+<p>Should work nicely. In a future tutorial, I’ll write some PHP examples using thrift.</p>
+
+<p>You may also download the files I generated for 0.7 while doing this tutorial:
+PHP bindings
+<a href="http://www.crlog.info/wp-content/uploads/2011/02/phpBindings.tar">http://www.crlog.info/wp-content/uploads/2011/02/phpBindings.tar</a></p>
+
+<p><a href="http://www.crlog.info/wp-content/uploads/2011/02/phpBindings.tar"></a>Thirft files</p>
+
+<p><a href="http://www.crlog.info/wp-content/uploads/2011/02/thrift.php_.tar">http://www.crlog.info/wp-content/uploads/2011/02/thrift.php_.tar</a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Install and configure Varnish (3.0.1) cache with Wordpress</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="A few days ago I promised I&#39;d go through what  I did when setting up varnish with wordpress, its been slightly delay  but here goes. The blog I used it o...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/09/10/install-and-configure-varnish-3-0-1-cache-with-wordpress">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Install and configure Varnish (3.0.1) cache with Wordpress</h1>
+    <p class="post-meta">Sep 10, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>A few days ago I promised I&#39;d go through what  I did when <a href="http://crlog.info/2011/09/07/wordpress-varnish-cache-a-match-made-in-heaven/">setting up varnish with wordpress</a>, its been slightly delay  but here goes. The blog I used it on was <a href="http://www.scriptandscroll.com">Script and Scroll</a>. I&#39;ve ran the Apache benchmark tool against the site, only one URL but made 1Million requests to it and it held up quite well. The requests were completed in about 5 minutes, I may post the results in a later entry...</p>
+
+<p>So, on the day that alarm bells went off form traffic spike, I just install varnish and cached everything and anything that I could... Obviously this isn&#39;t ideal in most cases but I had very little time to spend on this. So method one below is the &quot;naive&quot; approach I&#39;d say, but it works and works fairly well. Method two is my current configuration which is based on a post <a href="https://plus.google.com/106437496932759928522/posts/XMJMt8Yyu8N">Donncha O Caoim</a> did. I had to tweak a few things because I am using the latest version of varnish some of the configuration options he used changed in version 3 of varnish.</p>
+
+<p>&lt;!-- more --&gt;The general config however is based on his, which in turn, he says is based on numerous tutorials/articles he read.</p>
+
+<p>Start by grabbing Varnish
+<a href="https://www.varnish-cache.org/releases/varnish-cache-3.0.1">https://www.varnish-cache.org/releases/varnish-cache-3.0.1</a>
+It may be easier to use a package manager.</p>
+
+<p><a href="https://www.varnish-cache.org/installation/redhat">https://www.varnish-cache.org/installation/redhat</a> (Redhat/Centos etc) On the page above chose any of the other distros available to suit you. My server is Centos so my install became</p>
+
+<p>yum install varnish
+If you&#39;re on Ubnuntu/Debian the follow the instructions on that page but it&#39;ll end in you doing
+apt-get install varnish</p>
+
+<p>This post is mainly to focus on the configuration rather than the install because installation is quick and painless:
+<a href="https://www.varnish-cache.org/docs">https://www.varnish-cache.org/docs</a> has excellent guides to installing for your specific distro...</p>
+
+<p>If you&#39;re upgrading and have a config file already then you need to pay attention to the upgrade notes to see what may have changed</p>
+
+<ul>
+<li><p><a href="https://www.varnish-cache.org/docs/3.0/installation/upgrade.html?highlight=cacheable">https://www.varnish-cache.org/docs/3.0/installation/upgrade.html?highlight=cacheable</a></p></li>
+<li><p><a href="https://www.varnish-cache.org/docs/trunk/installation/upgrade.html">https://www.varnish-cache.org/docs/trunk/installation/upgrade.html</a></p></li>
+</ul>
+
+<p>The above URLs will have a complete set of changes, <a href="https://www.varnish-cache.org/docs/2.1/reference/vcl.html">https://www.varnish-cache.org/docs/2.1/reference/vcl.html</a> is recommended if you want to tweak the config later. Although I&#39;ve found in some cases, this page isn&#39;t always a true reflection of the latest version. This is true with just about anything though so just be careful when making changes if you&#39;re not sure they&#39;re compatible with your version of varnish.</p>
+
+<p>Now then, once installed we can begin configuration for our website:</p>
+
+<p>First thing to configure is Apache, it needs to listen on a different port (i.e. not port 80). In the example I use 8080 but it can be whatever you please. The two options to set are</p>
+<div class="highlight"><pre><code class="language-" data-lang="">NameVirtualHost 127.0.0.1:8080
+Listen 127.0.0.1:8080
+</code></pre></div>
+<p>OR</p>
+<div class="highlight"><pre><code class="language-" data-lang="">NameVirtualHost *:8080
+Listen *:8080
+</code></pre></div>
+<p>Now you can leave this until last if your configuring your production server because people accessing it will not be responded to until varnish is configured and running reload or restart apache,
+/etc/init.d/apache restart or service httpd restart
+Method 1</p>
+
+<p>This caches everything it can except the wordpress login and admin pages, for more information please see <a href="https://www.varnish-cache.org/trac/wiki/VarnishAndWordpress">https://www.varnish-cache.org/trac/wiki/VarnishAndWordpress</a>:</p>
+
+<p>[code]
+backend default {
+  .host = &quot;127.0.0.1&quot;;
+  .port = &quot;8080&quot;;
+}
+        # Drop any cookies sent to Wordpress.
+        sub vcl_recv {
+                if (!(req.url ~ &quot;wp-(login|admin)&quot;)) {
+                        unset req.http.cookie;
+                }
+        }</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    # Drop any cookies Wordpress tries to send back to the client.
+    sub vcl_fetch {
+            if (!(req.url ~ "wp-(login|admin)")) {
+                    unset beresp.http.set-cookie;
+            }
+    }
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">
+
+## Method 2
+
+
+Varnish configuration language is a powerful domain specific language that gives you high granularity when it comes to controlling the cache. This version of the config has far more options than the above.
+
+[code]
+backend default {
+    .host = "127.0.0.1";
+    .port = "8080";
+}
+# Called after a document has been successfully retrieved from the backend.
+sub vcl_fetch {
+    # Uncomment to make the default cache "time to live" is 5 minutes, handy
+    # but it may cache stale pages unless purged. (TODO)
+    # By default Varnish will use the headers sent to it by Apache (the backend server)
+    # to figure out the correct TTL.
+    # WP Super Cache sends a TTL of 3 seconds, set in wp-content/cache/.htaccess
+
+    set beresp.ttl   = 24h;
+
+    # Strip cookies for static files and set a long cache expiry time.
+    if (req.url ~ "\.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf|txt|tar|wav|bmp|rtf|js|flv|swf|html|htm)$") {
+            unset beresp.http.set-cookie;
+            set beresp.ttl   = 24h;
+    }
+
+    # If WordPress cookies found then page is not cacheable
+    if (req.http.Cookie ~"(wp-postpass|wordpress_logged_in|comment_author_)") {
+       # set beresp.cacheable = false;#versions less than 3
+    #beresp.ttl&gt;0 is cacheable so 0 will not be cached
+    set beresp.ttl = 0s;
+    } else {
+       # set beresp.cacheable = true;
+    set beresp.ttl=24h;#cache for 24hrs
+    }
+
+    # Varnish determined the object was not cacheable
+    #if ttl is not &gt; 0 seconds then it is cachebale
+    if (!beresp.ttl &gt; 0s) {
+        set beresp.http.X-Cacheable = "NO:Not Cacheable";
+    } else if ( req.http.Cookie ~"(wp-postpass|wordpress_logged_in|comment_author_)" ) {
+        # You don't wish to cache content for logged in users
+        set beresp.http.X-Cacheable = "NO:Got Session";
+        return(hit_for_pass); #previously just pass but changed in v3+
+    }  else if ( beresp.http.Cache-Control ~ "private") {
+        # You are respecting the Cache-Control=private header from the backend
+        set beresp.http.X-Cacheable = "NO:Cache-Control=private";
+        return(hit_for_pass);
+    } else if ( beresp.ttl &lt; 1s ) {
+        # You are extending the lifetime of the object artificially
+        set beresp.ttl   = 300s;
+        set beresp.grace = 300s;
+        set beresp.http.X-Cacheable = "YES:Forced";
+    } else {
+        # Varnish determined the object was cacheable
+        set beresp.http.X-Cacheable = "YES";
+    }
+    if (beresp.status == 404 || beresp.status &gt;= 500) {
+        set beresp.ttl = 0s;
+    }
+
+    # Deliver the content
+    return(deliver);
+}
+
+sub vcl_hash {
+    # Each cached page has to be identified by a key that unlocks it.
+    # Add the browser cookie only if a WordPress cookie found.
+    if ( req.http.Cookie ~"(wp-postpass|wordpress_logged_in|comment_author_)" ) {
+        #set req.hash += req.http.Cookie;
+    hash_data(req.http.Cookie);
+     }
+}
+
+# Deliver
+sub vcl_deliver {
+    # Uncomment these lines to remove these headers once you've finished setting up Varnish.
+    remove resp.http.X-Varnish;
+    remove resp.http.Via;
+    remove resp.http.Age;
+    remove resp.http.X-Powered-By;
+}
+
+# vcl_recv is called whenever a request is received
+sub vcl_recv {
+    # remove ?ver=xxxxx strings from urls so css and js files are cached.
+    # Watch out when upgrading WordPress, need to restart Varnish or flush cache.
+    set req.url = regsub(req.url, "\?ver=.*$", "");
+
+    # Remove "replytocom" from requests to make caching better.
+    set req.url = regsub(req.url, "\?replytocom=.*$", "");
+
+    remove req.http.X-Forwarded-For;
+    set    req.http.X-Forwarded-For = client.ip;
+
+    # Exclude this site because it breaks if cached
+    #if ( req.http.host == "example.com" ) {
+    #    return( pass );
+    #}
+
+    # Serve objects up to 2 minutes past their expiry if the backend is slow to respond.
+    set req.grace = 120s;
+    # Strip cookies for static files:
+    if (req.url ~ "\.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf|txt|tar|wav|bmp|rtf|js|flv|swf|html|htm)$") {
+        unset req.http.Cookie;
+        return(lookup);
+    }
+    # Remove has_js and Google Analytics __* cookies.
+    set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(__[a-z]+|has_js)=[^;]*", "");
+    # Remove a ";" prefix, if present.
+    set req.http.Cookie = regsub(req.http.Cookie, "^;\s*", "");
+    # Remove empty cookies.
+    if (req.http.Cookie ~ "^\s*$") {
+        unset req.http.Cookie;
+    }
+    if (req.request == "PURGE") {
+        if (!client.ip ~ purgehosts) {
+                error 405 "Not allowed.";
+        }
+    #previous version ban() was purge()
+        ban("req.url ~ " + req.url + " &amp;&amp; req.http.host == " + req.http.host);
+        error 200 "Purged.";
+    }
+
+    # Pass anything other than GET and HEAD directly.
+    if (req.request != "GET" &amp;&amp; req.request != "HEAD") {
+        return( pass );
+    }      /* We only deal with GET and HEAD by default */
+
+    # remove cookies for comments cookie to make caching better.
+    set req.http.cookie = regsub(req.http.cookie, "1231111111111111122222222333333=[^;]+(; )?", "");
+
+    # never cache the admin pages, or the server-status page, or your feed? you may want to..i don't
+    if (req.request == "GET" &amp;&amp; (req.url ~ "(wp-admin|bb-admin|server-status|feed)")) {
+        return(pipe);
+    }
+    # don't cache authenticated sessions
+    if (req.http.Cookie &amp;&amp; req.http.Cookie ~ "(wordpress_|PHPSESSID)") {
+        return(lookup);
+    }
+    # don't cache ajax requests
+    if(req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~
+"(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
+        return (pass);
+    }
+    return( lookup );
+}
+
+#set of hosts/users from which purging can be done
+acl purgehosts {
+    "localhost";
+    "www.domain.com";
+    "123.456.789.123";#server IP
+}
+</code></pre></div>
+<p>This config again is based on the post I mentioned above. Change domain.com to your domain and the IP 123.456.etc to your server&#39;s IP.</p>
+
+<p>I&#39;m still myself getting used to varnish so this is by no means perfect and I&#39;m continually tweaking and watching my site to see what options I can use to improve performance but so far it&#39;s been great.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

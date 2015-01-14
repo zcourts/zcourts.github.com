@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Securing a Linux (Centos) VPS in 10 minutes</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="So, first thing&#39;s first. You&#39;ve got your shiny new VPS like I have. The fact you&#39;re reading this means like me you won&#39;t allow root to ssh in...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2013/05/27/securing-a-linux-centos-vps-in-10-minutes">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Securing a Linux (Centos) VPS in 10 minutes</h1>
+    <p class="post-meta">May 27, 2013 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>So, first thing&#39;s first. You&#39;ve got your shiny new VPS like I have. The fact you&#39;re reading this means like me you won&#39;t allow root to ssh into it. This is good! I&#39;m writing this because I seem to be repeating these steps quite a lot (well, once or twice every couple months) so to make sure I don&#39;t miss a step I&#39;m writing it up to both help me and others who might need it.&lt;!-- more --&gt;</p>
+
+<h1>Creating a user with sudo access</h1>
+
+<p>Start by creating a new user using:</p>
+
+<ol>
+<li>adduser courtney # create a user called courtney</li>
+<li>passwd courtney # set a password for the new user</li>
+</ol>
+
+<p>Next create a group that you can add all users with sudo access to.</p>
+
+<ol>
+<li>groupadd sudo # create a group called sudo</li>
+<li>usermod -a -G sudo courtney # add courtney to the group called sudo</li>
+</ol>
+
+<p>In order to let the new user execute commands with the sudo prefix the sudo group created above must be in the &quot;sudoers&quot; file. So modify the file using these steps.</p>
+
+<ol>
+<li>chmod +w /etc/sudoers # make the sudoers file writeable</li>
+<li>vim /etc/sudoers<br>
+In this file find the lines that have :<br>
+## Allows people in group wheel to run all commands<br>
+#%wheel ALL=(ALL)    ALL<br>
+and add the following line below it</li>
+<li>%sudo  ALL=(ALL)    ALL # where sudo is the name of the group created above</li>
+<li>chmod -w /etc/sudoers #remove the write attribute from the sudoers file</li>
+</ol>
+
+<p>Now logout of the server as root and log back in as the user created. This user will now be able to use the sudo prefix to execute programs that need the privilege to do so.</p>
+
+<h1>Generate an SSH public/private key</h1>
+
+<p>If you don&#39;t already have one then on your local machine, execute the following command. It will create an <strong>id_rsa</strong> (private key, DO NOT SHARE WITH ANYONE) and <strong>id_rsa.pub</strong> (public key) file in your local ~/.ssh directory.</p>
+
+<ol>
+<li>ssh-keygen</li>
+</ol>
+
+<p>Follow the on screen instructions. It&#39;s recommend that you create a pass phrase for your key. If you don&#39;t it means anyone who has access to the file can login to the server as you without a password. There are options to use a different mode, you don&#39;t have to use RSA as the encryption algorithm but that&#39;s what I usually use so...</p>
+
+<h2>Enable private key authentication on the server</h2>
+
+<p>Now we need to make use of the public and private key. Well, the public key. The private key stays on your local machine, the public key needs to be uploaded to the server. Do this using something such as secure copy (scp)... For example on the local machine, I use:</p>
+
+<ol>
+<li>scp ~/.ssh/id_rsa.pub <a href="mailto:courtney@my-domain.com">courtney@my-domain.com</a>: #including the colon, this uploads it to courtney&#39;s home directory on the server</li>
+</ol>
+
+<p>Now switch to the server (logging in as the new user created earlier). And create the ssh dir and adjust the file location</p>
+
+<ol>
+<li>mkdir .ssh</li>
+<li><p>mv id_rsa.pub .ssh/authorized_keys #move the public key we just uploaded into the .ssh directory</p></li>
+<li><p>Set the permissions on the public key</p>
+
+<ol>
+<li>chown -R courtney:courtney .ssh</li>
+<li>chmod 700 .ssh</li>
+<li>chmod 600 .ssh/authorized_keys</li>
+</ol></li>
+</ol>
+
+<p>That&#39;s almost it you can now login without a password!</p>
+
+<h2>Disable password SSH login</h2>
+
+<p>Even though you&#39;re now more secure, you can take it a bit further by disabling password logins completely. This means that only users who have been configured to use public/private key authentication will be able to access the server. It&#39;s a good idea but does mean you&#39;ll only have access to the server only from the machine that has your private key. If like me you have a laptop and desktops, just copy the private key to the machines you want to be able to login from. Make sure only you can access those machines, or at least the private key on those machines.</p>
+
+<p>Edit SSH config by opening the file:</p>
+
+<ul>
+<li>sudo vim /etc/ssh/sshd_config</li>
+</ul>
+
+<p>Set the following options in the file:</p>
+
+<ol>
+<li><p>PasswordAuthentication no</p></li>
+<li><p>PermitRootLogin no</p></li>
+</ol>
+
+<p>Restart the SSH server with:</p>
+
+<ol>
+<li>sudo service ssh restart</li>
+</ol>
+
+<h1>Preventing dictionary attacks</h1>
+
+<p>At this point you&#39;re in a decent state. But to make things even better you can install a program known as fail2ban. It prevents dictionary attacks on your VPS by detecting multiple failed login attempts from the same IP and can do things like creating temporary firefall rules that can block traffic from an attacker&#39;s IP, attempted logins can be monitored on various protocols such as SSH, SMTP, HTTP etc but by default it only monitors SSH.</p>
+
+<p>Install it using:</p>
+
+<ol>
+<li>sudo yum install fail2ban</li>
+</ol>
+
+<p>You can change the default settings by editing <strong>/etc/fail2ban/jail.local.</strong></p>
+
+<p>That&#39;s a pretty good start. The next steps to making this even more secure is setting up the firewall and locking down ports. But that&#39;s for another post. Hope this helps!</p>
+
+<p>P.S to add multiple SSH keys for one user see <a href="http://www.cyberciti.biz/tips/linux-multiple-ssh-key-based-authentication.html">http://www.cyberciti.biz/tips/linux-multiple-ssh-key-based-authentication.html</a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>RESTish Wrapper for Hector/Cassandra data manipulation</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Introduction to RESTish">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/01/29/restish-wrapper-for-hectorcassandra-data-manipulation">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">RESTish Wrapper for Hector/Cassandra data manipulation</h1>
+    <p class="post-meta">Jan 29, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <h2><a href="http://crlog.files.wordpress.com/2011/01/restish-logo.jpg"><img src="http://crlog.files.wordpress.com/2011/01/restish-logo.jpg" alt=""></a>Introduction to RESTish</h2>
+
+<p>I&#39;ve been using <a href="http://cassandra.apache.org/"></a><a href="http://cassandra.apache.org/">Cassandra </a> for a while now and few days ago I settled on using it for my final year Uni project.
+My project consists of quite a few components written in Java,C++ and PHP this means I needed to be able to interact
+with the data  from all the languages. As it turns out clients for C++ and PHP for the 0.7+ version of Cassandra are either
+incomplete or none existent.</p>
+
+<p>I decided to write a client for it, but why write two separate clients in different languages? I&#39;m only in my second year but who has that kind of time? The big thing at the moment is using <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer"></a><a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a> APIs for language independence. I&#39;ve never implemented a full scale REST architecture (played with a few frameworks that did the work :p), but it seems like a good idea.</p>
+
+<p>After more thought I decided the first thing it would have to do is act as a server which just ran in the background otherwise the start up time of the JVM on each request would take away a tonne of the speed expected. A second design decision was to use <a href="http://www.json.org/"></a><a href="http://www.json.org/">JSON</a> as the initial method of passing data in and out. Support for XML will be put in place in the future...after the API is in a reasonable state.</p>
+
+<p>My previous post on <a href="http://crlog.files.wordpress.com/2011/01/restish-logo.jpgtutorials/building-a-simple-java-none-blocking-server.html"></a><a href="http://crlog.files.wordpress.com/2011/01/restish-logo.jpgtutorials/building-a-simple-java-none-blocking-server.html">how to build a none-blocking java server</a> mentioned the client and explained the initial issues with that approach. In the end I decided to use <a href="http://www.jboss.org/netty/">Netty</a> for the server side of things.  Netty is well established and highly capable of handling many simultaneous requests. After getting familiar enough with Netty I put a quick server implementation in place, which allows me to accept requests/data and push results back to the client...simples!</p>
+
+<p>The API</p>
+
+<p>The API will be very simplistic and self documenting. The aim is to eventually support everything you can do with Hector. I say self documenting because it will have a means to describe
+all the supported methods/actions/commands. For example, at the moment, the API allows you to create a Keyspace and all* of the parameters that you can set via hector&#39;s API. Below is a PHP example of generating the JSON request to be passed to the server</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"> <span class="cp">&lt;?php</span>
+
+ <span class="nv">$fp</span> <span class="o">=</span> <span class="nx">connect</span><span class="p">();</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fp</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">"</span><span class="nv">$errstr</span><span class="s2"> (</span><span class="nv">$errno</span><span class="s2">)&lt;br /&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+ <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"apiVersion"</span> <span class="o">=&gt;</span> <span class="s2">"V1"</span><span class="p">,</span> <span class="s2">"cmd"</span> <span class="o">=&gt;</span> <span class="s2">"help"</span><span class="p">);</span>
+ <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">));</span>
+ <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+ <span class="k">echo</span> <span class="s2">"&lt;pre/&gt;"</span><span class="p">;</span>
+ <span class="nv">$fp</span> <span class="o">=</span> <span class="nx">connect</span><span class="p">();</span>
+
+ <span class="nv">$userscf</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"setColumnType"</span> <span class="o">=&gt;</span> <span class="s2">"STANDARD"</span><span class="p">,</span>
+ <span class="s2">"setComparatorType"</span> <span class="o">=&gt;</span> <span class="s2">"UTF8TYPE"</span><span class="p">,</span> <span class="s2">"setSubComparatorType"</span> <span class="o">=&gt;</span> <span class="s2">"ASCIITYPE"</span><span class="p">,</span>
+ <span class="s2">"setGcGraceSeconds"</span> <span class="o">=&gt;</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">"setKeyCacheSize"</span> <span class="o">=&gt;</span> <span class="mi">456</span><span class="p">,</span> <span class="s2">"setRowCacheSize"</span> <span class="o">=&gt;</span> <span class="mi">900</span><span class="p">,</span>
+ <span class="s2">"setMaxCompactionThreshold"</span> <span class="o">=&gt;</span> <span class="mi">3432</span><span class="p">,</span> <span class="s2">"setMinCompactionThreshold"</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+ <span class="s2">"setReadRepairChance"</span> <span class="o">=&gt;</span> <span class="mf">0.7</span><span class="p">);</span>
+ <span class="nv">$cfdef</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Users"</span> <span class="o">=&gt;</span> <span class="nv">$userscf</span><span class="p">);</span>
+ <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"apiVersion"</span> <span class="o">=&gt;</span> <span class="s2">"V1"</span><span class="p">,</span> <span class="s2">"cmd"</span> <span class="o">=&gt;</span> <span class="s2">"createKeySpace"</span><span class="p">,</span>
+ <span class="s2">"replica_placement_strategy"</span> <span class="o">=&gt;</span> <span class="s2">"org.apache.cassandra.locator.SimpleStrategy"</span><span class="p">,</span>
+ <span class="s2">"replication_factor"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Testing"</span><span class="p">,</span> <span class="s2">"columnFamilyDef"</span> <span class="o">=&gt;</span> <span class="nv">$cfdef</span><span class="p">);</span>
+ <span class="c1">//var_dump($data);
+</span> <span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+ <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">));</span>
+ <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+ <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="k">function</span> <span class="nf">connect</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">fsockopen</span><span class="p">(</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">9989</span><span class="p">,</span> <span class="nv">$errno</span><span class="p">,</span> <span class="nv">$errstr</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="cp">?&gt;</span>
+</code></pre></div>
+<p>The JSON generated looks like this:</p>
+
+<p>{</p>
+
+<p>&quot;apiVersion&quot;: &quot;V1&quot;,</p>
+
+<p>&quot;cmd&quot;: &quot;help&quot;</p>
+
+<p>}</p>
+
+<p>{</p>
+
+<p>&quot;apiVersion&quot;: &quot;V1&quot;,</p>
+
+<p>&quot;cmd&quot;: &quot;createKeySpace&quot;,</p>
+
+<p>&quot;name&quot;: &quot;Testing&quot;,</p>
+
+<p>&quot;replication_factor&quot;: 3,</p>
+
+<p>&quot;replica_placement_strategy&quot;: &quot;org.apache.cassandra.locator.SimpleStrategy&quot;,</p>
+
+<p>&quot;columnFamilyDef&quot;: {</p>
+
+<p>&quot;Users&quot;: {</p>
+
+<p>&quot;setReadRepairChance&quot;: 0.7,</p>
+
+<p>&quot;setComparatorType&quot;: &quot;UTF8TYPE&quot;,</p>
+
+<p>&quot;setMinCompactionThreshold&quot;: 100,</p>
+
+<p>&quot;setMaxCompactionThreshold&quot;: 3432,</p>
+
+<p>&quot;setRowCacheSize&quot;: 900,</p>
+
+<p>&quot;setColumnType&quot;: &quot;STANDARD&quot;,</p>
+
+<p>&quot;setGcGraceSeconds&quot;: 300,</p>
+
+<p>&quot;setSubComparatorType&quot;: &quot;ASCIITYPE&quot;,</p>
+
+<p>&quot;setKeyCacheSize&quot;: 456</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>The above JSON of course sends two distinct commands to the server, the first command is help, which sends a description and other info back about supported method calls, their parameters and which parameters
+are required.
+The second command, createKeySpace attempts to create a  keyspace and specifies its replication factor,replicat strategy and a list of column families to create as well as the parameters to define each column family.
+The example only demonstrate creating a single column family but multiple column family definitions can be passed in the same request and all with different or the same parameters.</p>
+
+<p>The response generated by the help request above looks like this:</p>
+
+<p>{</p>
+
+<p>&quot;V1&quot;: {</p>
+
+<p>&quot;createKeySpace&quot;: {</p>
+
+<p>&quot;desc&quot;: &quot;Allows you to create a keyspace on the server, only name is required. replication default=1,placement strategy = simplestrategy&quot;,</p>
+
+<p>&quot;params&quot;: {</p>
+
+<p>&quot;required.replica_placement_strategy&quot;: &quot;false&quot;,</p>
+
+<p>&quot;name&quot;: &quot;Name of the keyspace you want to create&quot;,</p>
+
+<p>&quot;required.name&quot;: &quot;true&quot;,</p>
+
+<p>&quot;replica_placement_strategy&quot;: &quot;The replication strategy to be used&quot;,</p>
+
+<p>&quot;replication_factor&quot;: &quot;The replication factor for this keyspace&quot;,</p>
+
+<p>&quot;required.columnFamilyDef&quot;: &quot;true&quot;,</p>
+
+<p>&quot;required.replication_factor&quot;: &quot;false&quot;,</p>
+
+<p>&quot;columnFamilyDef&quot;: {</p>
+
+<p>&quot;required.setKeyCacheSize&quot;: &quot;false&quot;,</p>
+
+<p>&quot;desc&quot;: &quot;Allows you to specify a list of column families and the properties of each column family. List of CFs must have the CF name as the key e.g to create the CFs Users and Songs you would set columnFamilyDef property as : {&quot;Users&quot;:{&quot;setComparatorType&quot;:&quot;UTF8TYPE&quot;,&quot;setColumnType&quot;:&quot;STANDARD&quot;},&quot;Songs&quot;:{&quot;setColumnType&quot;:&quot;STANDARD&quot;}} ... This creates the two CFs with different properties&quot;,</p>
+
+<p>&quot;setComparatorType&quot;: &quot; All built in types supported, not yet support custome comparators supported list : BYTESTYPE, ASCIITYPE, UTF8TYPE, LEXICALUUIDTYPE, TIMEUUIDTYPE, LONGTYPE, INTEGERTYPE&quot;,</p>
+
+<p>&quot;setRowCacheSize&quot;: &quot; Should be a double e.g 0.7&quot;,</p>
+
+<p>&quot;setMinCompactionThreshold&quot;: &quot; Must be an integer&quot;,</p>
+
+<p>&quot;required.setComparatorType&quot;: &quot;false&quot;,</p>
+
+<p>&quot;required.setGcGraceSeconds&quot;: &quot;false&quot;,</p>
+
+<p>&quot;required.setMinCompactionThreshold&quot;: &quot;false&quot;,</p>
+
+<p>&quot;required.setReadRepairChance&quot;: &quot;false&quot;,</p>
+
+<p>&quot;setGcGraceSeconds&quot;: &quot;Must be a number otherwise it will be ignored&quot;,</p>
+
+<p>&quot;setKeyCacheSize&quot;: &quot; Should be a double e.g 0.7&quot;,</p>
+
+<p>&quot;setReadRepairChance&quot;: &quot;Should be a double e.g 0.7&quot;,</p>
+
+<p>&quot;required.setColumnType&quot;: &quot;false&quot;,</p>
+
+<p>&quot;setMaxCompactionThreshold&quot;: &quot; Must be an integer&quot;,</p>
+
+<p>&quot;setColumnType&quot;: &quot;The column type, STANDARD or SUPER are the only options&quot;,</p>
+
+<p>&quot;required.setMaxCompactionThreshold&quot;: &quot;false&quot;,</p>
+
+<p>&quot;required.setRowCacheSize&quot;: &quot;false&quot;,</p>
+
+<p>&quot;required.setSubComparatorType&quot;: &quot;false&quot;,</p>
+
+<p>&quot;setSubComparatorType&quot;: &quot; Same options available as setComparatorType&quot;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>} </p>
+
+<p>The response of for the createKeySpace command can return the status as success or as fail. If the command failed the reponse would be similar to:</p>
+
+<p>{</p>
+
+<p>&quot;apiVersion&quot;: &quot;V1&quot;,</p>
+
+<p>&quot;reason&quot;: &quot;Unable to create keyspace message: org.apache.thrift.transport.TTransportException: java.net.SocketException: Connection reset by peer: socket write error cause : org.apache.thrift.transport.TTransportException: java.net.SocketException: Connection reset by peer: socket write error&quot;,</p>
+
+<p>&quot;status&quot;: &quot;fail&quot;</p>
+
+<p>}</p>
+
+<p>In general the API will try to return a useful message as to why the request failed, if an unexpected exception occurs then the java stack trace is returned as the reason for the failure.
+If the createKeySpace command had bee successful, the returned results would be similar to:</p>
+
+<p>{</p>
+
+<p>&quot;apiVersion&quot;: &quot;V1&quot;,</p>
+
+<p>&quot;reason&quot;: &quot;755e0430-2b92-11e0-a3f5-2beda0c55c24&quot;,</p>
+
+<p>&quot;status&quot;: &quot;success&quot;</p>
+
+<p>} </p>
+
+<p>The idea here is that any command passed in will always have a status of fail or success. If a command such as createKeySpace which does not have any data/info to return was successful then if a return is available from the relevant hector method then that return value will be the &quot;reason&quot; returned. As above the hector method addKeyspace, returns a String, this is what is returned as the reason in the example above.
+Our keyspace Testing is now created with the properties specified. If you open the cassandra CLI and execute describe keyspace Testing the output will be :
+Keyspace: Testing:</p>
+
+<p>Replication Strategy: org.apache.cassandra.locator.SimpleStrategy</p>
+
+<p>Replication Factor: 3</p>
+
+<p>Column Families:</p>
+
+<p>ColumnFamily: Users</p>
+
+<p>Columns sorted by: org.apache.cassandra.db.marshal.UTF8Type</p>
+
+<p>Row cache size / save period: 456.0/0</p>
+
+<p>Key cache size / save period: 456.0/3600</p>
+
+<p>Memtable thresholds: 0.140625/30/60</p>
+
+<p>GC grace seconds: 300</p>
+
+<p>Compaction min/max thresholds: 100/3432</p>
+
+<p>Read repair chance: 0.7</p>
+
+<p>createKeySpace and help are the only two commands in place at the moment, I&#39;ve always used the raw thrift interface so development with hector is slightly slower than I would be using thrift while I get used to the hector API. The benefits out weigh the reduced dev. speed however so it&#39;ll be worth it.</p>
+
+<p>Configuration</p>
+
+<p>I wanted to be able to configure quite a few things without opening any Java files so a properties file is used to configure a few options. Example:</p>
+
+<h1>increase verbosity i.e print more into to console</h1>
+
+<p>verbose=true</p>
+
+<h1>log exceptions to file?</h1>
+
+<p>logExceptions=true</p>
+
+<h1>how many files to log to</h1>
+
+<p>logFileLimit=1</p>
+
+<h1>max size of each log file</h1>
+
+<p>logFileSize=50000</p>
+
+<h1>append to existing log file or empty file ans restart</h1>
+
+<p>appendLogs=true</p>
+
+<h1>whether to send stack trace back to client if an excpetion is thrown</h1>
+
+<p>connectionDebug=true</p>
+
+<h1>log file</h1>
+
+<p>logFile=restish.log</p>
+
+<h1>host to bind to</h1>
+
+<p>restAddress=127.0.0.1</p>
+
+<h1>server port</h1>
+
+<p>restPort=9989</p>
+
+<h1>cluster name</h1>
+
+<p>cluster=MyClusterName</p>
+
+<h1>cassandra port</h1>
+
+<p>port=9160</p>
+
+<h1>cassandra IP</h1>
+
+<p>hosts[total]=3
+hosts[0]=168.344.82.85
+hosts[1]=148.344.82.85
+hosts[2]=188.344.82.85 </p>
+
+<h2>Benefits</h2>
+
+<ul>
+<li><p>The first and most obvious benefit is language independence.</p></li>
+<li><p>Hector is by far the most mature Cassandra client I know of, it is stable and up to date. Development is continuous and it has a great community, with respected devs.</p></li>
+<li><p>Alleviates the need to learn multiple APIs for different clients.</p></li>
+<li><p>Reduces the low level interaction that may be needed to use Thrift, if a client isn&#39;t available in your preferred language.</p></li>
+</ul>
+
+<h2>Limitations and drawbacks</h2>
+
+<ul>
+<li><p>As with anything else, there are limits. There may be performance hits but since its so early no performance tests can be done yet.</p></li>
+<li><p>It introduces a single point of failure depending on your setup.</p></li>
+<li><p>Data size/speed is limited to how much can be pushed through the socket which in the end comes down to the through put of your network and distance from the server.</p></li>
+<li><p>As with any client, you&#39;re limited to the operations it supports.</p></li>
+</ul>
+
+<p>I&#39;m sure there are other benefits and drawbacks but for now...</p>
+
+<h2>Why Hector</h2>
+
+<p>Why build on top of hector, why not write a client from scratch using thrift? Thrift is great for low level stuff and doing things that a client may not support, but there&#39;s a tonne of reasons why using hector is more sensible. Connection pooling, stability, reliability and the list goes on. Hector provides all these and more. It also means that when bugs start to emerge the knowledgeable community backing hector is available.
+Quite frankly it also accelerates development time since most of the low level stuff is abstracted by Hector. So I think it&#39;d be right to say RESTish is a &quot;3rd generation client&quot; for Cassandra, since it builds on top of hector, which builds on top of thrift/avro...</p>
+
+<h2>Download</h2>
+
+<p>The source code with current progress is available here <a href="http://crlog.files.wordpress.com/2011/01/restish-logo.jpgwp-content/uploads/2011/01/RESTish-src.rar">RESTish source</a>...the built version, ready to run can be downloaded from <a href="http://crlog.files.wordpress.com/2011/01/restish-logo.jpgwp-content/uploads/2011/01/RESTish-bin.rar">RESTish binary</a>...I&#39;ll setup a public SVN repo in a few days</p>
+
+<p>Resources used:
+Thanks to the <a href="http://www.datastax.com/">DataStax ( formerly Riptano)</a> guys for the examples at <a href="https://github.com/zznate/hector-examples"></a><a href="https://github.com/zznate/hector-examples">https://github.com/zznate/hector-examples
+</a>Without <a href="https://github.com/rantav/hector"></a><a href="https://github.com/rantav/hector">Hector</a>, this wouldn&#39;t be possible of course @ <a href="https://github.com/rantav/hector"></a><a href="https://github.com/rantav/hector">https://github.com/rantav/hector </a></p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

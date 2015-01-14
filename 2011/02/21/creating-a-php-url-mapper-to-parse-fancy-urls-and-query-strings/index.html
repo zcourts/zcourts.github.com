@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Creating a PHP URL mapper to parse fancy URLs and query strings</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="I&#39;ve been working on a PHP framework for my group over the last few weeks. We were required to build almost everything from scratch so using another fram...">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/02/21/creating-a-php-url-mapper-to-parse-fancy-urls-and-query-strings">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Creating a PHP URL mapper to parse fancy URLs and query strings</h1>
+    <p class="post-meta">Feb 21, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>I&#39;ve been working on a PHP framework for my group over the last few weeks. We were required to build almost everything from scratch so using another framework such as <a href="http://www.codeignitor.com">Codeignitor</a> was not an option.</p>
+
+<p>The URL mapper basically breaks up a URL into chunks and allows you to programatically add variables to the query string or get the value of a variable in the URL of the current page request.</p>
+
+<p>Admittedly it&#39;s not perfect and could do with improvements but it works well for our use case and we don&#39;t have time to spend making it any better.</p>
+
+<p>The first bit to this is to use .htaccess file and route all requests to index.php - Only requests that are not for a real file or directory is mapped to idnex.php, so for example if the file view.php exists then the request will go to that file. This .htaccess code is actually the original from <a href="http://www.wordpress.org">Wordpress</a>.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"># BEGIN ROUTING
+<span class="nt">&lt;IfModule</span> <span class="na">mod_rewrite</span><span class="err">.</span><span class="na">c</span><span class="nt">&gt;</span>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+<span class="nt">&lt;/IfModule&gt;</span>
+# END ROUTING
+</code></pre></div>
+<p>The code for the PHP class, URI is as follows:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">URI</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$uri</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$uriParts</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="k">private</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$isPrettyUrl</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$currentURI</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$currentURL</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$scheme</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$port</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$user</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$pass</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$path</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$query</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$fragment</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentURI</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"SCRIPT_URI"</span><span class="p">]);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">port</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"SERVER_PORT"</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">host</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"SERVER_NAME"</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">scheme</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentURI</span><span class="p">[</span><span class="s2">"scheme"</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPath</span><span class="p">();</span>
+        <span class="c1">//build the current url before anything is done
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentURL</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildURL</span><span class="p">();</span>
+
+    <span class="p">}</span>
+    <span class="sd">/**
+     *
+     * @return string The full url  of the current page is returned
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCurrentURL</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">currentURL</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="sd">/**
+     *
+     * @param string $varName the key to which a value must be returned
+     * @return string the value of the query parameter is returned e.g
+     * if url is path/name and @param $varName is path then "name" is returned
+     * returns null if the requested var does not exist
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getVar</span><span class="p">(</span><span class="nv">$varName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$varName</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$varName</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">NULL</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+     *
+     * @param string $varName the name of the key you wish to set a value to
+     * this can be an existing key, in which case the old value is overriden
+     * @param string $value
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setVar</span><span class="p">(</span><span class="nv">$varName</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$varName</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+     * Only call this method if you do not want to include all the existing
+     * varaibles/data from the current url, in which case you must
+     * use setVar to set the query strign parameters you need
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">emptyQueryString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="sd">/**
+     *
+     * @return string returns the base domain without trailing slash
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getHost</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">scheme</span> <span class="o">.</span> <span class="s2">"://"</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildURL</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$base</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">scheme</span> <span class="o">.</span> <span class="s2">"://"</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">host</span> <span class="o">.</span> <span class="s2">"/"</span><span class="p">;</span>
+        <span class="nv">$q</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isPrettyUrl</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//if key is not empty
+</span>                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span>
+                <span class="nv">$q</span><span class="o">.=</span><span class="nv">$key</span> <span class="o">.</span> <span class="s2">"/"</span> <span class="o">.</span> <span class="nv">$val</span> <span class="o">.</span> <span class="s2">"/"</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">//if empty we need a ?
+</span>                <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$q</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$q</span><span class="o">.=</span><span class="s2">"?"</span> <span class="o">.</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s2">"="</span> <span class="o">.</span> <span class="nv">$val</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$q</span><span class="o">.=</span><span class="s2">"&amp;"</span> <span class="o">.</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s2">"="</span> <span class="o">.</span> <span class="nv">$val</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$base</span> <span class="o">.</span> <span class="nv">$q</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getPath</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Get the URL path...everything after the domain name
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">'/\/index\.php\?/'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">//only case where we can say fo sure that its not a pretty url
+</span>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isPrettyUrl</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parseQueryString</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// IF ? is found at an position &gt;1 then still parse
+</span>            <span class="c1">//can be found at domain.com/? or domain.com/path? or domain.com/path/?
+</span>            <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">,</span> <span class="s2">"?"</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//remove the query string first i.e path/?some=value
+</span>                <span class="nv">$parts</span> <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="s1">'\?'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">);</span>
+
+                <span class="c1">//set new uri for parsequerystring to operate on
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span> <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parseQueryString</span><span class="p">();</span> <span class="c1">//parse query string and join data
+</span>
+                <span class="c1">//now have idx 0 = path and idx 1 = some=value
+</span>                <span class="c1">//set new uri for parse to operate on
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span> <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">();</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">parseQueryString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//parse query string
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">);</span>
+        <span class="nv">$parts</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span><span class="p">[</span><span class="s2">"query"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">//parse the query string and stick its values into data
+</span>            <span class="nb">parse_str</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span><span class="p">[</span><span class="s2">"query"</span><span class="p">],</span> <span class="nv">$parts</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">parse_str</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span><span class="p">[</span><span class="s2">"path"</span><span class="p">],</span> <span class="nv">$parts</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">//merge the query string with anything already in data
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">((</span><span class="k">array</span><span class="p">)</span> <span class="nv">$parts</span><span class="p">,</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+     * if directory style url then parse parts
+     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">parse</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//// Split URL into array
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">);</span>
+        <span class="c1">//first element is always empty so remove it
+</span>        <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span><span class="p">);</span>
+        <span class="c1">//domain.com/key/value is the format
+</span>        <span class="c1">//every second part is a value and the first is the key
+</span>        <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//counter i, when =1 its a value when =0 its a key
+</span>        <span class="c1">//on second iteration
+</span>        <span class="nv">$key</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span> <span class="c1">//need to store the key on the first iteration to access data array
+</span>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uriParts</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//if i==0 then its a key so set it to an empty string
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$part</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="nv">$key</span> <span class="o">=</span> <span class="nv">$part</span><span class="p">;</span>
+                <span class="nv">$i</span><span class="o">++</span><span class="p">;</span> <span class="c1">//only increment if i==0
+</span>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">//need to make first letter upper case if the key is view
+</span>                <span class="k">if</span> <span class="p">(</span><span class="nv">$key</span> <span class="o">==</span> <span class="s2">"view"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$part</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$part</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="c1">//lets make sure we destroy this key since the value is now assigned
+</span>                <span class="nb">unset</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+                <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//reset to get next key
+</span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div>
+<p>Example usage:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"> $url=new URI();
+//assuming the query string has view=somevalue
+        print $url-&gt;getVar("view");
+//change the value of view to home - override existing var
+        $url-&gt;setVar("view", "home");
+//add a new var and assign testing
+        $url-&gt;setVar("test", "testing");
+//build the url with any changes
+    print $url-&gt;buildURL();
+
+</code></pre></div>
+<p>The URL generated will be in the form</p>
+
+<p><a href="http://www.domain.com/view/home/test/testing">http://www.domain.com/view/home/test/testing</a>
+If the ckass determines that you&#39;re not using fancy URLs then the generated URL will be</p>
+
+<p><a href="http://www.domain.com/?view=home&amp;test=testing">http://www.domain.com/?view=home&amp;test=testing</a></p>
+
+<p>It determines if you&#39;re using fancy URLs by checking to see if the current URL starts off in the form <a href="http://www.domain.com/">http://www.domain.com/</a>? or if index.php? is in the url which mean your URL is in the form <a href="http://www.domain.com/index.php?some=var">http://www.domain.com/index.php?some=var</a>...</p>
+
+<p>It also handles a combination of fancy URLs and normal query strings but only if the query string is tacked on to the end of the URL in the form
+<a href="http://www.domain.com/home/view/test/testing?query=string&amp;page=1">http://www.domain.com/home/view/test/testing?query=string&amp;page=1</a></p>
+
+<p>In this case, it still assumes fancy URL is the format and when buildURL() is called it generates a fancy URL converting the query string into part of the fancy URL.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+        <head>
+    <title>Migrating from self-hosted to hosted wordpress</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Been a while since I posted an entry, I thought I&#39;d do one today after my little migration.">
+    <meta name="keywords" content="" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/init.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="canonical" href="//2011/03/28/migrating-from-self-hosted-to-hosted-wordpress">
+    <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
+</head>
+    <body>
+        <!-- Header -->
+<div id="header" class="skel-layers-fixed">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="/images/avatar.jpg" alt=""/></span>
+
+            <h1 id="title">zcourts</h1>
+            <p>Courtney Robinson</p>
+            <p>Software Engineer</p>
+            <p>PhD Student</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <!--
+
+                Prologue's nav expects links in one of two formats:
+
+                1. Hash link (scrolls to a different section within the page)
+
+                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                2. Standard link (sends the user to another page/site)
+
+                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+            -->
+            <ul>
+                <li><a href="/#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+                <li><a href="/#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Projects</span></a></li>
+                <li><a href="/posts" id="blog-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-comment">Blog posts</span></a></li>
+                <li><a href="/categories.html" id="cat-link" class="skel-layers-ignoreHref"><span class=" glyphicon glyphicon-tags">Categories</span></a></li>
+                <li><a href="/about-courtney-robinson" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+                <li><a href="/#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="https://twitter.com/zcourts" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/zcourts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/zcourts" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:site@crlog.info" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
+</div>
+        <!-- Main -->
+        <div id="main">
+            <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Migrating from self-hosted to hosted wordpress</h1>
+    <p class="post-meta">Mar 28, 2011 • zcourts</p>
+  </header>
+
+  <article class="post-content">
+    <p>Been a while since I posted an entry, I thought I&#39;d do one today after my little migration.</p>
+
+<p>I’ve always used a self-hosted Wordpress until two nights ago. I decided the resources used by my blog just wasn’t worth having it on my VPS with my other sites. I didn’t want to use a wordpress.com sub-domain either but then I read about a little and found that you can map your existing domain name, I thought “sweet”. For pennies I can get my domain and blog hosted and not worry about server and all that stuff. So here’s a quick break down of migrating from a self-hosted wordpress installation, over to the “hosted” wordpress.&lt;!-- more --&gt;</p>
+
+<p>Essentially you need an account with wordpress.com so head over to <a href="https://en.wordpress.com/signup/">https://en.wordpress.com/signup/</a> to get a free account.</p>
+
+<p>Now, verify all the details, just your e-mail really.</p>
+
+<p>Go back over to the old blog (self hosted) and click “Tools” in the admin area,then choose “Export”, the URL will be yourdomain.com/wp-admin/export.php -</p>
+
+<p>Choose “All content” this will contain all of your posts, pages, comments, custom fields, terms, navigation menus and custom posts.Or if you just want the “Posts” or “Pages” only, choose one of the other options.</p>
+
+<p>Click “Download export file”, which will create an XML file containing all* your data. I say all your data but it can only contain all the text, anything in your library will be handled later.
+<a href="http://crlog.files.wordpress.com/2011/03/image.png"><img src="http://crlog.files.wordpress.com/2011/03/image_thumb.png" alt="image"></a></p>
+
+<p>You’ll now have your data in a file. If you have tonnes of info, you need to bear in mind that the file can be 15MB max to upload on wordpress.com.</p>
+
+<p>When you’ve done that, sign into your account on wordpress.com, that’ll be at username.wordpress.com/wp-admin
+Go to Tools again, and click “Import” this time. Now you have a set of options to choose from:
+<a href="http://crlog.files.wordpress.com/2011/03/image1.png"><img src="http://crlog.files.wordpress.com/2011/03/image_thumb1.png" alt="image"></a>
+From the above, choose “Wordpress” since we’re moving from wordpress. On the next screen where it says “Choose file”, find the XML file you downloaded from your old blog and then click “Upload file and Import”.</p>
+
+<p>Once you’ve done that, it’ll have imported your posts etc. It will now ask you to map the old username to the current username (see the image below)
+<a href="http://crlog.files.wordpress.com/2011/03/image2.png"><img src="http://crlog.files.wordpress.com/2011/03/image_thumb2.png" alt="image"></a></p>
+
+<h1>IMPORTANT: Select the “Import Attachments” option.</h1>
+
+<p>If you want your images etc to be downloaded from your old blog to the new one and added to your library automatically, you must make sure you select the option to “Download and import file attachments”.</p>
+
+<p>Once you’ve done that click “Submit” and Wordpress will map your old user to the new one and download all your attachments back into your new library.</p>
+
+<p>At this point you should have all your old posts on the new blog.</p>
+
+<p>You can delete the old ones or whatever you choose and continue blogging on wordpress.com…</p>
+
+<p>This next stage is optional:
+If you want your old domain to remain the URL ( AND you have custom DNS records that you want to keep such as extenernal mail) of your blog then keep reading.
+On your old server open SSH with Putty or a similar tool and do :
+cd /var/named/run-root/var or the location of your bind DNS file if its different.
+Open the file for your old blog’s domain name with nano domain.com or pico domain.com
+You need to copy the entries which will be similar to :</p>
+
+<p>mymail.domain.com.                 IN CNAME        ghs.google.com.
+domain.com.              IN MX  10 ASPMX.L.GOOGLE.COM.
+domain.com.              IN MX  20 ALT1.ASPMX.L.GOOGLE.COM.
+domain.com.              IN MX  20 ALT2.ASPMX.L.GOOGLE.COM.</p>
+
+<p>Copy this info into a file and remove the first section of each line to make the DNS entry into the “short” version wordpress uses. So the above becomes (if you use Google Apps and Gmail for your mail then simply replace mymail with your sub-domain and the rest will be the same):</p>
+
+<p>CNAME mymail ghs.google.com.</p>
+
+<p>MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+MX 10 ASPMX.L.GOOGLE.COM.</p>
+
+<p>The DNS template for Wordpress is:</p>
+
+<h5>Record formats</h5>
+
+<p>Four types of records are allowed: MX, TXT, CNAME, and A. We use a minimalistic format for each record type, shown below. TTL is set automatically. When validating, we only check that your records can be safely saved.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">MX &lt;pref&gt; &lt;host&gt;
+TXT &lt;text&gt;
+CNAME &lt;subdomain&gt; &lt;host&gt;
+A &lt;subdomain&gt; &lt;IP&gt;
+</code></pre></div>
+<h5>Sample records</h5>
+<div class="highlight"><pre><code class="language-" data-lang="">MX 10 MAIL1.EXAMPLE.COM.
+MX 20 MAIL2.EXAMPLE.COM.
+TXT v=spf1 include:mail.example.com ~all
+CNAME autodiscover EXCHANGE.EXAMPLE.COM.
+A webmail 1.2.3.4
+</code></pre></div>
+<p>Once that’s in the correct format, go into your new Wordpress admin area and choose Upgrades –&gt; Domains</p>
+
+<p>If you haven’t already done so, add your domain on this screen. Follow the instructions on screen to complete this stage, it will be different if your registering a brand new domain, but you’ll now need to pay a fee. Sort that out and come back…</p>
+
+<p>Once your domain is added, When you choose Upgrades –&gt; Domains, you will now have your registered domain.com as well as username.wordpress.com listed.</p>
+
+<p>Click the radio button next to the domain name and choose “Update primary domain”. Doing so will let all traffic/users from username.wordpress.com redirect to domain.com</p>
+
+<p>Next to the newly registered or transferred domain, click “Edit DNS”
+<a href="http://crlog.files.wordpress.com/2011/03/image3.png"><img src="http://crlog.files.wordpress.com/2011/03/image_thumb3.png" alt="image"></a></p>
+
+<p>Paste the “short” version of your DNS entries into the available text box.
+<a href="http://crlog.files.wordpress.com/2011/03/image4.png"><img src="http://crlog.files.wordpress.com/2011/03/image_thumb4.png" alt="image"></a></p>
+
+<p>Once done, choose “Validate without saving” to make sure you got it all right, then choose “Save DNS records” to save the records.</p>
+
+<p>That should be it…. Anything I’ve missed out isn’t important, the rest is the same as being on a self-hosted wordpress. Although, the hosted version is limited, in that, you can’t upload your own theme or plugins so you’ve got to use what’s provided.</p>
+
+<p>Good luck, hope that helps.</p>
+
+  </article>
+
+</div>
+
+        </div>
+        <!-- Footer -->
+<div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li><a href="http://zcourts.com">&copy; zcourts</a></li>
+        <li>i.e. &copy; Courtney Robinson. All rights reserved.</li>
+    </ul>
+
+</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46289473-4', 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
