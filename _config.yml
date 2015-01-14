@@ -4,22 +4,32 @@ email: site@crlog.info
 description: > # this means to ignore newlines until "baseurl:"
   Making the web a messier, better place.
 baseurl: "/"
+url: "http://zcourts.com"
 twitter_username: zcourts
 github_username:  zcourts
 
 # Build settings
-markdown: kramdown
 permalink: /:year/:month/:day/:title
 
 # Sass settings
 #sass:
 #    sass_dir: _scss
 #    style: :compressed
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 
-kramdown:
-  input: GFM #Github flavoured markdown
+highlighter:
+  encoding : utf-8
+#redcarpet:
+#  input: GFM #Github flavoured markdown
 
 paginate: 10
 paginate_path: "posts/:num/"
 
-highlighter: pygments
+highlighter: rouge
+
+#gems: [ bibtex, citeproc]
+
+category_archive:
+  path: category

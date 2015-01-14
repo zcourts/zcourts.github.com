@@ -1,4 +1,3 @@
-@import url("highlight.css");
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
 /* Box Model */
 
@@ -243,3 +242,45 @@
 .\-3u { margin-left: 25% }
 .\-2u { margin-left: 16.6666666667% }
 .\-1u { margin-left: 8.3333333333% }
+
+
+
+#toc, .toc, .mw-warning {
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  font-size: 95%;
+  padding: 5px;
+}
+#toc h2, .toc h2 {
+  border: medium none;
+  display: inline;
+  font-size: 100%;
+  font-weight: bold;
+  padding: 0;
+}
+#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle {
+  text-align: center;
+}
+#toc ul, .toc ul {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  text-align: left;
+}
+#toc ul ul, .toc ul ul {
+  margin: 0 0 0 2em;
+}
+#toc .toctoggle, .toc .toctoggle {
+  font-size: 94%;
+}
+
+#toc ul li {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#toc-container {
+  margin-bottom: 10px;
+}
