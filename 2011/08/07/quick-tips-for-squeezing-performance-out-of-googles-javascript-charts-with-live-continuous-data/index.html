@@ -73,13 +73,15 @@
         <div id="main">
             <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Quick tips for squeezing performance out of Google's Javascript charts with live (continuous) data/streams</h1>
-    <p class="post-meta">Aug 7, 2011 • zcourts</p>
-  </header>
+    <header class="post-header">
+        <h1 class="post-title">Quick tips for squeezing performance out of Google's Javascript charts with live (continuous) data/streams</h1>
 
-  <article class="post-content">
-    <p>I, until a few days ago always used JQuery for literally everything that needed Javascript. I&#39;ve recently needed to use <a href="http://code.google.com/apis/chart/">Google charts</a> to show a live graphical representation of data. It needed to be a widget that didn&#39;t rely on any framework so I had to brush up on my Javascript and forget all the easy stuff JQuery usually gives me! The chart would be updated EVERY SECOND, yeah pretty often! In every second there could be any amount of new points to be plotted. In addition, I&#39;m only interested in points that have occurred within a fixed time period, the results of all this will be an &quot;animated&quot; graph that shifts left when data is updated.&lt;!-- more --&gt;</p>
+        <p class="post-meta">Aug 7, 2011 • zcourts
+            </p>
+    </header>
+
+    <article class="post-content">
+        <p>I, until a few days ago always used JQuery for literally everything that needed Javascript. I&#39;ve recently needed to use <a href="http://code.google.com/apis/chart/">Google charts</a> to show a live graphical representation of data. It needed to be a widget that didn&#39;t rely on any framework so I had to brush up on my Javascript and forget all the easy stuff JQuery usually gives me! The chart would be updated EVERY SECOND, yeah pretty often! In every second there could be any amount of new points to be plotted. In addition, I&#39;m only interested in points that have occurred within a fixed time period, the results of all this will be an &quot;animated&quot; graph that shifts left when data is updated.&lt;!-- more --&gt;</p>
 
 <p>On my first implementation (took about 3 hrs), it all worked &quot;great&quot;, or so I thought. After watching the graph work nicely for about 1hr ( I didn&#39;t sit and watch if you&#39;re wondering, I used console.log()!) chrome,firefox and IE just went poooof! IE (expectedly died a lot earlier than the others). To get an idea of what went wrong I restarted everything (killed Firefox and IE, leaving chrome with a single tab), watching my CPU and Memory usage...they did nothing but climb until the chrome process hit about 1GB, I got er, &quot;Ooops, He&#39;s dead Jim&quot; page...</p>
 
@@ -136,8 +138,25 @@ After reading the stuff above, I went over the code again,</p>
 
 <p>I may have been a total novice (possibly still is) but I&#39;ve definitely learnt a metric tonne from this (I even implemented a fairly advanced <a href="https://github.com/zcourts/javascript-hashSet">key value set</a> to keep my data sorted and accessible by keys), I hope this hasn&#39;t all been a long rant and is useful to you or helps you pinpoint where your javascript program is blowing up.</p>
 
-  </article>
+    </article>
+    <footer class="post-footer">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'zcourts'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </footer>
 </div>
 
         </div>

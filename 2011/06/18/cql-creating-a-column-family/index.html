@@ -73,13 +73,15 @@
         <div id="main">
             <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">CQL : Creating a column family</h1>
-    <p class="post-meta">Jun 18, 2011 • zcourts</p>
-  </header>
+    <header class="post-header">
+        <h1 class="post-title">CQL : Creating a column family</h1>
 
-  <article class="post-content">
-    <p>Following on from my last post about how to <a href="http://crlog.info/2011/06/13/cql-creating-a-simple-keyspace/">create a keyspace with CQL</a>,  in this tutorial/post I&#39;ll create a Coloumn family. Unless this has changed recently CQL does not support creating supoer column families. As far as I know there are no plans to do so either...&lt;!-- more --&gt;</p>
+        <p class="post-meta">Jun 18, 2011 • zcourts
+            </p>
+    </header>
+
+    <article class="post-content">
+        <p>Following on from my last post about how to <a href="http://crlog.info/2011/06/13/cql-creating-a-simple-keyspace/">create a keyspace with CQL</a>,  in this tutorial/post I&#39;ll create a Coloumn family. Unless this has changed recently CQL does not support creating supoer column families. As far as I know there are no plans to do so either...&lt;!-- more --&gt;</p>
 
 <p>Here goes:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
@@ -172,8 +174,25 @@ Now using the CLI again you&#39;ll see something similar to:</p>
 I&#39;d copied some for creating a keyspace into my last post but there are too many for creating CFs so have a look at the link
 above it&#39;ll show you the options available.</p>
 
-  </article>
+    </article>
+    <footer class="post-footer">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'zcourts'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </footer>
 </div>
 
         </div>

@@ -73,20 +73,39 @@
         <div id="main">
             <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Wordpress + Varnish Cache, A match made in heaven</h1>
-    <p class="post-meta">Sep 7, 2011 • zcourts</p>
-  </header>
+    <header class="post-header">
+        <h1 class="post-title">Wordpress + Varnish Cache, A match made in heaven</h1>
 
-  <article class="post-content">
-    <p>Recently my other blog, <a href="http://www.scriptandscroll.com">Script and Scroll</a>, started to get a decent amount of traffic. One blog in particular linked back to a post someone published and it gained a lot of attention. Within a few hours of the link being created I started to get alerts from my monitoring system...Wordpress was slowing down, crapping out and running out of memory when serving pages. The load on my VPS hit the roof and Apache more or less came to a halt. After a quick round of investigating, scanning logs etc, I realized what was happening after seeing the referrer and looking at the page that had linked to us. Right, it was time to do something now that I knew what the problem was. Mind you, I had a caching plugin installed but it wasn&#39;t doing much good. After thinking of what my options were I decided to go with <a href="https://www.varnish-cache.org/">Varnish Cache</a>.</p>
+        <p class="post-meta">Sep 7, 2011 • zcourts
+            </p>
+    </header>
+
+    <article class="post-content">
+        <p>Recently my other blog, <a href="http://www.scriptandscroll.com">Script and Scroll</a>, started to get a decent amount of traffic. One blog in particular linked back to a post someone published and it gained a lot of attention. Within a few hours of the link being created I started to get alerts from my monitoring system...Wordpress was slowing down, crapping out and running out of memory when serving pages. The load on my VPS hit the roof and Apache more or less came to a halt. After a quick round of investigating, scanning logs etc, I realized what was happening after seeing the referrer and looking at the page that had linked to us. Right, it was time to do something now that I knew what the problem was. Mind you, I had a caching plugin installed but it wasn&#39;t doing much good. After thinking of what my options were I decided to go with <a href="https://www.varnish-cache.org/">Varnish Cache</a>.</p>
 
 <p>&lt;!-- more --&gt;After installing Varnish (painlessly and in seconds), I switched it to port 80 and switched apache to listen to a different port. It was amazing! My page load speeds before the increase in traffic were about 4-5 seconds, after getting the increase in traffic it was 8+ seconds on average,12+ at one point...After switching over to varnish and tweaking a few things to make wordpress play nice everything just went lightening fast, the home page loaded in less than a second after the first page load (which took about 2-3 secs), other pages consistently loaded in 1-2 seconds. It got even better after I wired up <a href="http://wordpress.org/extend/plugins/w3-total-cache/">W3 Total Cache</a> to use <a href="http://www.rackspace.com/cloud/cloud_hosting_products/files/">Rackspace Cloud files</a> to serve static content and make use of browser Caching. The server load dropped right down. I&#39;ve now in fact scaled back my VPS from 4GB ram to 1.5GB, traffic levels have remained high and peaked above what the site was experiencing when it grind to a halt.</p>
 
 <p>So far so good...I&#39;ll tweak a few things to try and squeeze as much as I can out of it. I&#39;ll document my installation and setup process in another post, possibly later today.</p>
 
-  </article>
+    </article>
+    <footer class="post-footer">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'zcourts'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </footer>
 </div>
 
         </div>

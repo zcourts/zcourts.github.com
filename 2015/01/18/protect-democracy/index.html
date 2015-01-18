@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
         <head>
-    <title>Limit wordpress post content out put automatically</title>
+    <title>Unifying my web presence</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="This is a quick and dirty hack to limit the amount of words wordpress outputs on your homepage.">
+    <meta name="description" content="sigh, this started out so well. I organized everything into &quot;logical&quot; sites...Turns out it&#39;s a major pain to maintain! So from today, I&#39;ll ...">
     <meta name="keywords" content="" />
     <script src="/js/jquery.min.js"></script>
     <script src="/js/init.js"></script>
 
     <link rel="stylesheet" href="/css/main.css">
 
-    <link rel="canonical" href="//2011/01/30/limit-wordpress-post-content-out-put-automatically">
+    <link rel="canonical" href="//2015/01/18/protect-democracy">
     <link rel="alternate" type="application/atom+xml" title="zcourts AKA Courtney Robinson" href="/feed.xml" />
 </head>
     <body>
@@ -74,39 +74,15 @@
             <div class="post">
 
     <header class="post-header">
-        <h1 class="post-title">Limit wordpress post content out put automatically</h1>
+        <h1 class="post-title">Unifying my web presence</h1>
 
-        <p class="post-meta">Jan 30, 2011 • zcourts
+        <p class="post-meta">Jan 18, 2015
             </p>
     </header>
 
     <article class="post-content">
-        <p>This is a quick and dirty hack to limit the amount of words wordpress outputs on your homepage.</p>
-
-<p>Its sometimes not ideal to have the entire post showing on the homepage when you have really long posts. 10 or 15 long posts will make the page take forever to load, especially if they all have images.</p>
-
-<p>First thing to do is backup your theme&#39;s index.php file. So go to wp-content/themes/your-theme-name/ and make a copy of index.php
-just in case you mess it up and forget what the original content was...</p>
-
-<p>Open the file, (the original, not the copy ) and find where it has the_content();
-Replace it with:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="nx">get_the_content</span><span class="p">();</span><span class="c1">//apply_filters('the_content', $content);
-</span><span class="nv">$content</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">']]&gt;'</span><span class="p">,</span> <span class="s1">']]&amp;gt;'</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
-<span class="nv">$con</span><span class="o">=</span><span class="nb">explode</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span><span class="nv">$content</span><span class="p">);</span>
-<span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span><span class="p">(</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">50</span> <span class="o">&amp;&amp;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$con</span><span class="p">)){</span>
-<span class="k">echo</span> <span class="nv">$con</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="o">.</span><span class="s2">" "</span><span class="p">;</span>
-<span class="nv">$i</span><span class="o">++</span><span class="p">;</span><span class="o">&lt;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="nx">the_permalink</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="s">"</span> <span class="na">rel=</span><span class="s">"bookmark"</span> <span class="na">title=</span><span class="s">"
-</span><span class="cp">&lt;?php</span> <span class="nx">the_title_attribute</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>... <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>Continue reading, <span class="cp">&lt;?php</span> <span class="nx">the_title</span><span class="p">();</span> <span class="cp">?&gt;</span>.<span class="nt">&lt;/a&gt;</span>
-</code></pre></div>
-<p>Change 50 in the loop to the amount of words you want to allow. When done just save and re-upload the file.</p>
-
-<p>Further reading:
-<a href="codex.wordpress.org/Template_Tags/the_content">codex.wordpress.org/Template_Tags/the_content</a></p>
+        <p><em>sigh</em>, this started out so well. I organized everything into &quot;logical&quot; sites...
+Turns out it&#39;s a major pain to maintain! So from today, I&#39;ll be bring all my blogs/sites/whatever, under one roof/domain!</p>
 
     </article>
     <footer class="post-footer">

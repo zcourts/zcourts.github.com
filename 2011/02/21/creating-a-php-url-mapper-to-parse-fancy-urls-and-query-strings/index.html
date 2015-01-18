@@ -73,13 +73,15 @@
         <div id="main">
             <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Creating a PHP URL mapper to parse fancy URLs and query strings</h1>
-    <p class="post-meta">Feb 21, 2011 • zcourts</p>
-  </header>
+    <header class="post-header">
+        <h1 class="post-title">Creating a PHP URL mapper to parse fancy URLs and query strings</h1>
 
-  <article class="post-content">
-    <p>I&#39;ve been working on a PHP framework for my group over the last few weeks. We were required to build almost everything from scratch so using another framework such as <a href="http://www.codeignitor.com">Codeignitor</a> was not an option.</p>
+        <p class="post-meta">Feb 21, 2011 • zcourts
+            </p>
+    </header>
+
+    <article class="post-content">
+        <p>I&#39;ve been working on a PHP framework for my group over the last few weeks. We were required to build almost everything from scratch so using another framework such as <a href="http://www.codeignitor.com">Codeignitor</a> was not an option.</p>
 
 <p>The URL mapper basically breaks up a URL into chunks and allows you to programatically add variables to the query string or get the value of a variable in the URL of the current page request.</p>
 
@@ -301,8 +303,25 @@ If the ckass determines that you&#39;re not using fancy URLs then the generated 
 
 <p>In this case, it still assumes fancy URL is the format and when buildURL() is called it generates a fancy URL converting the query string into part of the fancy URL.</p>
 
-  </article>
+    </article>
+    <footer class="post-footer">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'zcourts'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </footer>
 </div>
 
         </div>

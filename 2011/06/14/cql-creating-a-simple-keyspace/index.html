@@ -73,13 +73,15 @@
         <div id="main">
             <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">CQL : Creating a simple keyspace </h1>
-    <p class="post-meta">Jun 14, 2011 • zcourts</p>
-  </header>
+    <header class="post-header">
+        <h1 class="post-title">CQL : Creating a simple keyspace </h1>
 
-  <article class="post-content">
-    <p>I promised a few tutorials covering <a href="http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/">CQL</a> examples so I&#39;m going to kick off a series to demonstrate all/most of the features of <a href="http://cassandra.apache.org">Cassandra</a>&#39;s new query language, CQL.</p>
+        <p class="post-meta">Jun 14, 2011 • zcourts
+            </p>
+    </header>
+
+    <article class="post-content">
+        <p>I promised a few tutorials covering <a href="http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/">CQL</a> examples so I&#39;m going to kick off a series to demonstrate all/most of the features of <a href="http://cassandra.apache.org">Cassandra</a>&#39;s new query language, CQL.</p>
 
 <p>In this example we&#39;ll create a keyspace and look at the proerties available when doing so, this will demonstrate one of the key words in CQL, <a href="http://crlog.info/2011/03/29/cassandra-query-language-aka-cql-syntax/#CREATEKEYSPACE">CREATE KEYSPACE</a>. This example has been done in Java since it is one of the easiest languages to get up and running with, however the CQL statements are portable i.e. not dependent on the language you use. There is a <a href="https://github.com/nicktelford/php-cql">PHP CQL driver</a> being developed by <a href="https://github.com/nicktelford">Nick</a>, <a href="https://github.com/davegardnerisme">Dave</a>, my self and others but I&#39;ve been out for about a month pre-occupied with a few things, the guys have been making some progress so check out the driver if you&#39;re using PHP and want to use or contribute to the development.&lt;!-- more --&gt;</p>
 
@@ -160,8 +162,25 @@
     <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">cassandra</span><span class="o">.</span><span class="na">thrift</span><span class="o">.</span><span class="na">Cassandra</span><span class="n">$Client</span><span class="o">.</span><span class="na">recv_execute_cql_query</span><span class="o">(</span><span class="n">Cassandra</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1708</span><span class="o">)</span>
     <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">cassandra</span><span class="o">.</span><span class="na">thrift</span><span class="o">.</span><span class="na">Cassandra</span><span class="n">$Client</span><span class="o">.</span><span class="na">execute_cql_query</span><span class="o">(</span><span class="n">Cassandra</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1682</span><span class="o">)</span>
 </code></pre></div>
-  </article>
+    </article>
+    <footer class="post-footer">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'zcourts'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    </footer>
 </div>
 
         </div>
